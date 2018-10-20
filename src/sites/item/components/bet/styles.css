@@ -1,0 +1,12 @@
+.bet {
+  display: flex;
+  flex-direction: row;
+}
+
+.bet .user {
+  padding-right: 1rem;
+}
+
+.bet img{
+  height: 150px;
+}

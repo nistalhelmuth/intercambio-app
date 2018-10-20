@@ -1,0 +1,23 @@
+.owner {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.owner img {
+  height: 150px;
+}
+
+.owner .content {
+  padding: 1rem;
+}
+
+.owner .content lu {
+  list-style: none;
+}
+
+.owner .content lu li {
+  padding-bottom: 1rem;
+}

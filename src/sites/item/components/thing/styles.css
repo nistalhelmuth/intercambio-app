@@ -1,0 +1,21 @@
+.thing {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.thing  .other {
+  text-align: justify;
+}
+
+.thing  .other h4 {
+  margin: 0rem;
+  padding: 1rem;
+}
+
+.thing .other p {
+  margin: 0rem;
+  border-style: solid;
+  padding: 1rem;
+}
