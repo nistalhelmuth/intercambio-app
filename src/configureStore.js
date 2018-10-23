@@ -2,6 +2,7 @@ import { createStore } from 'redux';
 
 import reducer from './reducers';
 
+/* eslint-disable no-underscore-dangle */
 const configureStore = () => {
   const store = createStore(
     reducer,
@@ -10,5 +11,6 @@ const configureStore = () => {
 
   return store;
 };
+/* eslint-enable */
 
 export default configureStore;
