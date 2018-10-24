@@ -57,6 +57,20 @@ const allIds = (state = defaultIds, action) => {
       action.payload.id,
     ];
   }
+  case types.BELONGING_CREATION_CONFIRMED: {
+    const { newId, oldId } = action.payload;
+    const newState = { ...state };
+    const { id, ...rest } = newState[oldId];
+    const newItem = {
+      id: newId,
+      ...rest,
+    };
+    delete newState[oldId];
+    return {
+      ...newState,
+      [newId]: newItem,
+    };
+  }
   case types.BELONGINGS_RECIVED: {
     const stateToBe = [];
     action.payload.categories.forEach((category) => {

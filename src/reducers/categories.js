@@ -27,6 +27,20 @@ const byId = (state = defaultState, action) => {
       },
     };
   }
+  case types.CATEGORTY_ADDITION_CONFIRMED: {
+    const { newId, oldId } = action.payload;
+    const newState = { ...state };
+    const { id, ...rest } = newState[oldId];
+    const newItem = {
+      id: newId,
+      ...rest,
+    };
+    delete newState[oldId];
+    return {
+      ...newState,
+      [newId]: newItem,
+    };
+  }
   case types.CATEGORIES_RECIVED: {
     return action.payload.categories;
   }
