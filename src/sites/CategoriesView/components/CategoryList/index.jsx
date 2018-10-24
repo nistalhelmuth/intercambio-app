@@ -10,7 +10,7 @@ const CategoryList = ({
   <div className="category-list">
     {
       ids.map(id => (
-        <Category id={id} />
+        <Category id={id} key={id} />
       ))
     }
   </div>
