@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import PersonalInfo from './components/personalInfo';
-import ItemList from './components/itemList';
+import PersonalInfo from './components/PersonalInfo';
+import ItemList from './components/ItemList';
 
 import './styles.css';
 

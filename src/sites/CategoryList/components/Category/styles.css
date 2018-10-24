@@ -1,0 +1,5 @@
+.category{
+  flex: 5;
+  background-color: lightgoldenrodyellow;
+  overflow-y: auto;
+}

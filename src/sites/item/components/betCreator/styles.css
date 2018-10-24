@@ -5,7 +5,6 @@
 }
 
 .betCreator .allThings {
-  width: 525px;
   height: 175px;
   background-color: aquamarine;
   flex-direction: row;

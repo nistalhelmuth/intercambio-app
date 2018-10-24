@@ -8,10 +8,10 @@ import configureStore from './configureStore';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import CategoryView from './sites/CategoriesView';
-import Login from './sites/login';
-import User from './sites/user';
-import ItemList from './sites/itemList';
-import Item from './sites/item';
+import CategoryList from './sites/CategoryList';
+import Login from './sites/Login';
+import User from './sites/User';
+import Item from './sites/Item';
 
 const store = configureStore();
 
@@ -21,9 +21,8 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/categories" component={CategoryView} />
-        {/*<Route exact path="/categories/:category" component={CategoryList} /> */}
+        <Route exact path="/category/:category" component={CategoryList} />
         <Route exact path="/user" component={User} />
-        {/*<Route exact path="/user/items" component={ItemList} />*/}
         <Route exact path="/user/:item" component={Item} />
       </Switch>
     </BrowserRouter>

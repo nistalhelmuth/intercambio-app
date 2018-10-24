@@ -11,9 +11,13 @@
   flex-direction: column;
 }
 
+.leftSide button {
+  width: 50px;
+  height: 50px;
+}
+
 .rightSide {
   flex:3;
   display: flex;
   flex-direction: column;
-  
 }

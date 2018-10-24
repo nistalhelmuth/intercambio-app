@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 
-import Stars from '../starts';
+import Stars from '../../../SharedComponents/Stars';
 
 const Thing = ({ img, stars, description, date}) => (
   <div className="thing">

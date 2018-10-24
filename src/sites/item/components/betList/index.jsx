@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 
-import Bet from '../bet';
+import Bet from '../Bet';
 
 const BetList = () => (
   <div className="betList">

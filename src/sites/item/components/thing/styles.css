@@ -2,7 +2,11 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 0rem 1rem;
+}
+
+.thing img {
+  padding-bottom: 1rem; 
 }
 
 .thing  .other {
