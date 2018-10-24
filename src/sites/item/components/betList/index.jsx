@@ -8,11 +8,6 @@ const BetList = () => (
     <Bet/>
     <Bet/>
     <Bet/>
-    <Bet/>
-    <Bet/>
-    <Bet/>
-    <Bet/>
-    <Bet/>
   </div>
 );
 

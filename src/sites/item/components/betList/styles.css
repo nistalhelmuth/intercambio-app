@@ -1,15 +1,9 @@
 .betList {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  
   flex: 2;
   overflow-y: auto;
 }
 
-.betList hr {
-  border: 0;
-  clear:both;
-  display:block;
-  width: 96%;               
-  background-color:#FFFF00;
-}
+

@@ -1,4 +1,20 @@
 .betCreator { 
   flex: 1;
-  background: red;
+  background-color: lightskyblue;
+  padding: 1rem;
+}
+
+.betCreator .allThings {
+  width: 525px;
+  height: 175px;
+  background-color: aquamarine;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: auto;
+}
+
+.betCreator .allThings img{
+  height: 50px;
+  width: 50px;
+  padding: 1rem;
 }
