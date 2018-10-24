@@ -1,24 +1,36 @@
 import { combineReducers } from 'redux';
-import * as types from '../types/categories';
+import * as types from '../types/belongings';
 
 const defaultState = {
   1: {
     id: 1,
-    name: 'Muebles',
+    name: 'Super Mario Galaxy',
+    description: 'Juego para Wii',
+    category: 1,
+    usedState: 'medio',
+    propietaryId: 0,
   },
   2: {
     id: 2,
-    name: 'Juegos',
+    name: 'Super Mario Galaxy',
+    description: 'Juego para Wii',
+    category: 1,
+    usedState: 'medio',
+    propietaryId: 0,
   },
   3: {
     id: 3,
-    name: 'Electróncos',
+    name: 'Super Mario Galaxy',
+    description: 'Juego para Wii',
+    category: 1,
+    usedState: 'medio',
+    propietaryId: 0,
   },
 };
 
 const byId = (state = defaultState, action) => {
   switch (action.type) {
-  case types.CATEGORTY_ADDED: {
+  case types.BELONGING_CREATED: {
     const { payload: { id } } = action;
     return {
       ...state,
@@ -27,7 +39,7 @@ const byId = (state = defaultState, action) => {
       },
     };
   }
-  case types.CATEGORIES_RECIVED: {
+  case types.BELONGINGS_RECIVED: {
     return action.payload.categories;
   }
   default:
@@ -39,13 +51,13 @@ const defaultIds = [1, 2, 3];
 
 const allIds = (state = defaultIds, action) => {
   switch (action.type) {
-  case types.CATEGORTY_ADDED: {
+  case types.BELONGING_CREATED: {
     return [
       ...state,
       action.payload.id,
     ];
   }
-  case types.CATEGORIES_RECIVED: {
+  case types.BELONGINGS_RECIVED: {
     const stateToBe = [];
     action.payload.categories.forEach((category) => {
       stateToBe.push(category.id);
@@ -62,8 +74,7 @@ export default combineReducers({
   allIds,
 });
 
-export const getCategory = (state, id) => state.byId[id];
-export const getCategories = state => (
-  state.allIds.map(id => getCategory(id))
+export const getBelonging = (state, id) => state.byId[id];
+export const getBelongings = state => (
+  state.allIds.map(id => getBelonging(state, id))
 );
-export const getCategoryIds = state => state.allIds;
