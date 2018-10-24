@@ -11,6 +11,17 @@ export const addCategory = ({
   },
 });
 
+export const confirmCategoryAddition = ({
+  oldId,
+  newId,
+}) => ({
+  type: types.CATEGORTY_ADDITION_CONFIRMED,
+  payload: {
+    oldId,
+    newId,
+  },
+});
+
 export const fetchCategories = () => ({
   type: types.CATEGORIES_FETCHED,
 });
