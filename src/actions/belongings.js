@@ -19,6 +19,17 @@ export const createBelonging = ({
   },
 });
 
+export const confirmBelongingCreation = ({
+  oldId,
+  newId,
+}) => ({
+  type: types.BELONGING_CREATION_CONFIRMED,
+  payload: {
+    oldId,
+    newId,
+  },
+});
+
 export const fetchBelongings = id => ({
   type: types.BELONGINGS_FETCHED,
   payload: {
