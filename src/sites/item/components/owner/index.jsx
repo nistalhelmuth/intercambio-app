@@ -5,7 +5,7 @@ const Owner = ({ img, stars, description, date}) => (
   <div className="owner">
     <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Flowers" />
     <div className="content">
-      <lu>
+      <ul>
         <li>
         {'username'}
         </li>
@@ -18,7 +18,7 @@ const Owner = ({ img, stars, description, date}) => (
         <li>
         {'rating'}
         </li>
-      </lu>
+      </ul>
     </div>
   </div>
 );

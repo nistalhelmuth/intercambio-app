@@ -1,0 +1,31 @@
+.personalInfo {
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  flex: 1;
+}
+
+.personalInfo .content {
+  
+  text-align: center;
+}
+
+.personalInfo .content ul {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+}
+
+.personalInfo .content ul li {
+  list-style-type: none;
+}
+
+.personalInfo img {
+  
+  height: 150px;
+  width: 150px;
+  padding: 1rem;
+  border-radius: 50%;
+}

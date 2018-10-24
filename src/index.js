@@ -21,10 +21,10 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/categories" component={CategoryView} />
-        {/* <Route exact path="/categories/:category" component={CategoryList} /> */}
+        {/*<Route exact path="/categories/:category" component={CategoryList} /> */}
         <Route exact path="/user" component={User} />
-        <Route exact path="/user/items" component={ItemList} />
-        <Route exact path="/user/items/:item" component={Item} />
+        {/*<Route exact path="/user/items" component={ItemList} />*/}
+        <Route exact path="/user/:item" component={Item} />
       </Switch>
     </BrowserRouter>
   </Provider>,

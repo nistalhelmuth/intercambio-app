@@ -1,0 +1,19 @@
+.itemList {
+  justify-content: space-evenly;
+  align-content: space-evenly;
+  padding: 1rem;
+  overflow-y: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 3;
+  background-color: lightblue;
+}
+
+.itemList img {
+  height: 200px;
+  padding: 1rem;
+}
+
+.itemList img:hover {
+  cursor: pointer;
+}
