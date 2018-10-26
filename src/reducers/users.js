@@ -1,24 +1,9 @@
 import { combineReducers } from 'redux';
-import * as types from '../types/categories';
+import * as types from '../types/users';
 
-const defaultState = {
-  1: {
-    id: 1,
-    name: 'Muebles',
-  },
-  2: {
-    id: 2,
-    name: 'Juegos',
-  },
-  3: {
-    id: 3,
-    name: 'Electróncos',
-  },
-};
-
-const byId = (state = defaultState, action) => {
+const byId = (state = {}, action) => {
   switch (action.type) {
-  case types.CATEGORTY_ADDED: {
+  case types.USER_CREATED: {
     const { payload: { id } } = action;
     return {
       ...state,
@@ -27,7 +12,7 @@ const byId = (state = defaultState, action) => {
       },
     };
   }
-  case types.CATEGORTY_ADDITION_CONFIRMED: {
+  case types.USER_CREATION_CONFIRMED: {
     const { newId, oldId } = action.payload;
     const newState = { ...state };
     const { id, ...rest } = newState[oldId];
@@ -41,8 +26,13 @@ const byId = (state = defaultState, action) => {
       [newId]: newItem,
     };
   }
-  case types.CATEGORIES_RECIVED: {
-    return action.payload.categories;
+  case types.USERS_RECIVED: {
+    return action.payload.users;
+  }
+  case types.USER_DELETION_CONFIRMED: {
+    const newState = { ...state };
+    delete newState[action.payload.id];
+    return newState;
   }
   default:
     return state;
@@ -53,24 +43,27 @@ const defaultIds = [1, 2, 3];
 
 const allIds = (state = defaultIds, action) => {
   switch (action.type) {
-  case types.CATEGORTY_ADDED: {
+  case types.USER_CREATED: {
     return [
       ...state,
       action.payload.id,
     ];
   }
-  case types.CATEGORTY_ADDITION_CONFIRMED: {
+  case types.USER_CREATION_CONFIRMED: {
     return [
       ...state.filter(id => id !== action.payload.id),
       action.payload.id,
     ];
   }
-  case types.CATEGORIES_RECIVED: {
+  case types.USERS_RECIVED: {
     const stateToBe = [];
-    action.payload.categories.forEach((category) => {
-      stateToBe.push(category.id);
+    action.payload.users.forEach((user) => {
+      stateToBe.push(user.id);
     });
     return stateToBe;
+  }
+  case types.USER_DELETION_CONFIRMED: {
+    return state.filter(id => id !== action.payload.id);
   }
   default:
     return state;
@@ -82,8 +75,7 @@ export default combineReducers({
   allIds,
 });
 
-export const getCategory = (state, id) => state.byId[id];
-export const getCategories = state => (
-  state.allIds.map(id => getCategory(id))
+export const getUser = (state, id) => state.byId[id];
+export const getUsers = state => (
+  state.allIds.map(id => getUser(state, id))
 );
-export const getCategoryIds = state => state.allIds;
