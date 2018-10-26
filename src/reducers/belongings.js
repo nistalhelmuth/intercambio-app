@@ -39,8 +39,27 @@ const byId = (state = defaultState, action) => {
       },
     };
   }
+  case types.BELONGING_CREATION_CONFIRMED: {
+    const { newId, oldId } = action.payload;
+    const newState = { ...state };
+    const { id, ...rest } = newState[oldId];
+    const newItem = {
+      id: newId,
+      ...rest,
+    };
+    delete newState[oldId];
+    return {
+      ...newState,
+      [newId]: newItem,
+    };
+  }
   case types.BELONGINGS_RECIVED: {
-    return action.payload.categories;
+    return action.payload.belongings;
+  }
+  case types.BELONGING_DELETION_CONFIRMED: {
+    const newState = { ...state };
+    delete newState[action.payload.id];
+    return newState;
   }
   default:
     return state;
@@ -58,25 +77,20 @@ const allIds = (state = defaultIds, action) => {
     ];
   }
   case types.BELONGING_CREATION_CONFIRMED: {
-    const { newId, oldId } = action.payload;
-    const newState = { ...state };
-    const { id, ...rest } = newState[oldId];
-    const newItem = {
-      id: newId,
-      ...rest,
-    };
-    delete newState[oldId];
-    return {
-      ...newState,
-      [newId]: newItem,
-    };
+    return [
+      ...state.filter(id => id !== action.payload.id),
+      action.payload.id,
+    ];
   }
   case types.BELONGINGS_RECIVED: {
     const stateToBe = [];
-    action.payload.categories.forEach((category) => {
-      stateToBe.push(category.id);
+    action.payload.belongings.forEach((belonging) => {
+      stateToBe.push(belonging.id);
     });
     return stateToBe;
+  }
+  case types.BELONGING_DELETION_CONFIRMED: {
+    return state.filter(id => id !== action.payload.id);
   }
   default:
     return state;

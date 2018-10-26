@@ -43,3 +43,17 @@ export const reciveBelongings = belongings => ({
     belongings,
   },
 });
+
+export const deleteBelonging = id => ({
+  type: types.BELONGING_DELETED,
+  payload: {
+    id,
+  },
+});
+
+export const confirmBelongingDeletion = id => ({
+  type: types.BELONGING_DELETION_CONFIRMED,
+  payload: {
+    id,
+  },
+});
