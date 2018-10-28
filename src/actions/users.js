@@ -1,6 +1,6 @@
 import * as types from '../types/users';
 
-export const crateUser = ({
+export const createUser = ({
   id,
   username,
   firstName,
@@ -26,7 +26,8 @@ export const crateUser = ({
 export const confirmUserCreation = id => ({
   type: types.USER_CREATION_CONFIRMED,
   payload: {
-    id,
+    oldId,
+    newId,
   },
 });
 
@@ -40,7 +41,8 @@ export const deleteUser = id => ({
 export const confirmUserDeletion = id => ({
   type: types.USER_DELETION_CONFIRMED,
   payload: {
-    id,
+    oldId,
+    newId,
   },
 });
 
