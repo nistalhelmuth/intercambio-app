@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import * as selectors from '../../../../reducers';
 import Category from '../Category';
 
+import './styles.css'
+
 const CategoryList = ({
   ids,
 }) => (

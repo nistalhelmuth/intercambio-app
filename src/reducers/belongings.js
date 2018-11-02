@@ -7,7 +7,7 @@ const defaultState = {
     name: 'Super Mario Galaxy',
     description: 'Juego para Wii',
     category: 1,
-    usedState: 'medio',
+    usedState: 0,
     propietaryId: 0,
   },
   2: {
@@ -15,7 +15,7 @@ const defaultState = {
     name: 'Super Mario Galaxy',
     description: 'Juego para Wii',
     category: 1,
-    usedState: 'medio',
+    usedState: 1,
     propietaryId: 0,
   },
   3: {
@@ -23,7 +23,15 @@ const defaultState = {
     name: 'Super Mario Galaxy',
     description: 'Juego para Wii',
     category: 1,
-    usedState: 'medio',
+    usedState: 2,
+    propietaryId: 0,
+  },
+  4: {
+    id: 4,
+    name: 'Super Mario Galaxy',
+    description: 'Juego para Wii',
+    category: 1,
+    usedState: 3,
     propietaryId: 0,
   },
 };
@@ -66,7 +74,7 @@ const byId = (state = defaultState, action) => {
   }
 };
 
-const defaultIds = [1, 2, 3];
+const defaultIds = [1, 2, 3, 4];
 
 const allIds = (state = defaultIds, action) => {
   switch (action.type) {

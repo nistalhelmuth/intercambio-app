@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import CategoryList from './components/CategoryList';
 import * as actions from '../../actions/categories';
 
+import './styles.css'
+
 class CategoriesView extends Component {
   componentWillMount() {
     const { fetchCategories } = this.props;
@@ -14,11 +16,19 @@ class CategoriesView extends Component {
   render() {
     return (
       <div className="categories-view">
-        <div className="header">
-          <Link to="/">Hacer Post</Link>
-          <Link to="/">Perfil</Link>
+        <div className="header">  
+          <Link to="/">Crear objeto</Link>
+          <Link to={`/users/${"username"}/${"itemname"}`}>Perfil</Link>
         </div>
         <CategoryList />
+        <div className="footer">
+          <button>
+            {'prev'}
+          </button>
+          <button>
+            {'next'}
+          </button>
+        </div>
       </div>
     );
   }
