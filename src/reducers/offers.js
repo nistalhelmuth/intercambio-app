@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import * as types from '../types/posts';
+import * as types from '../types/offers';
 
 const byId = (state = {}, action) => {
   switch (action.type) {
-  case types.POST_CREATED: {
+  case types.OFFER_CREATED: {
     const { payload: { id } } = action;
     return {
       ...state,
@@ -12,7 +12,7 @@ const byId = (state = {}, action) => {
       },
     };
   }
-  case types.POST_CREATION_CONFIRMED: {
+  case types.OFFER_CREATION_CONFIRMED: {
     const { newId, oldId } = action.payload;
     const newState = { ...state };
     const { id, ...rest } = newState[oldId];
@@ -26,15 +26,15 @@ const byId = (state = {}, action) => {
       [newId]: newItem,
     };
   }
-  case types.POSTS_RECIVED: {
-    return action.payload.posts;
+  case types.OFFERS_RECIVED: {
+    return action.payload.offers;
   }
-  case types.POST_DELETION_CONFIRMED: {
+  case types.OFFER_DELETION_CONFIRMED: {
     const newState = { ...state };
     delete newState[action.payload.id];
     return newState;
   }
-  case types.POST_UPDATE_CONFIRMED: {
+  case types.OFFER_UPDATE_CONFIRMED: {
     const newState = { ...state };
     const { id } = action.payload.id;
     delete newState[id];
@@ -52,26 +52,26 @@ const defaultIds = [1, 2, 3];
 
 const allIds = (state = defaultIds, action) => {
   switch (action.type) {
-  case types.POST_CREATED: {
+  case types.OFFER_CREATED: {
     return [
       ...state,
       action.payload.id,
     ];
   }
-  case types.POST_CREATION_CONFIRMED: {
+  case types.OFFER_CREATION_CONFIRMED: {
     return [
       ...state.filter(id => id !== action.payload.id),
       action.payload.id,
     ];
   }
-  case types.POSTS_RECIVED: {
+  case types.OFFERS_RECIVED: {
     const stateToBe = [];
-    action.payload.posts.forEach((post) => {
-      stateToBe.push(post.id);
+    action.payload.offers.forEach((offer) => {
+      stateToBe.push(offer.id);
     });
     return stateToBe;
   }
-  case types.POST_DELETION_CONFIRMED: {
+  case types.OFFER_DELETION_CONFIRMED: {
     return state.filter(id => id !== action.payload.id);
   }
   default:
@@ -84,7 +84,7 @@ export default combineReducers({
   allIds,
 });
 
-export const getPost = (state, id) => state.byId[id];
-export const getPosts = state => (
-  state.allIds.map(id => getPost(state, id))
+export const getOffer = (state, id) => state.byId[id];
+export const getOffers = state => (
+  state.allIds.map(id => getOffer(state, id))
 );
