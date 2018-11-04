@@ -10,18 +10,18 @@ import ItemPreview from '../ItemPreview';
 const Category = ({
   ids,
 }) => (
-  <div className="category">    
+  <div className="category">
     {
       ids.map(id => (
-        <ItemPreview id={id} key={id}/>
+        <ItemPreview id={id} key={id} />
       ))
     }
   </div>
 );
 
 export default connect(
-  (state, {id}) => ({
-    ids: selectors.getBeloingsByCategory(state,id),
+  (state, { id }) => ({
+    ids: selectors.getBeloingsByCategory(state, id),
   }),
   undefined,
 )(Category);

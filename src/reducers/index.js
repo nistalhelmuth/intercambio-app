@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 import categories, * as categorySelectors from './categories';
 import belongings, * as belongingSelectors from './belongings';
 import users, * as userSelectors from './users';
@@ -11,6 +12,7 @@ const reducer = combineReducers({
   users,
   posts,
   offers,
+  form: formReducer,
 });
 
 export default reducer;
@@ -28,7 +30,7 @@ export const getBelongings = state => belongingSelectors.getBelongings(state.bel
 export const getBeloingsByCategory = (state, categoryId) => getBelongings(state).map(belogin => {
   const tempBelongin = getBelonging(state , belogin.id);
   //console.log(tempBelongin);
-  return tempBelongin.category === categoryId ? tempBelongin : undefined;
+  return tempBelongin.category === categoryId ? belogin.id : undefined;
 });
 
 export const getUser = (state, id) => userSelectors.getUser(state.users, id);

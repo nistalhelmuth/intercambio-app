@@ -9,8 +9,8 @@ class CategoryList extends Component {
   render() {
     return (
       <div className="categoryList">        
-        <Finder/>
-        <Category/>
+        <Finder />
+        <Category />
       </div>
     );
   }

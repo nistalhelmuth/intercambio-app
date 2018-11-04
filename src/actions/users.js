@@ -23,7 +23,10 @@ export const createUser = ({
   },
 });
 
-export const confirmUserCreation = id => ({
+export const confirmUserCreation = ({
+  oldId,
+  newId,
+}) => ({
   type: types.USER_CREATION_CONFIRMED,
   payload: {
     oldId,
@@ -38,7 +41,10 @@ export const deleteUser = id => ({
   },
 });
 
-export const confirmUserDeletion = id => ({
+export const confirmUserDeletion = ({
+  oldId,
+  newId,
+}) => ({
   type: types.USER_DELETION_CONFIRMED,
   payload: {
     oldId,

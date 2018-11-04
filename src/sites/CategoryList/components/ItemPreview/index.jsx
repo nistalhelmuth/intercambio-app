@@ -30,9 +30,15 @@ const ItemPreview = ({
   </Fragment>
 );
 
+ItemPreview.propTypes = {
+  name: PropTypes.string.IsRequired,
+  description: PropTypes.string.IsRequired,
+  usedState: PropTypes.string.IsRequired,
+}
+
 export default connect(
   (state, { id }) => ({
-    ...selectors.getBelonging(state, 2),
+    ...selectors.getBelonging(state, id),
   }),
   undefined,
 )(ItemPreview);

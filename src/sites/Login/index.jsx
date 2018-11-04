@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Proptypes from 'prop-types';
+import Auth from './components/Auth';
 
-class Login extends Component {
-  render() {
-    return (
-      <div className="login">
-        {'login'}
-      </div>
-    );
-  }
-}
+import './styles.css';
+
+const Login = () => (
+  <div className="login">
+    {"login"}
+  </div>
+);
+
 
 export default Login;
