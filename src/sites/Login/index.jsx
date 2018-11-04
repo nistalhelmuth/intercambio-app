@@ -1,6 +1,5 @@
 import React from 'react';
 import Proptypes from 'prop-types';
-import Auth from './components/Auth';
 
 import './styles.css';
 
