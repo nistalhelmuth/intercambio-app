@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { createMatchSelector } from 'connected-react-router';
 import * as selectors from '../../../../reducers';
 
+
 import './styles.css';
 
 const Finder = ({
@@ -24,31 +25,10 @@ const Finder = ({
   </div>
 );
 
-/*
-class Finder extends React.Component {
-  constructor (props) {
-    super(props);
-    const { match:{ params } } = props;
-    console.log(params);
-  }
-
-  render () {
-    return (
-      <div/>
-    )
-  }
-}*/
-
 
 export default connect(
-  (state ) => {
-    /*
-    const matchSelector = createMatchSelector({ path: '/course/:id })
-    const match = matchSelector(state) // like: /course/123
-    const id = match.params.id; // get: 123*/
-    return {
-      ...selectors.getCategory(state,1),
-    };
-  },
+  (state, { id }) => ({
+    ...selectors.getCategory(state, id),
+  }),
   undefined,
 )(Finder);

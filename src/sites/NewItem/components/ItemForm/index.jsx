@@ -7,10 +7,10 @@ import * as BeloginActions from '../../../../actions/belongings';
 import './styles.css';
 
 const ItemForm = ({
-  handleInput,
+  onSubmit,
 }) => (
   <div className="item-form">
-    <form onSubmit={handleInput} className="form">
+    <form onSubmit={onSubmit} className="form">
       <h3>
         {'Crea un nuevo objeto'}
       </h3>
@@ -22,19 +22,20 @@ const ItemForm = ({
         name="name"
         type="text"
         component={TextInput}
-        label="nombre"
+        label="Ingresa el nombre del objeto"
       />
+      <label>
+        {'Ingresa una breve descripcion'}
+      </label>
       <Field
         name="description"
-        type="text"
-        component={TextInput}
-        label="descripción"
+        component="textarea"
       />
       <Field
         name="category"
         type="text"
         component={TextInput}
-        label="categoría"
+        label="ingresa a la categoría que pertecene"
       />
       <Field
         name="state"
@@ -58,7 +59,7 @@ const ItemForm = ({
 );
 
 ItemForm.propTypes = {
-  handleInput: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default reduxForm({
@@ -69,7 +70,7 @@ export default reduxForm({
       values.description,
       values.category,
       values.state,
-      1,
+      1, //poner el ide del usuario
     ));
   },
   validate(values) {

@@ -17,6 +17,7 @@ const Category = ({
 
 Category.propTypes = {
   name: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default connect(

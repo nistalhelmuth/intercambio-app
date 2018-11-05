@@ -1,5 +1,5 @@
 .category{
+  margin-top: 3px;
   flex: 5;
-  background-color: lightgoldenrodyellow;
   overflow-y: auto;
 }

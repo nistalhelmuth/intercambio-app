@@ -22,7 +22,7 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/categories" component={CategoryView} />
-        <Route exact path="/categories/:id" component={CategoryList} />
+        <Route exact path="/categories/:categoryID" component={CategoryList} />
         <Route exact path="/newItem" component={NewItem} />
         <Route exact path="/users/:username" component={User} />
         <Route exact path="/users/:username/:itemID" component={Item} />

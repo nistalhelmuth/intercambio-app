@@ -74,7 +74,7 @@ function* userFetcher(action) {
   }
 }
 
-function* userAutenticator() {
+function* userAutenticator(action) {
   const {
     payload: {
       email,
@@ -82,11 +82,11 @@ function* userAutenticator() {
     }
   } = action;
   try {
-    const response = yield call( 
+    const response = yield call(
       checkUser,
       email,
       password,
-     );
+    );
     yield put(actions.confirmUserAuthentication(response));
   } catch (e) {
     // Hacer Algo (QUE NO SEA IMPRIMIR EN CONSOLA);
