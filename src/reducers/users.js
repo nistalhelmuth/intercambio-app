@@ -1,7 +1,20 @@
 import { combineReducers } from 'redux';
 import * as types from '../types/users';
 
-const byId = (state = {}, action) => {
+const defaultState = {
+  0: {
+    id: 0,
+    username: 'username',
+    firstName: 'firstName',
+    lastName: 'lastName',
+    email: 'email@email.com',
+    password: 'password',
+    age: 99,
+    phone: '123123123',
+  },
+};
+
+const byId = (state = defaultState, action) => {
   switch (action.type) {
   case types.USER_CREATED: {
     const { payload: { id } } = action;
@@ -39,7 +52,7 @@ const byId = (state = {}, action) => {
   }
 };
 
-const defaultIds = [1, 2, 3];
+const defaultIds = [0];
 
 const allIds = (state = defaultIds, action) => {
   switch (action.type) {

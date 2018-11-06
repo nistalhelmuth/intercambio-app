@@ -6,7 +6,7 @@ import Category from '../Category';
 
 import './styles.css'
 
-const CategoryList = ({
+const CategoryPreview = ({
   ids,
 }) => (
   <div className="category-list">
@@ -18,7 +18,7 @@ const CategoryList = ({
   </div>
 );
 
-CategoryList.propTypes = {
+CategoryPreview.propTypes = {
   ids: PropTypes.arrayOf(Number).isRequired,
 };
 
@@ -27,4 +27,4 @@ export default connect(
     ids: selectors.getCategoryIds(state),
   }),
   undefined,
-)(CategoryList);
+)(CategoryPreview);

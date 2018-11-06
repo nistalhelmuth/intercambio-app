@@ -1,7 +1,6 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createMatchSelector } from 'connected-react-router';
 import * as selectors from '../../../../reducers';
 
 
@@ -24,6 +23,10 @@ const Finder = ({
     </div>
   </div>
 );
+
+Finder.propTypes = {
+  name: PropTypes.string.isRequired,
+};
 
 
 export default connect(

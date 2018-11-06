@@ -14,7 +14,7 @@ import NewItem from './sites/NewItem';
 import CategoryList from './sites/CategoryList';
 import Login from './sites/Login';
 import User from './sites/User';
-import Item from './sites/Item';
+import ItemView from './sites/ItemView';
 
 const store = configureStore();
 
@@ -32,8 +32,8 @@ ReactDOM.render(
         <Route exact path="/categories" component={CategoryView} />
         <Route exact path="/categories/:categoryID" component={CategoryList} />
         <Route exact path="/newItem" component={NewItem} />
-        <Route exact path="/users/:username" component={User} />
-        <Route exact path="/users/:username/:itemID" component={Item} />
+        <Route exact path="/users/:userID" component={User} />
+        <Route exact path="/users/:userID/:itemID" component={ItemView} />
       </Switch>
     </BrowserRouter>
   </Provider>,

@@ -1,14 +1,15 @@
 .personalInfo {
-  background-color: red;
+  background: lightblue;
+  box-shadow: 1px 1px 3px; 
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-content: center;
   flex: 1;
+  margin-bottom: 3px;
 }
 
 .personalInfo .content {
-  
   text-align: center;
 }
 

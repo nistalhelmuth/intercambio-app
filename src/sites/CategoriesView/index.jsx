@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import CategoryList from './components/CategoryList';
+import CategoryPreview from './components/CategoryPreview';
 import * as actions from '../../actions/categories';
 
 import './styles.css';
@@ -20,7 +20,7 @@ class CategoriesView extends Component {
           <Link to="/newItem">Crear objeto</Link>
           <Link to={`/users/${'username'}`}>Perfil</Link>
         </div>
-        <CategoryList />
+        <CategoryPreview />
         <div className="footer">
           <button>
             {'prev'}

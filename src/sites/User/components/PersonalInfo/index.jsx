@@ -1,24 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import * as selectors from '../../../../reducers';
+
 import './styles.css';
 
-const PersonalInfo = ({ img, stars, description, date}) => (
+const PersonalInfo = ({
+  firstName,
+  lastName,
+  username,
+  email,
+  age,
+  phone,
+}) => (
   <div className="personalInfo">
     <div className="content">
       <h1>
-        {"Cosas de Juan Lopez"}
+        {`Cosas de ${firstName} ${lastName}`}
       </h1>
       <ul>
         <li>
-        {'username'}
+          {username}
         </li>
         <li>
-        {'email'}
+          {email}
         </li>
         <li>
-        {'items'}
+          {`Edad: ${age}`}
         </li>
         <li>
-        {'rating'}
+          {phone}
         </li>
       </ul>
     </div>
@@ -26,4 +37,18 @@ const PersonalInfo = ({ img, stars, description, date}) => (
   </div>
 );
 
-export default PersonalInfo;
+PersonalInfo.propTypes = {
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  age: PropTypes.number.isRequired,
+  phone: PropTypes.string.isRequired,
+};
+
+export default connect(
+  (state, { id }) => ({
+    ...selectors.getUser(state, id),
+  }),
+  undefined,
+)(PersonalInfo);

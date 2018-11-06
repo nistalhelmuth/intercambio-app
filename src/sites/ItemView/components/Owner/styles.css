@@ -14,10 +14,7 @@
   padding: 1rem;
 }
 
-.owner .content lu {
-  list-style: none;
-}
-
-.owner .content lu li {
+.owner .content ul li {
   padding-bottom: 1rem;
+  list-style-type: none;
 }
