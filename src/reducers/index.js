@@ -38,3 +38,4 @@ export const getOffer = (state, id) => offerSelectors.getOffer(state.offers, id)
 export const getOffers = state => offerSelectors.getOffers(state.offers);
 export const getToken = state => authSelectors.getToken(state.auth);
 export const getLoggedUser = state => authSelectors.getLoggedUser(state.auth);
+export const getLogginFailStatus = state => authSelectors.getLogginFailStatus(state.auth);

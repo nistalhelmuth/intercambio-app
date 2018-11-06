@@ -1,6 +1,7 @@
+import { combineReducers } from 'redux';
 import * as types from '../types/auth';
 
-const authReducer = (state = {}, action) => {
+const authInfo = (state = {}, action) => {
   switch (action.type) {
   case types.USER_AUTHENTICATION_CONFIRMED: {
     return action.payload.permission;
@@ -10,7 +11,24 @@ const authReducer = (state = {}, action) => {
   }
 };
 
-export default authReducer;
+const logginFailed = (state = false, action) => {
+  switch (action.type) {
+  case types.USER_AUTHENTICATION_CONFIRMED: {
+    return false;
+  }
+  case types.LOGGIN_FAILED: {
+    return true;
+  }
+  default:
+    return state;
+  }
+};
 
-export const getToken = state => state.token;
-export const getLoggedUser = state => state.user;
+export default combineReducers({
+  authInfo,
+  logginFailed,
+});
+
+export const getToken = state => state.authInfo.token;
+export const getLoggedUser = state => state.authInfo.user;
+export const getLogginFailStatus = state => state.logginFailed;

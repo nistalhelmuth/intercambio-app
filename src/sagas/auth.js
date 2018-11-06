@@ -14,9 +14,6 @@ function* userAutenticator(action) {
       password,
     },
   } = action;
-  console.log(action);
-  console.log(username);
-  console.log(password);
   try {
     const response = yield call(
       login,
@@ -25,8 +22,7 @@ function* userAutenticator(action) {
     );
     yield put(actions.confirmUserAuthentication(response));
   } catch (e) {
-    console.log(e);
-    // Hacer Algo (QUE NO SEA IMPRIMIR EN CONSOLA);
+    yield put(actions.failLoggin());
   }
 }
 
