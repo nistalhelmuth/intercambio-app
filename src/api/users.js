@@ -25,28 +25,16 @@ export const postUser = (
     // Hacer Algo (QUE NO SEA IMPRIMIR EN CONSOLA);
   });
 
-export const deleteUser = (
-  id,
-) => fetch('http://127.0.0.1:8000/api/v1/users/'+id+'/', {
+export const deleteUser = id => fetch(`http://127.0.0.1:8000/api/v1/users/${id}/`, {
   method: 'DELETE',
 }).then(resultado => resultado)
   .catch(/* error */);
 
-  //esto no funciona
-export const checkUser = (
-  email,
-  password,
+// esto no funciona
+export const getUsers = (
+  atributeName,
+  comparisonObject,
 ) => fetch('http://127.0.0.1:8000/api/v1/users/', {
   method: 'GET',
 }).then(resultado => resultado.json())
-  .then(resultadoJSON => resultadoJSON)
   .catch(error => console.log(error));
-
-//esto no funciona
-export const getUsers = (
-    atributeName,
-    comparisonObject,
-  ) => fetch('http://127.0.0.1:8000/api/v1/users/', {
-    method: 'GET',
-  }).then(resultado => resultado.json())
-    .catch(error => console.log(error));

@@ -1,10 +1,10 @@
 import * as types from '../types/offers';
 
-export const createOffer = ({
+export const createOffer = (
   id,
   offereObject,
   offeredIn,
-}) => ({
+) => ({
   type: types.OFFER_CREATED,
   payload: {
     id,
@@ -13,11 +13,11 @@ export const createOffer = ({
   },
 });
 
-export const confirmOfferCreation = ({
+export const confirmOfferCreation = (
   oldId,
   newId,
   date,
-}) => ({
+) => ({
   type: types.OFFER_CREATION_CONFIRMED,
   payload: {
     oldId,
@@ -26,11 +26,11 @@ export const confirmOfferCreation = ({
   },
 });
 
-export const updateOffer = ({
+export const updateOffer = (
   id,
   offereObject,
   offeredIn,
-}) => ({
+) => ({
   type: types.OFFER_UPDATED,
   payload: {
     id,
@@ -39,11 +39,11 @@ export const updateOffer = ({
   },
 });
 
-export const confirmOfferUpdate = ({
+export const confirmOfferUpdate = (
   id,
   offereObject,
   offeredIn,
-}) => ({
+) => ({
   type: types.OFFER_UPDATE_CONFIRMED,
   payload: {
     id,
@@ -66,10 +66,10 @@ export const confirmOfferDeletion = id => ({
   },
 });
 
-export const fetchOffers = ({
+export const fetchOffers = (
   atributeName,
   comparisonObject,
-}) => ({
+) => ({
   type: types.OFFERS_FETCHED,
   payload: {
     atributeName,

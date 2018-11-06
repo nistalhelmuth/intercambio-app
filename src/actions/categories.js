@@ -1,9 +1,9 @@
 import * as types from '../types/categories';
 
-export const addCategory = ({
+export const addCategory = (
   id,
   name,
-}) => ({
+) => ({
   type: types.CATEGORTY_ADDED,
   payload: {
     id,
@@ -11,10 +11,10 @@ export const addCategory = ({
   },
 });
 
-export const confirmCategoryAddition = ({
+export const confirmCategoryAddition = (
   oldId,
   newId,
-}) => ({
+) => ({
   type: types.CATEGORTY_ADDITION_CONFIRMED,
   payload: {
     oldId,

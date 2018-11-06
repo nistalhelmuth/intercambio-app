@@ -1,6 +1,6 @@
 import * as types from '../types/users';
 
-export const createUser = ({
+export const createUser = (
   id,
   username,
   firstName,
@@ -9,7 +9,7 @@ export const createUser = ({
   password,
   age,
   phone,
-}) => ({
+) => ({
   type: types.USER_CREATED,
   payload: {
     id,
@@ -23,10 +23,10 @@ export const createUser = ({
   },
 });
 
-export const confirmUserCreation = ({
+export const confirmUserCreation = (
   oldId,
   newId,
-}) => ({
+) => ({
   type: types.USER_CREATION_CONFIRMED,
   payload: {
     oldId,
@@ -41,10 +41,10 @@ export const deleteUser = id => ({
   },
 });
 
-export const confirmUserDeletion = ({
+export const confirmUserDeletion = (
   oldId,
   newId,
-}) => ({
+) => ({
   type: types.USER_DELETION_CONFIRMED,
   payload: {
     oldId,
@@ -52,10 +52,10 @@ export const confirmUserDeletion = ({
   },
 });
 
-export const fetchUsers = ({
+export const fetchUsers = (
   atributeName,
   comparisonObject,
-}) => ({
+) => ({
   type: types.USERS_FETCHED,
   payload: {
     atributeName,
@@ -67,23 +67,5 @@ export const reciveUsers = users => ({
   type: types.USERS_RECIVED,
   payload: {
     users,
-  },
-});
-
-export const authenticateUser = ({
-  email,
-  password,
-}) => ({
-  type: types.USER_AUTHENTICATED,
-  payload: {
-    email,
-    password,
-  },
-});
-
-export const confirmUserAuthentication = permission => ({
-  type: types.USER_AUTHENTICATION_CONFIRMED,
-  payload: {
-    permission,
   },
 });
