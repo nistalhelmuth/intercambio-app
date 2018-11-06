@@ -21,17 +21,13 @@ export const postBelongin = (
     // Hacer Algo (QUE NO SEA IMPRIMIR EN CONSOLA);
   });
 
-export const deleteBelongin = (
-  id,
-) => fetch('http://127.0.0.1:8000/api/v1/belongins/'+id+'/', {
+export const deleteBelongin = id => fetch(`http://127.0.0.1:8000/api/v1/belongins/${id}/`, {
   method: 'DELETE',
 }).then(resultado => resultado)
   .catch(/* error */);
 
-//esto no funciona
-export const getBelongin = (
-    id,
-  ) => fetch('http://127.0.0.1:8000/api/v1/belongins/'+id+'/', {
-    method: 'GET',
-  }).then(resultado => resultado.json())
-    .catch(error => console.log(error));
+// esto no funciona
+export const getBelongin = id => fetch(`http://127.0.0.1:8000/api/v1/belongins/${id}/`, {
+  method: 'GET',
+}).then(resultado => resultado.json())
+  .catch(error => console.log(error));

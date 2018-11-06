@@ -5,6 +5,7 @@ import belongings, * as belongingSelectors from './belongings';
 import users, * as userSelectors from './users';
 import posts, * as postSelectors from './posts';
 import offers, * as offerSelectors from './offers';
+import auth, * as authSelectors from './auth';
 
 const reducer = combineReducers({
   categories,
@@ -12,6 +13,7 @@ const reducer = combineReducers({
   users,
   posts,
   offers,
+  auth,
   form: formReducer,
 });
 
@@ -34,3 +36,5 @@ export const getPost = (state, id) => postSelectors.getPost(state.posts, id);
 export const getPosts = state => postSelectors.getPosts(state.posts);
 export const getOffer = (state, id) => offerSelectors.getOffer(state.offers, id);
 export const getOffers = state => offerSelectors.getOffers(state.offers);
+export const getToken = state => authSelectors.getToken(state.auth);
+export const getLoggedUser = state => authSelectors.getLoggedUser(state.auth);

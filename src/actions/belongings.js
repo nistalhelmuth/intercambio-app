@@ -1,13 +1,13 @@
 import * as types from '../types/belongings';
 
-export const createBelonging = ({
+export const createBelonging = (
   id,
   name,
   description,
   category,
   usedState,
   propietaryId,
-}) => ({
+) => ({
   type: types.BELONGING_CREATED,
   payload: {
     id,
@@ -19,10 +19,10 @@ export const createBelonging = ({
   },
 });
 
-export const confirmBelongingCreation = ({
+export const confirmBelongingCreation = (
   oldId,
   newId,
-}) => ({
+) => ({
   type: types.BELONGING_CREATION_CONFIRMED,
   payload: {
     oldId,

@@ -1,6 +1,6 @@
 import * as types from '../types/posts';
 
-export const createPost = ({
+export const createPost = (
   id,
   title,
   description,
@@ -8,7 +8,7 @@ export const createPost = ({
   offeredItem,
   date,
   category,
-}) => ({
+) => ({
   types: types.POST_CREATED,
   payload: {
     id,
@@ -21,10 +21,10 @@ export const createPost = ({
   },
 });
 
-export const confirmPostCreation = ({
+export const confirmPostCreation = (
   oldId,
   newId,
-}) => ({
+) => ({
   type: types.POST_CREATION_CONFIRMED,
   payload: {
     oldId,
@@ -32,23 +32,19 @@ export const confirmPostCreation = ({
   },
 });
 
-export const deltePost = ({
-  id,
-}) => ({
+export const deltePost = id => ({
   type: types.POST_DELETED,
   payload: {
     id,
   },
 });
 
-export const confirmDeletionPost = ({
-  id,
-}) => ({
+export const confirmDeletionPost = id => ({
   type: types.POST_DELETION_CONFIRMED,
   id,
 });
 
-export const updatePost = ({
+export const updatePost = (
   id,
   title,
   description,
@@ -56,7 +52,7 @@ export const updatePost = ({
   offeredItem,
   date,
   category,
-}) => ({
+) => ({
   types: types.POST_UPDATED,
   payload: {
     id,
@@ -69,7 +65,7 @@ export const updatePost = ({
   },
 });
 
-export const confirmPostUpdate = ({
+export const confirmPostUpdate = (
   id,
   title,
   description,
@@ -77,7 +73,7 @@ export const confirmPostUpdate = ({
   offeredItem,
   date,
   category,
-}) => ({
+) => ({
   types: types.POST_UPDATED,
   payload: {
     id,
@@ -90,10 +86,10 @@ export const confirmPostUpdate = ({
   },
 });
 
-export const fetchPosts = ({
+export const fetchPosts = (
   atributeName,
   comparisonObject,
-}) => ({
+) => ({
   type: types.POSTS_FETCHED,
   payload: {
     atributeName,
