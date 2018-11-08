@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import * as selectors from '../../reducers';
 import Thing from './components/Thing';
 import Owner from './components/Owner';
 import BetList from './components/BetList';
@@ -13,22 +15,24 @@ class ItemView extends Component {
   }
 
   render() {
-    const { match: { params } } = this.props;
-    const estado = true; //agregar al reductor
+    const {
+      betCreator,
+      itemId,
+      userId,
+    } = this.props;
     return (
       <div className="item-view">
         <div className="leftSide">
-          <Thing id={params.itemID} />
-          <Owner id={params.userID} />
-        </div>  
+          <Thing id={itemId} />
+          <Owner id={userId} />
+        </div>
         <div className="rightSide">
           {
-            estado ? (
-              <BetList itemID={params.itemID} />
+            betCreator ? (
+              <BetCreator loggedUser={0} itemID={itemId} /> /*codear para usuario loggeado*/
             ) : (
-              <BetCreator id={0} />
+              <BetList itemID={itemId} />
             )
-            /*codear para usuario loggeado*/
           }
         </div>
       </div>
@@ -37,7 +41,16 @@ class ItemView extends Component {
 }
 
 ItemView.propTypes = {
-  match: PropTypes.object.isRequired,
+  itemId: PropTypes.string.isRequired,
+  userId: PropTypes.string.isRequired,
+  betCreator: PropTypes.bool.isRequired,
 };
 
-export default ItemView;
+export default connect(
+  (state, { match: { params } }) => ({
+    betCreator: selectors.getBetCreator(state),
+    itemId: params.itemId,
+    userId: params.userId,
+  }),
+  undefined,
+)(ItemView);

@@ -1,0 +1,1 @@
+export const SWITCH_BET_CREATOR = 'SWITCH_BET_CREATOR';

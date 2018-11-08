@@ -6,15 +6,17 @@ import users, * as userSelectors from './users';
 import posts, * as postSelectors from './posts';
 import offers, * as offerSelectors from './offers';
 import auth, * as authSelectors from './auth';
+import interfaceState, * as interfaceSelectors from './interface';
 
 const reducer = combineReducers({
-  categories,
-  belongings,
-  users,
-  posts,
-  offers,
   auth,
+  belongings,
+  categories,
   form: formReducer,
+  interfaceState,
+  offers,
+  posts,
+  users,
 });
 
 export default reducer;
@@ -48,3 +50,5 @@ export const getOffersByObject = (state, itemID) => getOffers(state).map((offer)
 export const getToken = state => authSelectors.getToken(state.auth);
 export const getLoggedUser = state => authSelectors.getLoggedUser(state.auth);
 export const getLogginFailStatus = state => authSelectors.getLogginFailStatus(state.auth);
+
+export const getBetCreator = state => interfaceSelectors.getBetCreator(state.interfaceState);
