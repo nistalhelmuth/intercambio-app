@@ -41,6 +41,9 @@ export const getPosts = state => postSelectors.getPosts(state.posts);
 
 export const getOffer = (state, id) => offerSelectors.getOffer(state.offers, id);
 export const getOffers = state => offerSelectors.getOffers(state.offers);
+export const getOffersByObject = (state, itemID) => getOffers(state).map((offer) => {
+  return (offer.offeredIn === parseInt(itemID, 10) ? offer : undefined);
+});
 
 export const getToken = state => authSelectors.getToken(state.auth);
 export const getLoggedUser = state => authSelectors.getLoggedUser(state.auth);

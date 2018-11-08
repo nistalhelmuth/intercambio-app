@@ -1,7 +1,24 @@
 import { combineReducers } from 'redux';
 import * as types from '../types/offers';
 
-const byId = (state = {}, action) => {
+const defaultState = {
+  0: {
+    id: 0,
+    userId: 0,
+    offeredObjects: [0, 1, 2, 3],
+    offeredIn: 0,
+    date: 0,
+  },
+  1: {
+    id: 1,
+    userId: 1,
+    offeredObjects: [0, 1, 2, 3],
+    offeredIn: 0,
+    date: 0,
+  },
+};
+
+const byId = (state = defaultState, action) => {
   switch (action.type) {
   case types.OFFER_CREATED: {
     const { payload: { id } } = action;
@@ -48,7 +65,7 @@ const byId = (state = {}, action) => {
   }
 };
 
-const defaultIds = [1, 2, 3];
+const defaultIds = [0,1];
 
 const allIds = (state = defaultIds, action) => {
   switch (action.type) {

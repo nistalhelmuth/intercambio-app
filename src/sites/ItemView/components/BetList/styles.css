@@ -1,8 +1,6 @@
 .betList {
   display: flex;
   flex-direction: column;
-  
-  flex: 2;
   overflow-y: auto;
 }
 

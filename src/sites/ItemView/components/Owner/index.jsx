@@ -10,9 +10,10 @@ const Owner = ({
   username,
   email,
   phone,
+  img,
 }) => (
   <div className="owner">
-    <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Flowers" />
+    <img src={img} alt="ownerPicture" />
     <div className="content">
       <ul>
         <li>
@@ -37,6 +38,7 @@ Owner.propTypes = {
   lastName: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
 };
 

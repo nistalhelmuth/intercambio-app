@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import * as selectors from '../../../../reducers';
-import Item from '../Item';
+import Item from '../../../SharedComponents/Item';
 import './styles.css';
 
 const ItemList = ({

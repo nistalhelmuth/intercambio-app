@@ -1,4 +1,4 @@
-.item {
+.item-view {
   display: flex;
   flex-direction: row;
   height: 100vh;
@@ -9,15 +9,16 @@
   background-color: lightblue;
   display: flex;
   flex-direction: column;
-}
-
-.leftSide button {
-  width: 50px;
-  height: 50px;
+  justify-content: space-between;
 }
 
 .rightSide {
   flex:3;
-  display: flex;
-  flex-direction: column;
+}
+
+
+.rightSide button{
+  position:fixed;
+  right: 1rem;
+  bottom: 1rem;
 }

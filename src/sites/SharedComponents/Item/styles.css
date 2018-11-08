@@ -1,0 +1,10 @@
+.item-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0rem 1rem 1rem 1rem;
+}
+
+.item-card p{
+  margin: 0;
+}

@@ -14,15 +14,22 @@ class ItemView extends Component {
 
   render() {
     const { match: { params } } = this.props;
+    const estado = true; //agregar al reductor
     return (
-      <div className="item">
+      <div className="item-view">
         <div className="leftSide">
           <Thing id={params.itemID} />
           <Owner id={params.userID} />
-        </div>
+        </div>  
         <div className="rightSide">
-          <BetList id={params.itemID} />
-          <BetCreator id={params.itemID} />
+          {
+            estado ? (
+              <BetList itemID={params.itemID} />
+            ) : (
+              <BetCreator id={0} />
+            )
+            /*codear para usuario loggeado*/
+          }
         </div>
       </div>
     );
