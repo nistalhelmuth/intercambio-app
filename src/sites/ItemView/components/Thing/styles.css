@@ -1,21 +1,37 @@
 .thing {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  justify-content: space-around;
+}
+
+.thing .pictures {
   align-items: center;
   display: flex;
   flex-direction: column;
+  flex:1;
+  justify-content: center;
+  padding: 0rem 1rem;
 }
 
-
-.thing  .other {
+.thing  .description {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0rem 1rem 1rem 1rem;
   text-align: justify;
 }
 
-.thing  .other h4 {
+.thing  .description h4 {
   margin: 0rem;
   padding: 1rem;
 }
 
-.thing .other p {
-  margin: 0rem;
+.thing .description p {
   border-style: solid;
+  height: 100%;
+  margin: 0rem;
   padding: 1rem;
 }

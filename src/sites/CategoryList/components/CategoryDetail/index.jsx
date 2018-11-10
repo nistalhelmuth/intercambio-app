@@ -5,15 +5,16 @@ import * as selectors from '../../../../reducers';
 
 import './styles.css';
 
-import ItemPreview from '../ItemPreview';
+import Item from '../../../SharedComponents/Item';
 
 const CategoryDetail = ({
   ids,
 }) => (
-  <div className="category">
+  <div className="category-detail">
     {
       ids.map(id => (
-        id && <ItemPreview id={id} key={id} />
+        id !== undefined
+          ? (<Item id={id} key={id} />) : (<div />)
       ))
     }
   </div>

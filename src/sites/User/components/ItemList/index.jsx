@@ -11,9 +11,11 @@ const ItemList = ({
   <div className="item-list">
     {
       ids.map(id => (
-        id && <Item id={id} key={id} />
+        id !== undefined
+          ? (<Item id={id} key={id} />) : <div />
       ))
     }
+    
   </div>
 );
 

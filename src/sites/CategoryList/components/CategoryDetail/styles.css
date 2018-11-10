@@ -1,5 +1,8 @@
-.category{
-  margin-top: 3px;
+.category-detail {
+  display: flex;
+  flex-wrap: wrap;
   flex: 5;
+  justify-content: space-around;
   overflow-y: auto;
+  padding: 0rem 1rem 1rem 1rem;
 }

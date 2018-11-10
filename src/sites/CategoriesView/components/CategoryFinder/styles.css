@@ -1,0 +1,28 @@
+.category-finder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: lightblue;
+  box-shadow: 1px 1px 3px;
+}
+
+.category-finder .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-finder .header a{
+  margin: 0rem 1rem;
+}
+
+.category-finder .header h1{
+  margin: 0rem 1rem;
+}
+
+.category-finder .inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

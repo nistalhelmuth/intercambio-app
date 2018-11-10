@@ -14,12 +14,14 @@ const Thing = ({
   img,
 }) => (
   <div className="thing">
-    <h2>
-      {name}
-    </h2>
-    <img src={img} alt="thingPicture" />
-    <Stars num={usedState} />
-    <div className="other">
+    <div className="pictures">
+      <h2>
+        {name}
+      </h2>
+      <img src={img} alt="thingPicture" />
+      <Stars num={usedState} />
+    </div>
+    <div className="description">
       <h4>
         {'Description:'}
       </h4>
