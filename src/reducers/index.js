@@ -49,6 +49,6 @@ export const getOffersByObject = (state, itemID) => getOffers(state).map((offer)
 
 export const getToken = state => authSelectors.getToken(state.auth);
 export const getLoggedUser = state => authSelectors.getLoggedUser(state.auth);
-export const getLogginFailStatus = state => authSelectors.getLogginFailStatus(state.auth);
+export const getLoginStatus = state => authSelectors.getLoginStatus(state.auth);
 
 export const getBetCreator = state => interfaceSelectors.getBetCreator(state.interfaceState);

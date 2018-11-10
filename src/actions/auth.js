@@ -21,3 +21,7 @@ export const confirmUserAuthentication = permission => ({
 export const failLoggin = () => ({
   type: types.LOGGIN_FAILED,
 });
+
+export const closeSession = () => ({
+  type: types.SESSION_CLOSED,
+});

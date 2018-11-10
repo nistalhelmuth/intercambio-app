@@ -6,12 +6,15 @@ const authInfo = (state = {}, action) => {
   case types.USER_AUTHENTICATION_CONFIRMED: {
     return action.payload.permission;
   }
+  case types.SESSION_CLOSED: {
+    return {};
+  }
   default:
     return state;
   }
 };
 
-const logginFailed = (state = false, action) => {
+const loginFailed = (state = false, action) => {
   switch (action.type) {
   case types.USER_AUTHENTICATION_CONFIRMED: {
     return false;
@@ -26,9 +29,9 @@ const logginFailed = (state = false, action) => {
 
 export default combineReducers({
   authInfo,
-  logginFailed,
+  loginFailed,
 });
 
 export const getToken = state => state.authInfo.token;
 export const getLoggedUser = state => state.authInfo.user;
-export const getLogginFailStatus = state => state.logginFailed;
+export const getLoginStatus = state => state.loginFailed;
