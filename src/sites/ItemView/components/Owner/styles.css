@@ -1,8 +1,7 @@
 .owner {
-  display: flex;
-  flex-direction: row;
-  
   align-items: center;
+  display: flex;
+  flex: 1;
   justify-content: center;
 }
 
@@ -15,6 +14,6 @@
 }
 
 .owner .content ul li {
-  padding-bottom: 1rem;
   list-style-type: none;
+  padding-bottom: 1rem;
 }

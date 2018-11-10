@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as selectors from '../../../../reducers';
 import './styles.css';
 
@@ -10,7 +11,12 @@ const Bet = ({
 }) => (
   <div className="bet">
     <div className="user">
-      <img src={userInfo.img} alt="betPicture" />
+      <Link
+        style={{ textDecoration: 'none', color: 'black' }}
+        to={`/users/${userInfo.id}`}
+      >
+        <img src={userInfo.img} alt="betPicture" />
+      </Link>
       <div className="order">
         <p>
           {`${userInfo.firstName} ${userInfo.firstName}`}

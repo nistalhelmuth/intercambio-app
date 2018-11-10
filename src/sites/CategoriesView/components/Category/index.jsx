@@ -9,7 +9,10 @@ const Category = ({
   id,
   name,
 }) => (
-  <Link to={`/categories/${id}`}>
+  <Link
+    to={`/categories/${id}`}
+    style={{ textDecoration: 'none', color: 'black' }}
+  >
     <div className="category">
       <img src="default.png" alt="default" />
       <h4>{name}</h4>

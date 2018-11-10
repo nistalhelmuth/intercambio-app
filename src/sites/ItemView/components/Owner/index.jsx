@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as selectors from '../../../../reducers';
 import './styles.css';
 
 const Owner = ({
+  id,
   firstName,
   lastName,
   username,
@@ -12,28 +14,34 @@ const Owner = ({
   phone,
   img,
 }) => (
-  <div className="owner">
-    <img src={img} alt="ownerPicture" />
-    <div className="content">
-      <ul>
-        <li>
-          {`${firstName} ${lastName}`}
-        </li>
-        <li>
-          {username}
-        </li>
-        <li>
-          {email}
-        </li>
-        <li>
-          {phone}
-        </li>
-      </ul>
+  <Link
+    style={{ textDecoration: 'none', color: 'black' }}
+    to={`/users/${id}`}
+  >
+    <div className="owner">
+      <img src={img} alt="ownerPicture" />
+      <div className="content">
+        <ul>
+          <li>
+            {`${firstName} ${lastName}`}
+          </li>
+          <li>
+            {username}
+          </li>
+          <li>
+            {email}
+          </li>
+          <li>
+            {phone}
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </Link>
 );
 
 Owner.propTypes = {
+  id: PropTypes.number.isRequired,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,

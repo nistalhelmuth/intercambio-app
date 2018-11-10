@@ -3,19 +3,11 @@
   flex-wrap: wrap;
   flex: 3;
   justify-content: space-around;
+  align-items: baseline;
   overflow-y: auto;
   padding: 0rem 1rem 1rem 1rem;
 }
 
-.item-list img {
-  height: 200px;
-}
-
 .item-list img:hover {
   cursor: pointer;
-}
-
-.item-list .item-card {
-  
-  
 }
