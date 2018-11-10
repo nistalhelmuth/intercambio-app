@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import PersonalInfo from './components/PersonalInfo';
 import ItemList from './components/ItemList';
@@ -17,8 +18,16 @@ class User extends Component {
     const { match: { params } } = this.props;
     return (
       <div className="user">
-        <PersonalInfo id={params.userID} />
-        <ItemList id={params.userID} />
+        <PersonalInfo id={params.userId} />
+        <ItemList id={params.userId} />
+        <Link to="/newItem">
+          <button
+            type="button"
+            className="floating"
+          >
+            {'Crear objeto'}
+          </button>
+        </Link>
       </div>
     );
   }

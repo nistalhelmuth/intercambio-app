@@ -13,7 +13,8 @@ const CategoryDetail = ({
   <div className="category">
     {
       ids.map(id => (
-        id && <ItemPreview id={id} key={id} />
+        id !== undefined
+          ? (<ItemPreview id={id} key={id} />) : (<div />)
       ))
     }
   </div>

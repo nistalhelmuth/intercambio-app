@@ -3,17 +3,18 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as selectors from '../../../../reducers';
+import './styles.css';
 
 const Category = ({
   id,
   name,
 }) => (
-  <div className="category">
-    <Link to={`/categories/${id}`}>
-      <img src="default.png" alt="default"/>
+  <Link to={`/categories/${id}`}>
+    <div className="category">
+      <img src="default.png" alt="default" />
       <h4>{name}</h4>
-    </Link>
-  </div>
+    </div>
+  </Link>
 );
 
 Category.propTypes = {

@@ -17,7 +17,7 @@ class CategoriesView extends Component {
     return (
       <div className="categories-view">
         <div className="header">
-          <Link to="/newItem">Crear objeto</Link>
+          <Link to="/newPost">Crear Post</Link>
           <Link to={`/users/${'username'}`}>Perfil</Link>
         </div>
         <CategoryPreview />

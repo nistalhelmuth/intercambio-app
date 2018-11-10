@@ -16,8 +16,8 @@ class CategoryList extends Component {
     const { match: { params } } = this.props;
     return (
       <div className="categoryList">
-        <Finder id={params.categoryID} />
-        <CategoryDetail id={params.categoryID} />
+        <Finder id={params.categoryId} />
+        <CategoryDetail id={params.categoryId} />
       </div>
     );
   }
