@@ -25,32 +25,21 @@
 }
 
 .profile .popover-container {
-  display: none;
-  height: 11rem;
+  /* display: flex; */
+  /* flex-direction: column; */
   position: absolute;
-  right: 0;
-  top: 1.3rem;
-  width: 7rem;
+  right: 1.2rem;
 }
 
-.profile-icon:hover+.popover-container {
-  cursor: pointer;
-  display: block;
-}
-
-.popover-container:hover {
-  cursor: pointer;
-  display: block;
-}
-
-.popover-tail-border {
+.popover-tail-border{
+  /* align-self: flex-end; */
   border-bottom: .95rem solid #332b29;
   border-left: .7rem solid transparent;
   border-right: .7rem solid transparent;
   height: 0;
   position: absolute;
-  right: 0.6rem;
-  top: 1.4rem;
+  right: -0.6rem;
+  /* margin-right: .5rem; */
   width: 0;
   z-index: 2;
 }
@@ -68,18 +57,17 @@
 }
 
 .popover-body {
-  align-items: center;
+  display: flex;
+  flex-direction: column;
   background-color: #eeeeee;
   border: 2px solid #332b29;
   border-radius: 4px;
   box-shadow: 2px 4px 6px black;
-  display: flex;
-  flex-direction: column;
-  height: 8rem;
   justify-content: center;
+  height: 8rem;
   position: absolute;
-  right: 0.2rem;
-  top: 2.2rem;
-  width: 7rem;
+  right: -1rem;
+  top: .8rem;
+  width: 6rem;
   z-index: 1;
 }
