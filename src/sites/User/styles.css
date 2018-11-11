@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  background-image: url("/backgrounds/dark_wood_bg.jpg");
 }
 
 .user button {

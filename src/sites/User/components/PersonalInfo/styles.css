@@ -1,5 +1,5 @@
 .personalInfo {
-  background: lightblue;
+  background-color: rgba(34, 34, 34, .6);
   box-shadow: 1px 1px 3px; 
   display: flex;
   flex-direction: row;

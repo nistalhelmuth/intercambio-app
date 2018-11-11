@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import * as selectors from '../../../../reducers';
 import * as belonginActions from '../../../../actions/belongings';
 
@@ -15,17 +14,13 @@ class ItemFinder extends Component {
 
   render() {
     const { name, filterItems } = this.props;
-    const userId = 0;
     return (
       <div className="item-finder">
-        <div className="header">
-          <Link to="/categories">Ver Categorias</Link>
-          <h1>
-            {`Categoria de ${name}`}
-          </h1>
-          <Link to={`/users/${userId}`}>Perfil</Link>
-        </div>
+        <h2>
+          {`Categoria de ${name}`}
+        </h2>
         <div className="inputs">
+
           <input />
           <button
             type="button"

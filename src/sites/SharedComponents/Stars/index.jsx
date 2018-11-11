@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './styles.css';
 
 const Stars = ({ num }) => (
@@ -10,5 +11,9 @@ const Stars = ({ num }) => (
     {num > 3 && (<img src="/star.png" alt="start" />)}
   </div>
 );
+
+Stars.propTypes = {
+  num: PropTypes.number.isRequired,
+};
 
 export default Stars;

@@ -1,8 +1,9 @@
 .item-finder {
+  align-items: center;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .item-finder .header {
@@ -15,12 +16,20 @@
   margin: 0rem 1rem;
 }
 
-.item-finder .header h1{
-  margin: 0rem 1rem;
+.item-finder h2 {
+  color: white;
+  font-family: 'Rochester', cursive;
+  font-size: 2rem;
 }
 
 .item-finder .inputs {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+.item-finder .inputs button{
+  font-size: 1rem;
+  margin-left: 1rem;
 }

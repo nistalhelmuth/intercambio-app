@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  background-image: url("/backgrounds/woodgrain-dark.jpg");
 }
 
 .information {
   flex: 1;
   display: flex;
-  background-image: url("/backgrounds/woodgrain-dark.jpg");
   justify-content: space-between;
 }
 
