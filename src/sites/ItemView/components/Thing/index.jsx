@@ -22,11 +22,8 @@ const Thing = ({
       <Stars num={usedState} />
     </div>
     <div className="description">
-      <h4>
-        {'Description:'}
-      </h4>
       <p>
-        {description}
+        {" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tortor ligula, lobortis in eros sed, bibendum sodales ipsum. Proin diam neque, sagittis a ante ac, iaculis sagittis tortor. In cras amet. "}
       </p>
     </div>
   </div>

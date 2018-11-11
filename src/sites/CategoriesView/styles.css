@@ -4,11 +4,3 @@
   flex-direction: column;
   height: 100vh;
 }
-
-.categories-view .footer {
-  flex: 1;
-  background: lightblue;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}

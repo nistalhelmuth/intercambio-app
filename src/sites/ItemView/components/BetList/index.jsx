@@ -20,7 +20,7 @@ const BetList = ({
               userId={offer.userId}
               itemIds={offer.offeredObjects}
               key={offer.id}
-            />
+            />       
           ) : (
             <div />
           ))

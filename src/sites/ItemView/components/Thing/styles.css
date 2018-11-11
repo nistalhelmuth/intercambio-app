@@ -24,13 +24,8 @@
   text-align: justify;
 }
 
-.thing  .description h4 {
-  margin: 0rem;
-  padding: 1rem;
-}
-
 .thing .description p {
-  border-style: solid;
+  
   height: 100%;
   margin: 0rem;
   padding: 1rem;

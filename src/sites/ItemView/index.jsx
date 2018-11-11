@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import * as selectors from '../../reducers';
+import Header from '../SharedComponents/Header';
 import Thing from './components/Thing';
 import Owner from './components/Owner';
 import BetList from './components/BetList';
@@ -22,18 +23,21 @@ class ItemView extends Component {
     } = this.props;
     return (
       <div className="item-view">
-        <div className="leftSide">
-          <Thing id={itemId} />
-          <Owner id={userId} />
-        </div>
-        <div className="rightSide">
-          {
-            betCreator ? (
-              <BetCreator loggedUser={0} itemID={itemId} /> /*codear para usuario loggeado*/
-            ) : (
-              <BetList itemID={itemId} />
-            )
-          }
+        <Header />
+        <div className="information">
+          <div className="leftSide">
+            <Thing id={itemId} />
+            <Owner id={userId} />
+          </div>
+          <div className="rightSide">
+            {
+              betCreator ? (
+                <BetCreator loggedUser={0} itemID={itemId} /> /*codear para usuario loggeado*/
+              ) : (
+                <BetList itemID={itemId} />
+              )
+            }
+          </div>
         </div>
       </div>
     );

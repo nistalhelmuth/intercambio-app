@@ -31,7 +31,6 @@ const Bet = ({
         ))
       }
     </div>
-    <hr />
   </div>
 );
 

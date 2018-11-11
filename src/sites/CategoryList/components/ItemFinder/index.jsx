@@ -27,8 +27,6 @@ class ItemFinder extends Component {
         </div>
         <div className="inputs">
           <input />
-          <input />
-          <input />
           <button
             type="button"
             onClick={filterItems}

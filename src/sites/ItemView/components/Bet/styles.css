@@ -1,5 +1,7 @@
 .bet {
-  
+  background-color: #eeeeee70;
+  margin-bottom: 1rem; 
+  border-radius: 5px;
 }
 
 .bet .user {
@@ -22,6 +24,7 @@
 .bet .betItems{
   flex-direction: row;
   display: flex;
+  margin-bottom: 1rem; 
 }
 
 .bet .betItems img{
