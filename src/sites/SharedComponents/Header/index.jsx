@@ -1,25 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as selectors from '../../../reducers';
+import * as authActions from '../../../actions/auth';
 import './styles.css';
 
 const Header = ({
-  userId,
+  user,
+  closeSession,
+  token,
 }) => (
   <div className="header">
-    <Link className="new-post-button" to="/newPost">Crear Post</Link>
-    <Link to={`/users/${userId}`}>Perfil</Link>
+    {
+      token === undefined
+        ? <Redirect to="/" />
+        : ''
+    }
+    <Link className="link-as-button" to="/newPost">Crear Post</Link>
+    <div className="profile">
+      <img className="profile-icon" src="/user-icon.png" alt="user-icon" />
+      <div className="popover-container">
+        <div className="popover-tail-border">
+          <div className="popover-tail" />
+        </div>
+        <div className="popover-body">
+          {
+            token !== undefined
+              ? <Link to={`/users/${user.id}`}>Ver Perfil</Link>
+              : ''
+          }
+          <button className="button-as-link" type="button" onClick={closeSession}>Cerrar Sesión</button>
+        </div>
+      </div>
+    </div>
   </div>
 );
 
 Header.propTypes = {
-  userId: PropTypes.number.isRequired,
+  user: PropTypes.object.isRequired,
+  closeSession: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
 };
 
 export default connect(
   state => ({
-    userId: selectors.getLoggedUser(state).id,
+    user: selectors.getLoggedUser(state),
+    token: selectors.getToken(state),
+  }),
+  dispatch => ({
+    closeSession() {
+      dispatch(authActions.closeSession());
+    },
   }),
 )(Header);
