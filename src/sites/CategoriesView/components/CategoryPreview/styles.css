@@ -1,7 +1,7 @@
 .category-list {
   align-items: center;
   display: flex;
-  flex: 4;
+  flex: 3;
   flex-direction: row;
   justify-content: center;
   margin: 0 2rem;

@@ -15,6 +15,11 @@ const CategoryPreview = ({
         <Category id={id} key={id} />
       ))
     }
+    {
+      ids.map(id => (
+        <Category id={id} key={id} />
+      ))
+    }
   </div>
 );
 
