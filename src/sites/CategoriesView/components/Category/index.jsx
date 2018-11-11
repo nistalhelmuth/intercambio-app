@@ -14,7 +14,7 @@ const Category = ({
     style={{ textDecoration: 'none', color: 'black' }}
   >
     <div className="category">
-      <img src="default.png" alt="default" />
+      <img className="picture" src="/default.png" alt="default" />
       <h4>{name}</h4>
     </div>
   </Link>

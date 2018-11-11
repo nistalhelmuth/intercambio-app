@@ -4,17 +4,12 @@ import { connect } from 'react-redux';
 import * as selectors from '../../../../reducers';
 import Category from '../Category';
 
-import './styles.css'
+import './styles.css';
 
 const CategoryPreview = ({
   ids,
 }) => (
   <div className="category-list">
-    {
-      ids.map(id => (
-        <Category id={id} key={id} />
-      ))
-    }
     {
       ids.map(id => (
         <Category id={id} key={id} />

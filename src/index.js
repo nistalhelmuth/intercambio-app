@@ -20,9 +20,11 @@ const store = configureStore();
 
 store.subscribe(throttle(() => {
   saveState({
-    auth: store.getState().auth.authInfo,
+    auth: {
+      authInfo: store.getState().auth.authInfo,
+    },
   });
-}), 5000);
+}), 3000);
 
 ReactDOM.render(
   <Provider store={store}>

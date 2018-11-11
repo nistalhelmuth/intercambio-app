@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import * as categoryActions from '../../../../actions/categories';
 
 import './styles.css';
@@ -14,19 +13,12 @@ class CategoryFinder extends Component {
 
   render() {
     const { filterCategories } = this.props;
-    const userId = 0;
     return (
       <div className="category-finder">
-        <div className="header">
-          <Link to="/newPost">Crear Post</Link>
-          <h1>
-            {'Busca una categoria:'}
-          </h1>
-          <Link to={`/users/${userId}`}>Perfil</Link>
-        </div>
+        <h2>
+          {'Busca una categoria:'}
+        </h2>
         <div className="inputs">
-          <input />
-          <input />
           <input />
           <button
             type="button"
