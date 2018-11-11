@@ -9,12 +9,7 @@ import './styles.css';
 const CategoryPreview = ({
   ids,
 }) => (
-  <div className="category-list">
-    {
-      ids.map(id => (
-        <Category id={id} key={id} />
-      ))
-    }
+  <div className="category-list" id="style">
     {
       ids.map(id => (
         <Category id={id} key={id} />

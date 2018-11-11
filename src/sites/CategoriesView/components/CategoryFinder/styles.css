@@ -17,3 +17,8 @@
   justify-content: center;
   align-items: center;
 }
+
+.category-finder .inputs button{
+  font-size: 1rem;
+  margin-left: 1rem;
+}

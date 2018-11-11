@@ -8,21 +8,25 @@ import './styles.css';
 const Category = ({
   id,
   name,
+  img,
 }) => (
-  <Link
-    to={`/categories/${id}`}
-    style={{ textDecoration: 'none', color: 'black' }}
-  >
-    <div className="category">
-      <img className="picture" src="/default.png" alt="default" />
-      <h4>{name}</h4>
-    </div>
-  </Link>
+  <div className="offset">
+    <Link
+      to={`/categories/${id}`}
+      style={{ textDecoration: 'none', color: 'black' }}
+    >
+      <div className="category">
+        <img src={img} alt="default" />
+        <h4>{name}</h4>
+      </div>
+    </Link>
+  </div>
 );
 
 Category.propTypes = {
-  name: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
 };
 
 export default connect(

@@ -3,8 +3,7 @@
   display: flex;
   flex: 4;
   flex-direction: row;
-  justify-content: center;
-  margin: 0 2rem;
+  
   overflow-x: auto;
-  padding-bottom: 5rem;
+  
 }
