@@ -16,7 +16,7 @@ const PersonalInfo = ({
 }) => (
   <div className="personalInfo">
     <div className="content">
-      <h1>
+      <h1 className="title">
         {`Cosas de ${first_name} ${last_name}`}
       </h1>
       <ul>
