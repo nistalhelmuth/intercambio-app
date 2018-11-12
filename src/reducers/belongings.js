@@ -10,6 +10,7 @@ const defaultState = {
     category: 1,
     usedState: 0,
     propietaryId: 0,
+    selected: false,
   },
   1: {
     id: 1,
@@ -19,6 +20,7 @@ const defaultState = {
     category: 1,
     usedState: 0,
     propietaryId: 0,
+    selected: false,
   },
   2: {
     id: 2,
@@ -28,6 +30,7 @@ const defaultState = {
     category: 1,
     usedState: 1,
     propietaryId: 0,
+    selected: false,
   },
   3: {
     id: 3,
@@ -37,6 +40,7 @@ const defaultState = {
     category: 1,
     usedState: 2,
     propietaryId: 0,
+    selected: false,
   },
   4: {
     id: 4,
@@ -46,6 +50,7 @@ const defaultState = {
     category: 1,
     usedState: 3,
     propietaryId: 0,
+    selected: false,
   },
 };
 
@@ -81,6 +86,18 @@ const byId = (state = defaultState, action) => {
     const newState = { ...state };
     delete newState[action.payload.id];
     return newState;
+  }
+  case types.BELONGING_SELECTED: {
+    const item = state[action.payload];
+    const newState = { ...state };
+    const newItem = {
+      ...item,
+      selected: !item.selected,
+    };
+    return {
+      ...newState,
+      [action.payload]: newItem,
+    };
   }
   default:
     return state;

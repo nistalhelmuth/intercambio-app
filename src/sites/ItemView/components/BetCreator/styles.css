@@ -1,6 +1,8 @@
 .bet-creator {
   display: flex;
   flex-direction: column;
+  
+  position: relative;
 }
 
 .bet-creator h2 {
@@ -25,10 +27,19 @@
 
 
 
-.bet-creator button{
-  position:fixed;
+.bet-creator .courner-left-button{
+  left: 40%;
+  bottom: 1rem;
+  border-radius: 5px;
+  font-size: 1rem; 
+  position: fixed;
+}
+
+
+.bet-creator .courner-right-button{
   right: 1rem;
   bottom: 1rem;
   border-radius: 5px;
   font-size: 1rem; 
+  position: fixed;
 }

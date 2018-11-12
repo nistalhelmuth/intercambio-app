@@ -2,13 +2,15 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import * as selectors from '../../../../reducers';
-import * as actions from '../../../../actions/interface';
+import * as interfaceActions from '../../../../actions/interface';
+import * as offersActions from '../../../../actions/offers';
 import SelectItem from '../SelectItem';
 import './styles.css';
 
 const BetCreator = ({
   ids,
   showBetCreator,
+  createOffer,
 }) => (
   <div className="bet-creator">
     <h2>
@@ -23,9 +25,17 @@ const BetCreator = ({
     </div>
     <button
       type="button"
+      className="courner-left-button"
       onClick={showBetCreator}
     >
-      {'cancel'}
+      {'Cancel'}
+    </button>
+    <button
+      type="button"
+      className="courner-right-button"
+      onClick={createOffer}
+    >
+      {'Create'}
     </button>
   </div>
 );
@@ -33,6 +43,7 @@ const BetCreator = ({
 BetCreator.propTypes = {
   ids: PropTypes.arrayOf(Number).isRequired,
   showBetCreator: PropTypes.func.isRequired,
+  createOffer: PropTypes.func.isRequired,
 };
 
 export default connect(
@@ -41,7 +52,11 @@ export default connect(
   }),
   dispatch => ({
     showBetCreator() {
-      dispatch(actions.switchBetCreator());
+      dispatch(interfaceActions.switchBetCreator());
+    },
+    createOffer() {
+      dispatch(interfaceActions.switchBetCreator());
+      // dispatch(offersActions.createOffer(id, offeredObject, offeredIn));
     },
   }),
 )(BetCreator);

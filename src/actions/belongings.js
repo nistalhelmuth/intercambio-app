@@ -57,3 +57,8 @@ export const confirmBelongingDeletion = id => ({
     id,
   },
 });
+
+export const belonginSelected = id => ({
+  type: types.BELONGING_SELECTED,
+  payload: id,
+});
