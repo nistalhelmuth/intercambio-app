@@ -27,7 +27,11 @@ const byId = (state = {}, action) => {
     };
   }
   case types.POSTS_RECIVED: {
-    return action.payload.posts;
+    const stateToBe = {};
+    action.payload.posts.forEach((post) => {
+      stateToBe[post.id] = post;
+    });
+    return stateToBe;
   }
   case types.POST_DELETION_CONFIRMED: {
     const newState = { ...state };
@@ -48,9 +52,7 @@ const byId = (state = {}, action) => {
   }
 };
 
-const defaultIds = [1, 2, 3];
-
-const allIds = (state = defaultIds, action) => {
+const allIds = (state = [], action) => {
   switch (action.type) {
   case types.POST_CREATED: {
     return [
