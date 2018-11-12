@@ -11,9 +11,10 @@ const Post = ({
   title,
   date,
   img,
+  offered_item,
 }) => (
   <Link
-    to={`/posts/${id}`}
+    to={`/posts/${id}/${offered_item}`}
     style={{ textDecoration: 'none', color: 'black' }}
   >
     <div className="post-card">
