@@ -10,7 +10,7 @@ const User = ({
   match: { params },
 }) => (
   <div className="user">
-    <PersonalInfo id={params.userId} />
+    <PersonalInfo id={params.userId} self={params.self} />
     <ItemList id={params.userId} />
     <Link
       style={{ textDecoration: 'none', color: 'black' }}
