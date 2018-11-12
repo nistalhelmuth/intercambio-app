@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import * as selectors from '../../../../reducers';
 import * as actions from '../../../../actions/interface';
-import Item from '../../../SharedComponents/Item';
+import SelectItem from '../SelectItem';
 import './styles.css';
 
 const BetCreator = ({
@@ -11,13 +11,13 @@ const BetCreator = ({
   showBetCreator,
 }) => (
   <div className="bet-creator">
-    <p>
-      {"things"}
-    </p>
+    <h2>
+      {"Publica una oferta (selecciona tus objetos)"}
+    </h2>
     <div className="all-things">
       {
         ids.map(id => (
-          <Item id={id} key={id} />
+          <SelectItem id={id} key={id} />
         ))
       }
     </div>

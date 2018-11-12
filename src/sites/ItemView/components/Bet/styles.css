@@ -1,29 +1,30 @@
 .bet {
-  background-color: #eeeeee70;
+  background-color: #eeeeee;
   margin-bottom: 1rem; 
   border-radius: 5px;
 }
 
-.bet .user {
+.bet .user-preview {
   flex-direction: row;
   display: flex;
   margin: 1rem;
   height: 75px;
 }
 
-.bet .user img {
+.bet .user-preview img {
   height: 75px;
   border-radius: 50%;
   padding: 0rem 1rem;
 }
 
-.bet .user .order {
+.bet .user-preview .order {
   width: 100%;
 }
 
 .bet .betItems{
   flex-direction: row;
   display: flex;
+  overflow-x: auto;
   margin-bottom: 1rem; 
 }
 

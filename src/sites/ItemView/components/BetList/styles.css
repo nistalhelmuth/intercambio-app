@@ -1,7 +1,16 @@
 .betList {
   display: flex;
   flex-direction: column;
-  padding: 0rem 3rem;
 }
+
+
+.betList button{
+  position:fixed;
+  right: 1rem;
+  bottom: 1rem;
+  border-radius: 5px;
+  font-size: 1rem; 
+}
+
 
 

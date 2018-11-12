@@ -1,0 +1,27 @@
+.item-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #eeeeee;
+  padding: 1rem;
+  align-items: center;
+  margin: 1rem 1rem 1rem 1rem;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.16), 0 3px 3px rgba(0,0,0,0.23); 
+  transition: all 0.3s; 
+  border-radius: 3px;
+}
+
+.item-card p{
+  margin: 1rem 0rem;
+}
+
+.item-card img {
+  height: 100px;
+  width: 100px;
+}
+
+.item-card:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.45), 0 10px 10px rgba(0,0,0,0.42);
+  transition: all 0.3s;
+  transform: scale(1.05);
+  
+}

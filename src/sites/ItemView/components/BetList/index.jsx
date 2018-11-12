@@ -26,6 +26,34 @@ const BetList = ({
           ))
       ))
     }
+    {
+      offers.map(offer => (
+        (offer !== undefined
+          ? (
+            <Bet
+              userId={offer.userId}
+              itemIds={offer.offeredObjects}
+              key={offer.id}
+            />       
+          ) : (
+            <div />
+          ))
+      ))
+    }
+    {
+      offers.map(offer => (
+        (offer !== undefined
+          ? (
+            <Bet
+              userId={offer.userId}
+              itemIds={offer.offeredObjects}
+              key={offer.id}
+            />       
+          ) : (
+            <div />
+          ))
+      ))
+    }
     <button
       type="button"
       onClick={showBetCreator}

@@ -10,7 +10,7 @@ const Bet = ({
   userInfo,
 }) => (
   <div className="bet">
-    <div className="user">
+    <div className="user-preview">
       <Link
         style={{ textDecoration: 'none', color: 'black' }}
         to={`/users/${userInfo.id}`}

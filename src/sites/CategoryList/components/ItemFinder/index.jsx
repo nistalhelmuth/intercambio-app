@@ -17,18 +17,15 @@ class ItemFinder extends Component {
     return (
       <div className="item-finder">
         <h2>
-          {`Categoria de ${name}`}
+          {`Busca en la categoria de ${name}`}
         </h2>
-        <div className="inputs">
-
-          <input />
-          <button
-            type="button"
-            onClick={filterItems}
-          >
-            {'buscar'}
-          </button>
-        </div>
+        <input />
+        <button
+          type="button"
+          onClick={filterItems}
+        >
+          {'buscar'}
+        </button>
       </div>
     );
   }

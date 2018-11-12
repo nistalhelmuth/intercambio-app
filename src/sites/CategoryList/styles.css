@@ -1,5 +1,6 @@
 .categoryList {
   background-image: url("/pexels-photo-326311.jpeg");
-  
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
