@@ -6,8 +6,8 @@ import * as selectors from '../../../../reducers';
 import './styles.css';
 
 const PersonalInfo = ({
-  firstName,
-  lastName,
+  first_name,
+  last_name,
   username,
   email,
   age,
@@ -17,7 +17,7 @@ const PersonalInfo = ({
   <div className="personalInfo">
     <div className="content">
       <h1>
-        {`Cosas de ${firstName} ${lastName}`}
+        {`Cosas de ${first_name} ${last_name}`}
       </h1>
       <ul>
         <li>
@@ -39,8 +39,8 @@ const PersonalInfo = ({
 );
 
 PersonalInfo.propTypes = {
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
+  first_name: PropTypes.string.isRequired,
+  last_name: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
@@ -49,8 +49,15 @@ PersonalInfo.propTypes = {
 };
 
 export default connect(
-  (state, { id }) => ({
-    ...selectors.getUser(state, id),
-  }),
+  (state, { id, self }) => {
+    if (!self) {
+      return ({
+        ...selectors.getUser(state, id),
+      });
+    }
+    return ({
+      ...selectors.getLoggedUser(state),
+    });
+  },
   undefined,
 )(PersonalInfo);

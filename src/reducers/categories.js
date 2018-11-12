@@ -1,35 +1,7 @@
 import { combineReducers } from 'redux';
 import * as types from '../types/categories';
 
-const defaultState = {
-  1: {
-    id: 1,
-    name: 'Ropa',
-    img: '/defaultsCategories/ropa.jpg',
-  },
-  2: {
-    id: 2,
-    name: 'Juguetes',
-    img: '/defaultsCategories/juguetes.jpg',
-  },
-  3: {
-    id: 3,
-    name: 'Electrónicos',
-    img: '/defaultsCategories/electronicos.jpg',
-  },
-  4: {
-    id: 4,
-    name: 'Libros',
-    img: '/defaultsCategories/libros.jpeg',
-  },
-  5: {
-    id: 5,
-    name: 'Mascotas',
-    img: '/defaultsCategories/mascotas.jpg',
-  },
-};
-
-const byId = (state = defaultState, action) => {
+const byId = (state = {}, action) => {
   switch (action.type) {
   case types.CATEGORTY_ADDED: {
     const { payload: { id } } = action;
@@ -55,16 +27,18 @@ const byId = (state = defaultState, action) => {
     };
   }
   case types.CATEGORIES_RECIVED: {
-    return action.payload.categories;
+    const stateToBe = {};
+    action.payload.categories.forEach((category) => {
+      stateToBe[category.id] = category;
+    });
+    return stateToBe;
   }
   default:
     return state;
   }
 };
 
-const defaultIds = [1, 2, 3, 4, 5];
-
-const allIds = (state = defaultIds, action) => {
+const allIds = (state = [], action) => {
   switch (action.type) {
   case types.CATEGORTY_ADDED: {
     return [

@@ -34,7 +34,7 @@ ReactDOM.render(
         <Route exact path="/categories" component={CategoryView} />
         <Route exact path="/categories/:categoryId" component={CategoryList} />
         <Route exact path="/newItem" component={NewItem} />
-        <Route exact path="/users/:userId" component={User} />
+        <Route exact path="/users/:userId/:self" component={User} />
         <Route exact path="/users/:userId/:itemId" component={ItemView} />
       </Switch>
     </BrowserRouter>
