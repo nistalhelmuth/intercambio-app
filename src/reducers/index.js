@@ -28,24 +28,19 @@ export const getCategoryIds = state => categorySelectors.getCategoryIds(state.ca
 
 export const getBelonging = (state, id) => belongingSelectors.getBelonging(state.belongings, id);
 export const getBelongings = state => belongingSelectors.getBelongings(state.belongings);
-export const getBeloingsByCategory = (state, categoryId) => getBelongings(state).map((belogin) => {
-  return (belogin.category === parseInt(categoryId, 10) ? belogin.id : undefined);
-});
-export const getBeloingsByUser = (state, userId) => getBelongings(state).map((belogin) => {
-  return (belogin.propietaryId === parseInt(userId, 10) ? belogin.id : undefined);
-});
+export const getBeloingsByCategory = (state, categoryId) => getBelongings(state).map(belogin => (belogin.category === parseInt(categoryId, 10) ? belogin.id : undefined));
+export const getBeloingsByUser = (state, userId) => getBelongings(state).map(belogin => (belogin.propietaryId === parseInt(userId, 10) ? belogin.id : undefined));
 
 export const getUser = (state, id) => userSelectors.getUser(state.users, id);
 export const getUsers = state => userSelectors.getUsers(state.users);
 
 export const getPost = (state, id) => postSelectors.getPost(state.posts, id);
 export const getPosts = state => postSelectors.getPosts(state.posts);
+export const getPostIds = state => postSelectors.getPostIds(state.posts);
 
 export const getOffer = (state, id) => offerSelectors.getOffer(state.offers, id);
 export const getOffers = state => offerSelectors.getOffers(state.offers);
-export const getOffersByObject = (state, itemID) => getOffers(state).map((offer) => {
-  return (offer.offeredIn === parseInt(itemID, 10) ? offer : undefined);
-});
+export const getOffersByObject = (state, itemID) => getOffers(state).map(offer => (offer.offeredIn === parseInt(itemID, 10) ? offer : undefined));
 
 export const getToken = state => authSelectors.getToken(state.auth);
 export const getLoggedUser = state => authSelectors.getLoggedUser(state.auth);

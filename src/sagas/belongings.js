@@ -37,15 +37,15 @@ function* belonginGenerator(action) {
 function* belonginRemover(action) {
   const {
     payload: {
-      id
+      id,
     },
   } = action;
   try {
     const response = yield call(
       deleteBelongin,
       id,
-    )
-    yield put(actions.confirmBelongingDeletion(id, response,id));
+    );
+    yield put(actions.confirmBelongingDeletion(id, response, id));
   } catch (e) {
 
   }
@@ -55,10 +55,10 @@ function* belonginFetcher(action) {
   const {
     payload: {
       id,
-    }
+    },
   } = action;
   try {
-    const response = yield call( 
+    const response = yield call(
       getBelongin,
       id,
     );
@@ -81,7 +81,6 @@ function* watchBelonginsSaga() {
     types.BELONGING_DELETED,
     belonginFetcher,
   );
-  
 }
 
 export default watchBelonginsSaga;

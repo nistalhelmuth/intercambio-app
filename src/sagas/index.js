@@ -4,6 +4,7 @@ import watchCategoriesSaga from './categories';
 import watchUsersSaga from './users';
 import watchBelongingsSaga from './belongings';
 import watchAuthSaga from './auth';
+import watchPostsSaga from './posts';
 
 
 function* mainSaga() {
@@ -12,6 +13,7 @@ function* mainSaga() {
     fork(watchUsersSaga),
     fork(watchBelongingsSaga),
     fork(watchAuthSaga),
+    fork(watchPostsSaga),
   ]);
 }
 

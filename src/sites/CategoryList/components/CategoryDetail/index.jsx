@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import Post from '../Post';
 import * as selectors from '../../../../reducers';
 import * as actions from '../../../../actions/posts';
 
 import './styles.css';
 
-import Item from '../../../SharedComponents/Item';
 
 class CategoryDetail extends Component {
-  componentWillLoad() {
+  componentWillMount() {
     const { getPosts } = this.props;
     getPosts();
   }
@@ -21,7 +21,7 @@ class CategoryDetail extends Component {
         {
           ids.map(id => (
             id !== undefined
-              ? (<Item id={id} key={id} />) : (<div />)
+              ? (<Post id={id} key={id} />) : (<div />)
           ))
         }
       </div>
@@ -31,15 +31,16 @@ class CategoryDetail extends Component {
 
 CategoryDetail.propTypes = {
   ids: PropTypes.arrayOf(Number).isRequired,
+  getPosts: PropTypes.func.isRequired,
 };
 
 export default connect(
-  (state) => ({
-    ids: selectors.getPosts(state),
+  state => ({
+    ids: selectors.getPostIds(state),
   }),
-  (dispatch, {id}) => ({
+  (dispatch, { id }) => ({
     getPosts() {
-      actions.fetchPosts('category', id);
-    }
-  })
+      dispatch(actions.fetchPosts(id));
+    },
+  }),
 )(CategoryDetail);

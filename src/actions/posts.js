@@ -86,14 +86,10 @@ export const confirmPostUpdate = (
   },
 });
 
-export const fetchPosts = (
-  atributeName,
-  comparisonObject,
-) => ({
+export const fetchPosts = categoryId => ({
   type: types.POSTS_FETCHED,
   payload: {
-    atributeName,
-    comparisonObject,
+    categoryId,
   },
 });
 
@@ -102,4 +98,8 @@ export const recivePosts = posts => ({
   payload: {
     posts,
   },
+});
+
+export const failPostFetching = () => ({
+  type: types.POST_FETCHING_FAILED,
 });
