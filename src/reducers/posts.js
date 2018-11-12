@@ -90,3 +90,4 @@ export const getPost = (state, id) => state.byId[id];
 export const getPosts = state => (
   state.allIds.map(id => getPost(state, id))
 );
+export const getPostIds = state => state.allIds;

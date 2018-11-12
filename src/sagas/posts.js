@@ -1,0 +1,35 @@
+import {
+  call,
+  takeLatest,
+  put,
+  select,
+} from 'redux-saga/effects';
+import { fetchPosts } from '../api/posts';
+import * as types from '../types/posts';
+import * as actions from '../actions/posts';
+import * as selectors from '../reducers';
+
+function* postFetcher(action) {
+  const { payload: { categoryId } } = action;
+  const token = yield select(selectors.getToken);
+  try {
+    const response = yield call(
+      fetchPosts,
+      categoryId,
+      token,
+    );
+    yield put(actions.recivePosts(response));
+  } catch (error) {
+    console.log(error);
+    yield put(actions.failPostFetching());
+  }
+}
+
+function* watchPostsSaga() {
+  yield takeLatest(
+    types.POSTS_FETCHED,
+    postFetcher,
+  );
+}
+
+export default watchPostsSaga;

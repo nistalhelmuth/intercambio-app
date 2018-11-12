@@ -44,7 +44,7 @@ export default connect(
   }),
   dispatch => ({
     fetchAllItems() {
-      dispatch(belonginActions.fetchBelongings());
+      // dispatch(belonginActions.fetchBelongings());
     },
     filterItems() {
       // dispatch(belonginActions.filterBelongings());
