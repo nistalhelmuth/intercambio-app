@@ -1,27 +1,40 @@
-.item-card {
-  display: flex;
-  flex-direction: column;
+.button-item {
   background-color: #eeeeee;
   padding: 1rem;
-  align-items: center;
   margin: 1rem 1rem 1rem 1rem;
   box-shadow: 0 3px 3px rgba(0,0,0,0.16), 0 3px 3px rgba(0,0,0,0.23); 
   transition: all 0.3s; 
   border-radius: 3px;
+  position: relative;
 }
 
-.item-card p{
+.button-item .check {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 40px;
+  width: 40px;
+}
+
+.button-item .button-content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.button-item p{
   margin: 1rem 0rem;
+  color: black;
 }
 
-.item-card img {
+.button-item .picture {
   height: 100px;
   width: 100px;
 }
 
-.item-card:hover {
+.button-item:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.45), 0 10px 10px rgba(0,0,0,0.42);
   transition: all 0.3s;
   transform: scale(1.05);
-  
 }

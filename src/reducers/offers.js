@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import * as types from '../types/offers';
+import * as belonginsTypes from '../types/belongings';
 
 const defaultState = {
   0: {
@@ -59,6 +60,9 @@ const byId = (state = defaultState, action) => {
       ...newState,
       [id]: action.payload,
     };
+  }
+  case belonginsTypes.BELONGING_SELECTED: {  //pendiente esto
+    return state;
   }
   default:
     return state;
