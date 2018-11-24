@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import * as selectors from '../../../../reducers';
 import Item from '../../../SharedComponents/Item';
+import NewItem from '../NewItem';
 import './styles.css';
 
 const ItemList = ({
@@ -12,10 +13,10 @@ const ItemList = ({
     {
       ids.map(id => (
         id !== undefined
-          ? (<Item id={id} key={id} />) : <div />
+          ? (<Item id={id} key={id} />) : <Fragment />
       ))
     }
-    
+    <NewItem />
   </div>
 );
 
