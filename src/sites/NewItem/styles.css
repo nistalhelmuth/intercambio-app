@@ -2,15 +2,5 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  align-items: center;
-}
-
-.newItem .header {
-  flex: 1;
-  background: lightblue;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  box-shadow: 1px 1px 3px;
-  width: 100%;
+  background-image: url("/backgrounds/bright_wood2.jpg");
 }

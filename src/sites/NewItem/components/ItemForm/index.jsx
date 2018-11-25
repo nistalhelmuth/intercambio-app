@@ -22,6 +22,7 @@ const ItemForm = ({
         name="name"
         type="text"
         component={TextInput}
+        className="text-input"
         label="Ingresa el nombre del objeto"
       />
       <label>
@@ -30,19 +31,25 @@ const ItemForm = ({
       <Field
         name="description"
         component="textarea"
+        className="textarea-input"
+        maxlength="200"
       />
+      <label>
+        {'Ingresa la categoría que pertenece'}
+      </label>
       <Field
         name="category"
         type="text"
         component={TextInput}
-        label="ingresa a la categoría que pertecene"
       />
+      <label>
+        {'Selecciona el estado'}
+      </label>
       <Field
         name="state"
         component="select"
-        label="estado"
       >
-        <option>selecciona el estado...</option>
+        <option>...</option>
         <option value="excelent">excelente</option>
         <option value="good">bueno</option>
         <option value="regular">normal</option>
@@ -51,6 +58,7 @@ const ItemForm = ({
       </Field>
       <button
         type="submit"
+        className="create-button"
       >
         {'Crear objeto'}
       </button>
