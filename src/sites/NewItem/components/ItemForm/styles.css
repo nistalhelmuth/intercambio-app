@@ -49,10 +49,7 @@
   width: 50%;
   flex: 1;
   padding: 1rem 0rem;
-}
-
-.item-form .from select option {
-  margin-left: 1rem;
+  text-align: center;
 }
 
 .item-form .form .create-button {
