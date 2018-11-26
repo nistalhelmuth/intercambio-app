@@ -1,6 +1,18 @@
 import { combineReducers } from 'redux';
 import * as types from '../types/posts';
 
+const selected = (state = {}, action) => {
+  switch (action.type) {
+  case types.POST_RECIVED: {
+    return {
+      ...action.payload,
+    };
+  }
+  default:
+    return state;
+  }
+};
+
 const byId = (state = {}, action) => {
   switch (action.type) {
   case types.POST_CREATED: {
@@ -84,10 +96,13 @@ const allIds = (state = [], action) => {
 export default combineReducers({
   byId,
   allIds,
+  selected,
 });
 
+
+export const getSelectedPost = state => state.selected;
 export const getPost = (state, id) => state.byId[id];
 export const getPosts = state => (
   state.allIds.map(id => getPost(state, id))
 );
-export const getPostIds = state => state.allIds;
+export const getPostsIds = state => state.allIds;

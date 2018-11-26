@@ -36,7 +36,7 @@ CategoryDetail.propTypes = {
 
 export default connect(
   state => ({
-    ids: selectors.getPostIds(state),
+    ids: selectors.getPostsIds(state),
   }),
   (dispatch, { id }) => ({
     getPosts() {

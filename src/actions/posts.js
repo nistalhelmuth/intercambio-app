@@ -32,7 +32,7 @@ export const confirmPostCreation = (
   },
 });
 
-export const deltePost = id => ({
+export const deletePost = id => ({
   type: types.POST_DELETED,
   payload: {
     id,
@@ -97,6 +97,24 @@ export const recivePosts = posts => ({
   type: types.POSTS_RECIVED,
   payload: {
     posts,
+  },
+});
+
+export const failPostsFetching = () => ({
+  type: types.POSTS_FETCHING_FAILED,
+});
+
+export const fetchPost = postId => ({
+  type: types.POST_FETCHED,
+  payload: {
+    postId,
+  },
+});
+
+export const recivePost = postInfo => ({
+  type: types.POST_RECIVED,
+  payload: {
+    ...postInfo,
   },
 });
 

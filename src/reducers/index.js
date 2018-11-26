@@ -36,9 +36,10 @@ export const getBeloingsByUser = (state, userId) => getBelongings(state).map(bel
 export const getUser = (state, id) => userSelectors.getUser(state.users, id);
 export const getUsers = state => userSelectors.getUsers(state.users);
 
+export const getSelectedPost = state => postSelectors.getSelectedPost(state.posts);
 export const getPost = (state, id) => postSelectors.getPost(state.posts, id);
 export const getPosts = state => postSelectors.getPosts(state.posts);
-export const getPostIds = state => postSelectors.getPostIds(state.posts);
+export const getPostsIds = state => postSelectors.getPostsIds(state.posts);
 
 export const getOffer = (state, id) => offerSelectors.getOffer(state.offers, id);
 export const getOffers = state => offerSelectors.getOffers(state.offers);

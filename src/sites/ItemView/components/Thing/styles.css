@@ -1,32 +1,25 @@
 .thing {
-  align-items: stretch;
   display: flex;
   flex-direction: column;
   flex: 3;
   justify-content: space-around;
-}
-
-.thing .pictures {
   align-items: center;
-  display: flex;
-  flex-direction: column;
-  flex:1;
-  justify-content: center;
-  padding: 0rem 1rem;
-}
-
-.thing  .description {
-  align-items: stretch;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 0rem 1rem 1rem 1rem;
-  text-align: justify;
-}
-
-.thing .description p {
-  
-  height: 100%;
-  margin: 0rem;
   padding: 1rem;
+}
+
+.thing h2 {
+  margin-top: 0;
+}
+
+.thing .thing-picture{
+  height: 200px;
+  max-width: 100%;
+}
+
+.thing p {
+  overflow-y: auto;
+  text-align: justify;
+  max-height: 150px;
+  width: 100%;
+  
 }

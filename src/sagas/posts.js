@@ -4,12 +4,12 @@ import {
   put,
   select,
 } from 'redux-saga/effects';
-import { fetchPosts } from '../api/posts';
+import { fetchPosts, fetchPost } from '../api/posts';
 import * as types from '../types/posts';
 import * as actions from '../actions/posts';
 import * as selectors from '../reducers';
 
-function* postFetcher(action) {
+function* postsFetcher(action) {
   const { payload: { categoryId } } = action;
   const token = yield select(selectors.getToken);
   try {
@@ -21,6 +21,22 @@ function* postFetcher(action) {
     yield put(actions.recivePosts(response));
   } catch (error) {
     console.log(error);
+    yield put(actions.failPostsFetching());
+  }
+}
+
+function* postFetcher(action) {
+  const { payload: { postId } } = action;
+  const token = yield select(selectors.getToken);
+  try {
+    const response = yield call(
+      fetchPost,
+      postId,
+      token,
+    );
+    yield put(actions.recivePost(response));
+  } catch (error) {
+    console.log(error);
     yield put(actions.failPostFetching());
   }
 }
@@ -28,6 +44,10 @@ function* postFetcher(action) {
 function* watchPostsSaga() {
   yield takeLatest(
     types.POSTS_FETCHED,
+    postsFetcher,
+  );
+  yield takeLatest(
+    types.POST_FETCHED,
     postFetcher,
   );
 }

@@ -17,6 +17,7 @@ class ItemView extends Component {
 
   render() {
     const {
+      loggedUser,
       betCreator,
       itemId,
       userId,
@@ -32,7 +33,7 @@ class ItemView extends Component {
           <div className="rightSide">
             {
               betCreator ? (
-                <BetCreator loggedUser={0} itemID={itemId} /> /*codear para usuario loggeado*/
+                <BetCreator loggedUser={loggedUser.id} itemID={itemId} />
               ) : (
                 <BetList itemID={itemId} />
               )
@@ -45,6 +46,7 @@ class ItemView extends Component {
 }
 
 ItemView.propTypes = {
+  loggedUser: PropTypes.object.isRequired,
   itemId: PropTypes.string.isRequired,
   userId: PropTypes.string.isRequired,
   betCreator: PropTypes.bool.isRequired,
@@ -52,6 +54,7 @@ ItemView.propTypes = {
 
 export default connect(
   (state, { match: { params } }) => ({
+    loggedUser: selectors.getLoggedUser(state),
     betCreator: selectors.getBetCreator(state),
     itemId: params.itemId,
     userId: params.userId,

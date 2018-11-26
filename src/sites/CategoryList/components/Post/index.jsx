@@ -8,33 +8,30 @@ import './styles.css';
 
 const Post = ({
   id,
-  title,
-  date,
-  img,
-  offered_item,
+  postInfo,
 }) => (
   <Link
-    to={`/posts/${id}/${offered_item}`}
+    to={`/posts/${postInfo.posted_by}/${postInfo.id}`}
     style={{ textDecoration: 'none', color: 'black' }}
   >
     <div className="post-card">
-      <img src={img} alt="post" />
-      <h4>{title}</h4>
-      <p>{date}</p>
+      <img src={postInfo.img} alt="post" />
+      <h4>{postInfo.title}</h4>
+      <p>{postInfo.date}</p>
     </div>
   </Link>
 );
 
 Post.propTypes = {
   id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
+  postInfo: PropTypes.object.isRequired,
 };
 
 export default connect(
   (state, { id }) => ({
-    ...selectors.getPost(state, id),
+    postInfo: {
+      ...selectors.getPost(state, id),
+    },
   }),
   undefined,
 )(Post);
