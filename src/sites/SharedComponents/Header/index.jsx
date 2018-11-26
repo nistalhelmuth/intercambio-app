@@ -19,7 +19,11 @@ const Header = ({
     }
     <Link className="link-as-button" to="/newPost">Crear Post</Link>
     <div className="profile">
-      <img className="profile-icon" src="/user-icon.png" alt="user-icon" />
+      <img
+        className="profile-icon"
+        src={user.img ? user.img : '/user-icon.png'}
+        alt="user-icon"
+      />
       <div className="popover-container">
         <div className="popover-tail-border">
           <div className="popover-tail" />

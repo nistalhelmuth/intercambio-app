@@ -6,10 +6,12 @@ import { Field, reduxForm, formValueSelector } from 'redux-form';
 import TextInput from '../../../SharedComponents/TextInput';
 import TextAreaInput from '../../../SharedComponents/TextAreaInput';
 import Upload from '../../../SharedComponents/Upload';
-import * as beloginActions from '../../../../actions/belongings';
+import * as imageActions from '../../../../actions/image';
 import * as selectors from '../../../../reducers';
 
 import './styles.css';
+
+const required = value => (value ? undefined : 'Obligatorio');
 
 const DummyItemForm = ({
   onSubmit,
@@ -17,7 +19,7 @@ const DummyItemForm = ({
   image,
 }) => (
   <div className="item-form">
-    <form className="form">
+    <form className="form" onSubmit={onSubmit(formValues, image)}>
       <h3>
         {'Crea un nuevo objeto'}
       </h3>
@@ -30,6 +32,7 @@ const DummyItemForm = ({
         type="text"
         label="Ingresa el nombre del objeto"
         component={TextInput}
+        validate={required}
         placeholder="Nombre"
       />
       <Field
@@ -60,9 +63,8 @@ const DummyItemForm = ({
         <option value="awfull">Terrible</option>
       </Field>
       <button
-        type="button"
+        type="submit"
         className="create-button"
-        onClick={() => onSubmit(formValues, image)}
       >
         {'Crear objeto'}
       </button>
@@ -90,16 +92,28 @@ const ItemForm = connect(
     image: selectors.getImage(state),
   }),
   dispatch => ({
-    onSubmit(state, image) {
-      dispatch(beloginActions.createBelonging(
-        uuid(),
-        state.formValues.name,
-        state.formValues.description,
-        state.formValues.category,
-        state.formValues.quality,
-        state.user,
-        image,
-      ));
+    onSubmit(formValues, image) {
+      if (
+        formValues.name
+        && formValues.description
+        && formValues.category
+        && formValues.quality
+      ) {
+        const belonginValues = {
+          id: uuid(),
+          name: formValues.name,
+          description: formValues.description,
+          category: formValues.category,
+          quality: formValues.quality,
+          user: formValues.user,
+        };
+        dispatch(imageActions.sendBelonginImage(
+          belonginValues,
+          image,
+        ));
+      } else {
+        console.log("faltan valores");
+      }
     },
   }),
 )(DummyItemForm);

@@ -12,7 +12,11 @@ const TextInput = ({
     <label>
       {label}
     </label>
-    <input {...input} placeholder={placeholder} type={type} />
+    <input
+      placeholder={placeholder}
+      type={type}
+      {...input}
+    />
     {touched && error && <span>{error}</span>}
   </div>
 );

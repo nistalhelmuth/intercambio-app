@@ -7,17 +7,28 @@ export const addImage = img => (
   }
 );
 
-export const removeImgage = imgId => (
+export const removeImage = () => (
   {
     type: types.IMG_REMOVED,
-    payload: imgId,
   }
 );
 
-export const sendImgage = () => (
+export const sendBelonginImage = ({ Img, belonginValues }) => (
   {
-    type: types.IMG_SENT,
+    type: types.BELONGING_IMG_SENT,
     payload: {
+      Img,
+      belonginValues,
+    },
+  }
+);
+
+export const sendProfileImage = ({ Img, profileValues }) => (
+  {
+    type: types.PROFILE_IMG_SENT,
+    payload: {
+      Img,
+      profileValues,
     },
   }
 );

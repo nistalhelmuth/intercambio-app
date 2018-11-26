@@ -19,13 +19,26 @@ const image = (state = defaultState, action) => {
       image: {},
     };
   }
-  case types.IMG_SENT: {
+  case types.BELONGING_IMG_SENT: {
+    return {
+      ...state,
+      confirm: 0,
+    };
+  }
+  case types.PROFILE_IMG_SENT: {
     return {
       ...state,
       confirm: 0,
     };
   }
   case types.IMG_SENT_CONFIRMED: {
+    return {
+      ...state,
+      image: {},
+      confirm: -1,
+    };
+  }
+  case types.IMG_SENT_FAILED: {
     return {
       ...state,
       confirm: 1,
