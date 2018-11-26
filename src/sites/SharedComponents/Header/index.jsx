@@ -31,7 +31,7 @@ const Header = ({
         <div className="popover-body">
           {
             token !== undefined
-              ? <Link to={`/users/${user.id}/${true}`}>Ver Perfil</Link>
+              ? <Link to={`/users/${user.id}`}>Ver Perfil</Link>
               : ''
           }
           <button className="button-as-link" type="button" onClick={closeSession}>Cerrar Sesión</button>

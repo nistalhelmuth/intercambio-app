@@ -2,12 +2,18 @@ import {
   call,
   takeLatest,
   put,
+  select,
 } from 'redux-saga/effects';
 
 import * as types from '../types/users';
 import * as actions from '../actions/users';
+import * as selectors from '../reducers';
+
 import {
-  postUser, deleteUser, getUsers,
+  postUser,
+  deleteUser,
+  getUsers,
+  getUser,
 } from '../api/users';
 
 function* userGenerator(action) {
@@ -57,7 +63,7 @@ function* userRemover(action) {
   }
 }
 
-function* userFetcher(action) {
+function* usersFetcher(action) {
   const {
     payload: {
       atributeName,
@@ -76,6 +82,23 @@ function* userFetcher(action) {
   }
 }
 
+function* userFetcher(action) {
+  const { payload: { userId } } = action;
+  const token = yield select(selectors.getToken);
+  console.log("user",userId);
+  try {
+    const response = yield call(
+      getUser,
+      userId,
+      token,
+    );
+    yield put(actions.reciveUser(response));
+  } catch (error) {
+    console.log(error);
+    yield put(actions.failUserFetching());
+  }
+}
+
 
 function* watchUserSaga() {
   yield takeLatest(
@@ -88,6 +111,10 @@ function* watchUserSaga() {
   );
   yield takeLatest(
     types.USERS_FETCHED,
+    usersFetcher,
+  );
+  yield takeLatest(
+    types.USER_FETCHED,
     userFetcher,
   );
 }

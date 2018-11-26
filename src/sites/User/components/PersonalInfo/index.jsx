@@ -1,42 +1,53 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as selectors from '../../../../reducers';
+import * as actions from '../../../../actions/users';
 
 import './styles.css';
 
-const PersonalInfo = ({
-  first_name,
-  last_name,
-  username,
-  email,
-  age,
-  img,
-  phone,
-}) => (
-  <div className="personalInfo">
-    <div className="content">
-      <h1 className="title">
-        {`Cosas de ${first_name} ${last_name}`}
-      </h1>
-      <ul>
-        <li>
-          {username}
-        </li>
-        <li>
-          {email}
-        </li>
-        <li>
-          {`Edad: ${age}`}
-        </li>
-        <li>
-          {phone}
-        </li>
-      </ul>
-    </div>
-    <img src={img} alt="profilePicture" />
-  </div>
-);
+class PersonalInfo extends Component {
+  componentWillMount() {
+    const { fetchUser } = this.props;
+    fetchUser();
+  }
+
+  render () {
+    const {
+      first_name,
+      last_name,
+      username,
+      email,
+      age,
+      img,
+      phone,
+    } = this.props;
+    return (
+      <div className="personalInfo">
+        <div className="content">
+          <h1 className="title">
+            {`Cosas de ${first_name} ${last_name}`}
+          </h1>
+          <ul>
+            <li>
+              {username}
+            </li>
+            <li>
+              {email}
+            </li>
+            <li>
+              {`Edad: ${age}`}
+            </li>
+            <li>
+              {phone}
+            </li>
+          </ul>
+        </div>
+        <img src={img} alt="profilePicture" />
+      </div>
+    );
+  }
+}
 
 PersonalInfo.propTypes = {
   first_name: PropTypes.string.isRequired,
@@ -46,18 +57,23 @@ PersonalInfo.propTypes = {
   img: PropTypes.string.isRequired,
   age: PropTypes.number.isRequired,
   phone: PropTypes.string.isRequired,
+  fetchUser: PropTypes.func.isRequired,
 };
 
 export default connect(
-  (state, { id, self }) => {
-    if (!self) {
+  (state, { id }) => {
+    if (parseInt(id, 10) !== selectors.getLoggedUser(state).id) {
       return ({
-        ...selectors.getUser(state, id),
+        ...selectors.getSelectedUser(state),
       });
     }
     return ({
       ...selectors.getLoggedUser(state),
     });
   },
-  undefined,
+  (dispatch, { id }) => ({
+    fetchUser() {
+      dispatch(actions.fetchUser(id));
+    },
+  }),
 )(PersonalInfo);

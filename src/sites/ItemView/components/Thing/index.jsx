@@ -10,9 +10,8 @@ import './styles.css';
 
 class Thing extends Component {
   componentWillMount() {
-    const { getPosts, id } = this.props;
-    getPosts();
-    console.log(id);
+    const { getPost } = this.props;
+    getPost();
   }
 
   render() {
@@ -42,7 +41,7 @@ Thing.propTypes = {
   description: PropTypes.string.isRequired,
   usedState: PropTypes.number.isRequired,
   img: PropTypes.string.isRequired,
-  getPosts: PropTypes.func.isRequired,
+  getPost: PropTypes.func.isRequired,
 };
 
 export default connect(
@@ -50,7 +49,7 @@ export default connect(
     ...selectors.getSelectedPost(state),
   }),
   (dispatch, { id }) => ({
-    getPosts() {
+    getPost() {
       dispatch(actions.fetchPost(id));
     },
   }),

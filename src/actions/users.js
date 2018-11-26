@@ -69,3 +69,21 @@ export const reciveUsers = users => ({
     users,
   },
 });
+
+export const fetchUser = userId => ({
+  type: types.USER_FETCHED,
+  payload: {
+    userId,
+  },
+});
+
+export const reciveUser = userInfo => ({
+  type: types.USER_RECIVED,
+  payload: {
+    ...userInfo,
+  },
+});
+
+export const failUserFetching = () => ({
+  type: types.USER_RECIVED_FAILED,
+});

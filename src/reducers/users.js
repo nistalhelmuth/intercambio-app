@@ -1,6 +1,18 @@
 import { combineReducers } from 'redux';
 import * as types from '../types/users';
 
+const selected = (state = {}, action) => {
+  switch (action.type) {
+  case types.USER_RECIVED: {
+    return {
+      ...action.payload,
+    };
+  }
+  default:
+    return state;
+  }
+};
+
 const byId = (state = {}, action) => {
   switch (action.type) {
   case types.USER_CREATED: {
@@ -71,8 +83,10 @@ const allIds = (state = [], action) => {
 export default combineReducers({
   byId,
   allIds,
+  selected,
 });
 
+export const getSelectedUser = state => state.selected;
 export const getUser = (state, id) => state.byId[id];
 export const getUsers = state => (
   state.allIds.map(id => getUser(state, id))

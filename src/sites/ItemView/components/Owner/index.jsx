@@ -15,8 +15,8 @@ class Owner extends Component {
   render() {
     const {
       id,
-      firstName,
-      lastName,
+      first_name,
+      last_name,
       username,
       email,
       phone,
@@ -32,7 +32,7 @@ class Owner extends Component {
           <div className="content">
             <ul>
               <li>
-                {`${firstName} ${lastName}`}
+                {`${first_name} ${last_name}`}
               </li>
               <li>
                 {username}
@@ -53,8 +53,8 @@ class Owner extends Component {
 
 Owner.propTypes = {
   id: PropTypes.number.isRequired,
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
+  first_name: PropTypes.string.isRequired,
+  last_name: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
@@ -63,12 +63,12 @@ Owner.propTypes = {
 };
 
 export default connect(
-  (state, { id }) => ({
-    ...selectors.getUser(state, id),
+  state => ({
+    ...selectors.getSelectedUser(state),
   }),
   (dispatch, { id }) => ({
     fetchUser() {
-      // dispatch(actions.fetchUser(id));
+      dispatch(actions.fetchUser(id));
     },
   }),
 )(Owner);
