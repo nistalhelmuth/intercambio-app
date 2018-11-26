@@ -5,6 +5,7 @@ import belongings, * as belongingSelectors from './belongings';
 import users, * as userSelectors from './users';
 import posts, * as postSelectors from './posts';
 import offers, * as offerSelectors from './offers';
+import image, * as imageSelectors from './image';
 import auth, * as authSelectors from './auth';
 import interfaceState, * as interfaceSelectors from './interface';
 
@@ -17,6 +18,7 @@ const reducer = combineReducers({
   offers,
   posts,
   users,
+  image,
 });
 
 export default reducer;
@@ -47,3 +49,6 @@ export const getLoggedUser = state => authSelectors.getLoggedUser(state.auth);
 export const getLoginStatus = state => authSelectors.getLoginStatus(state.auth);
 
 export const getBetCreator = state => interfaceSelectors.getBetCreator(state.interfaceState);
+
+export const getImage = state => imageSelectors.getImage(state.image);
+export const getImageConfirmation = state => imageSelectors.getImageConfirmation(state.image);

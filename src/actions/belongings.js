@@ -7,6 +7,7 @@ export const createBelonging = (
   category,
   usedState,
   propietaryId,
+  img,
 ) => ({
   type: types.BELONGING_CREATED,
   payload: {
@@ -16,6 +17,7 @@ export const createBelonging = (
     category,
     usedState,
     propietaryId,
+    img,
   },
 });
 

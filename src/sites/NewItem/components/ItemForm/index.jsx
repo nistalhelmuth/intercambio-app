@@ -1,64 +1,68 @@
 import React from 'react';
+import uuid from 'uuid-v4';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
 import TextInput from '../../../SharedComponents/TextInput';
-import * as BeloginActions from '../../../../actions/belongings';
+import TextAreaInput from '../../../SharedComponents/TextAreaInput';
+import Upload from '../../../SharedComponents/Upload';
+import * as beloginActions from '../../../../actions/belongings';
+import * as selectors from '../../../../reducers';
 
 import './styles.css';
 
-const ItemForm = ({
+const DummyItemForm = ({
   onSubmit,
+  formValues,
+  image,
 }) => (
   <div className="item-form">
-    <form onSubmit={onSubmit} className="form">
+    <form className="form">
       <h3>
         {'Crea un nuevo objeto'}
       </h3>
-      <img
-        src="/logo.jpg"
-        alt="logo"
+      <Field
+        name="archivos"
+        component={Upload}
       />
       <Field
         name="name"
         type="text"
-        component={TextInput}
-        className="text-input"
         label="Ingresa el nombre del objeto"
+        component={TextInput}
+        placeholder="Nombre"
       />
-      <label>
-        {'Ingresa una breve descripcion'}
-      </label>
       <Field
         name="description"
-        component="textarea"
-        className="textarea-input"
-        maxlength="200"
+        component={TextAreaInput}
+        label="Describe el objeto"
+        placeholder="¿Cuál es la historia del objeto?"
       />
-      <label>
-        {'Ingresa la categoría que pertenece'}
-      </label>
       <Field
         name="category"
         type="text"
+        label="Ingresa la categoría que pertenece"
         component={TextInput}
+        placeholder="Mascotas, libros, electrónicos, etc."
       />
       <label>
         {'Selecciona el estado'}
       </label>
       <Field
-        name="state"
+        name="quality"
         component="select"
       >
         <option>...</option>
-        <option value="excelent">excelente</option>
-        <option value="good">bueno</option>
-        <option value="regular">normal</option>
-        <option value="bad">malo</option>
-        <option value="awfull">terrible</option>
+        <option value="excelent">Excelente</option>
+        <option value="good">Bueno</option>
+        <option value="regular">Normal</option>
+        <option value="bad">Malo</option>
+        <option value="awfull">Terrible</option>
       </Field>
       <button
-        type="submit"
+        type="button"
         className="create-button"
+        onClick={() => onSubmit(formValues, image)}
       >
         {'Crear objeto'}
       </button>
@@ -66,26 +70,40 @@ const ItemForm = ({
   </div>
 );
 
-ItemForm.propTypes = {
+DummyItemForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  formValues: PropTypes.object.isRequired,
+  image: PropTypes.object.isRequired,
 };
 
+const formSelector = formValueSelector('newItem');
+
+const ItemForm = connect(
+  state => ({
+    formValues: {
+      user: selectors.getLoggedUser(state),
+      name: formSelector(state, 'name'),
+      description: formSelector(state, 'description'),
+      category: formSelector(state, 'category'),
+      quality: formSelector(state, 'quality'),
+    },
+    image: selectors.getImage(state),
+  }),
+  dispatch => ({
+    onSubmit(state, image) {
+      dispatch(beloginActions.createBelonging(
+        uuid(),
+        state.formValues.name,
+        state.formValues.description,
+        state.formValues.category,
+        state.formValues.quality,
+        state.user,
+        image,
+      ));
+    },
+  }),
+)(DummyItemForm);
+
 export default reduxForm({
-  form: 'authValidation',
-  onSubmit(values, dispatch) {
-    dispatch(BeloginActions.createBelonging(
-      values.name,
-      values.description,
-      values.category,
-      values.state,
-      1, //poner el ide del usuario
-    ));
-  },
-  validate(values) {
-    const errors = {};
-    if (!values.email) {
-      errors.email = 'Email is required!';
-    }
-    return errors;
-  },
+  form: 'newItem',
 })(ItemForm);

@@ -1,0 +1,32 @@
+
+.drop-zone{
+  border-color: lightgray;
+  border-style: dashed;
+  border-width: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+  
+  margin: 1rem 0rem;
+}
+
+.drop-zone img{
+  height: 100%;
+  max-width: 100%;
+}
+
+.drop-zone:hover {
+  cursor: pointer;
+}
+
+.drop-zone p{
+  margin: 0rem;
+  text-align: center;
+  text-justify: inter-word;
+}
+
+.drop-zone input {
+  padding: 0;
+}

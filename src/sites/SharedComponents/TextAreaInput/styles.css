@@ -1,0 +1,17 @@
+
+.my-textarea {
+  width: 100%;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.my-textarea textarea{
+  resize: none;
+  width: 100%;
+  flex: 3;
+  margin: 1rem 0rem;
+  padding: 0.4rem 0rem;
+  font-family: 'Open Sans', sans-serif;
+  box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.2), 0 8px 12px 2px rgba(0, 0, 0, 0.39);
+}

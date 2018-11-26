@@ -1,20 +1,20 @@
 import React from 'react';
 import './styles.css';
 
-const TextInput = ({
+const TextInputArea = ({
   input,
   label,
   placeholder,
   type,
   meta: { touched, error },
 }) => (
-  <div className="my-input">
+  <div className="my-textarea">
     <label>
       {label}
     </label>
-    <input {...input} placeholder={placeholder} type={type} />
+    <textarea {...input} placeholder={placeholder} type={type} maxLength="200"/>
     {touched && error && <span>{error}</span>}
   </div>
 );
 
-export default TextInput;
+export default TextInputArea;

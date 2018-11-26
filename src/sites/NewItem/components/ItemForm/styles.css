@@ -26,35 +26,15 @@
   margin: 0;
 }
 
-.item-form .form .text-input{
-  flex:1;
-  width: 100%;
-}
-
-.item-form .form img{
-  height: 200px;
-  padding: 1rem 0rem;
-}
-
-.item-form .form textarea {
-  resize: none;
-  flex: 3;
-  margin: 1rem;
-  width: 100%;
-  padding: 0.5rem;
-  box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.2), 0 8px 12px 2px rgba(0, 0, 0, 0.39);
-}
-
 .item-form .form select {
   width: 50%;
-  flex: 1;
-  padding: 1rem 0rem;
+  
   text-align: center;
+  
 }
 
 .item-form .form .create-button {
-  margin-bottom: 1rem;
+  margin: 1rem 0rem;
   flex: 1;
-  font-size: 1rem;
-
+  font-size: 0.75rem;
 }

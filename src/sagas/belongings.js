@@ -19,7 +19,10 @@ function* belonginGenerator(action) {
       propietaryId,
     },
   } = action;
+  console.log(name);
+  
   try {
+    /*
     const response = yield call(
       postBelongin,
       name,
@@ -28,7 +31,8 @@ function* belonginGenerator(action) {
       usedState,
       propietaryId,
     );
-    yield put(actions.confirmBelongingCreation(id, response.id));
+    */
+    yield put(actions.confirmBelongingCreation(id, 0));
   } catch (e) {
     // Hacer Algo (QUE NO SEA IMPRIMIR EN CONSOLA);
   }
