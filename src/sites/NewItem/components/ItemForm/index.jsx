@@ -101,7 +101,7 @@ const ItemForm = connect(
       ) {
         const belonginValues = {
           id: uuid(),
-          name: formValues.name,
+          name: formValues.name,  
           description: formValues.description,
           category: formValues.category,
           quality: formValues.quality,

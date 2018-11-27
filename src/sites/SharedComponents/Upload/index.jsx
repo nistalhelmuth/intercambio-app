@@ -12,35 +12,41 @@ const FileInput = ({
   meta,
   image,
   addImage,
-}) => (
-  <Dropzone
-    onDrop={ImageToUpload => input.onChange(addImage(ImageToUpload[0]))}
-    className="drop-zone"
-    accept="image/jpeg, image/png, image/jpg"
-  >
-    {image ? (
-      <img
-        src={URL.createObjectURL(image)}
-        alt="uploadImage"
-      />
-    ) : (
-      <p>
+}) => {
+  return (
+    <Dropzone
+      onDrop={ImageToUpload => input.onChange(addImage(ImageToUpload[0]))}
+      className="drop-zone"
+      accept="image/jpeg, image/png, image/jpg"
+    >
+      {image ? (
+        <img
+          src={URL.createObjectURL(image)}
+          alt="uploadImage"
+        />
+      ) : (
+        <p>
           Agregue una imagen
-      </p>
-    )}
-    { meta.touched && meta.error && (
-      <span className="error">
-        { meta.error }
-      </span>
-    )}
-  </Dropzone>
-);
+        </p>
+      )}
+      { meta.touched && meta.error && (
+        <span className="error">
+          { meta.error }
+        </span>
+      )}
+    </Dropzone>
+  );
+};
 
 FileInput.propTypes = {
   input: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
-  image: PropTypes.object.isRequired,
+  image: PropTypes.object,
   addImage: PropTypes.func.isRequired,
+};
+
+FileInput.defaultProps = {
+  image: undefined,
 };
 
 export default connect(

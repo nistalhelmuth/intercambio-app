@@ -74,8 +74,8 @@ const allIds = (state = [], action) => {
   }
   case types.POST_CREATION_CONFIRMED: {
     return [
-      ...state.filter(id => id !== action.payload.id),
-      action.payload.id,
+      ...state.filter(id => id !== action.payload.oldId),
+      action.payload.newId,
     ];
   }
   case types.POSTS_RECIVED: {

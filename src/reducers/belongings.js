@@ -116,8 +116,8 @@ const allIds = (state = defaultIds, action) => {
   }
   case types.BELONGING_CREATION_CONFIRMED: {
     return [
-      ...state.filter(id => id !== action.payload.id),
-      action.payload.id,
+      ...state.filter(id => id !== action.payload.oldId),
+      action.payload.newId,
     ];
   }
   case types.BELONGINGS_RECIVED: {

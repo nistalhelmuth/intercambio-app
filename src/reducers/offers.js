@@ -81,8 +81,8 @@ const allIds = (state = defaultIds, action) => {
   }
   case types.OFFER_CREATION_CONFIRMED: {
     return [
-      ...state.filter(id => id !== action.payload.id),
-      action.payload.id,
+      ...state.filter(id => id !== action.payload.oldId),
+      action.payload.newId,
     ];
   }
   case types.OFFERS_RECIVED: {

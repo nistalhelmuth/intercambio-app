@@ -3,12 +3,13 @@ import * as types from '../types/users';
 export const createUser = (
   id,
   username,
+  password,
   firstName,
   lastName,
   email,
-  password,
   age,
   phone,
+  img,
 ) => ({
   type: types.USER_CREATED,
   payload: {
@@ -20,6 +21,7 @@ export const createUser = (
     password,
     age,
     phone,
+    img,
   },
 });
 

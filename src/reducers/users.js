@@ -61,8 +61,8 @@ const allIds = (state = [], action) => {
   }
   case types.USER_CREATION_CONFIRMED: {
     return [
-      ...state.filter(id => id !== action.payload.id),
-      action.payload.id,
+      ...state.filter(id => id !== action.payload.oldId),
+      action.payload.newId,
     ];
   }
   case types.USERS_RECIVED: {

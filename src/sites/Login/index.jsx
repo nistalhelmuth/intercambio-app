@@ -14,6 +14,7 @@ const Login = ({
   submitting,
   token,
   logginFailed,
+  history,
 }) => (
   <div className="login">
     <h1 className="login-title">The Bartering Library</h1>
@@ -44,7 +45,15 @@ const Login = ({
               />
               <div className="buttons-container">
                 <button className={`login-button ${pristine || submitting ? 'disabled' : ''}`} type="submit" disabled={pristine || submitting}>Iniciar Sesión</button>
-                <button className="login-button" type="button">Registrarse</button>
+                <button
+                  className="login-button"
+                  type="button"
+                  onClick={() => {
+                    history.push('register');
+                  }}
+                >
+                  Registrarse
+                </button>
               </div>
             </div>
           )
