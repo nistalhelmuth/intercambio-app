@@ -48,8 +48,8 @@ const allIds = (state = [], action) => {
   }
   case types.CATEGORTY_ADDITION_CONFIRMED: {
     return [
-      ...state.filter(id => id !== action.payload.id),
-      action.payload.id,
+      ...state.filter(id => id !== action.payload.oldId),
+      action.payload.newId,
     ];
   }
   case types.CATEGORIES_RECIVED: {

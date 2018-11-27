@@ -7,8 +7,9 @@ import {
 import * as types from '../types/users';
 import * as actions from '../actions/users';
 import {
-  postUser, deleteUser, getUsers,
+  postUser, deleteUser, getUsers, updateUser,
 } from '../api/users';
+import { uploadUserImage } from '../api/images';
 
 function* userGenerator(action) {
   const {
@@ -21,8 +22,10 @@ function* userGenerator(action) {
       password,
       age,
       phone,
+      img,
     },
   } = action;
+
   try {
     const response = yield call(
       postUser,
@@ -35,6 +38,28 @@ function* userGenerator(action) {
       phone,
     );
     yield put(actions.confirmUserCreation(id, response.id));
+
+    if (img) {
+      const imgUrl = yield call(
+        uploadUserImage,
+        response.id,
+        img,
+      );
+
+      yield call(
+        updateUser,
+        response.id,
+        username,
+        firstName,
+        lastName,
+        email,
+        password,
+        age,
+        phone,
+        response.rating,
+        imgUrl,
+      );
+    }
   } catch (e) {
     // Hacer Algo (QUE NO SEA IMPRIMIR EN CONSOLA);
   }

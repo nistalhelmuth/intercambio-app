@@ -6,24 +6,74 @@ export const postUser = (
   password,
   age,
   phone,
-) => fetch('http://127.0.0.1:8000/api/v1/users/', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    username,
-    first_name: firstName,
-    last_name: lastName,
-    email,
-    password,
-    age,
-    phone,
-  }),
-}).then(resultado => resultado)
-  .catch((/* error */) => {
-    // Hacer Algo (QUE NO SEA IMPRIMIR EN CONSOLA);
-  });
+) => new Promise((resolve, reject) => {
+  fetch('http://127.0.0.1:8000/api/v1/users/', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username,
+      first_name: firstName,
+      last_name: lastName,
+      email,
+      password,
+      age,
+      phone,
+    }),
+  }).then((resultado) => {
+    if (resultado.ok) {
+      resolve(resultado.json());
+    } else {
+      reject(resultado.statusText);
+    }
+  })
+    .catch((error) => {
+      reject(error);
+    });
+});
+
+export const updateUser = (
+  id,
+  username,
+  firstName,
+  lastName,
+  email,
+  password,
+  age,
+  phone,
+  rating,
+  img,
+) => new Promise((resolve, reject) => {
+  fetch(`http://127.0.0.1:8000/api/v1/users/${id}/`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username,
+      first_name: firstName,
+      last_name: lastName,
+      email,
+      password,
+      age,
+      phone,
+      rating,
+      img,
+    }),
+  }).then((resultado) => {
+    if (resultado.ok) {
+      resolve(resultado.json());
+    } else {
+      reject(resultado.statusText);
+    }
+  })
+    .catch((error) => {
+      reject(error);
+    });
+});
 
 export const deleteUser = id => fetch(`http://127.0.0.1:8000/api/v1/users/${id}/`, {
   method: 'DELETE',
