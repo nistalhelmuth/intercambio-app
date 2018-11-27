@@ -1,25 +1,8 @@
 import { combineReducers } from 'redux';
 import * as types from '../types/offers';
-import * as belonginsTypes from '../types/belongings';
+import * as offerTypes from '../types/belongings';
 
-const defaultState = {
-  0: {
-    id: 0,
-    userId: 0,
-    offeredObjects: [0, 1, 2, 3],
-    offeredIn: 0,
-    date: 0,
-  },
-  1: {
-    id: 1,
-    userId: 1,
-    offeredObjects: [0, 1, 2, 3],
-    offeredIn: 0,
-    date: 0,
-  },
-};
-
-const byId = (state = defaultState, action) => {
+const byId = (state = {}, action) => {
   switch (action.type) {
   case types.OFFER_CREATED: {
     const { payload: { id } } = action;
@@ -45,7 +28,14 @@ const byId = (state = defaultState, action) => {
     };
   }
   case types.OFFERS_RECIVED: {
-    return action.payload.offers;
+    const stateToBe = {};
+    action.payload.offers.forEach((offer) => {
+      stateToBe[offer.id] = {
+        ...offer,
+        belongings: [],
+      };
+    });
+    return stateToBe;
   }
   case types.OFFER_DELETION_CONFIRMED: {
     const newState = { ...state };
@@ -61,17 +51,26 @@ const byId = (state = defaultState, action) => {
       [id]: action.payload,
     };
   }
-  case belonginsTypes.BELONGING_SELECTED: {  //pendiente esto
-    return state;
+  case offerTypes.BELONGINGS_PER_OFFER_RECIVED: {
+    const { offerId, belongings } = action.payload;
+    const newBelongings = [];
+    belongings.forEach((belonging) => {
+      newBelongings.push(belonging.belonging.id);
+    });
+    return {
+      ...state,
+      [offerId]: {
+        ...state[offerId],
+        belongings: newBelongings,
+      }
+    };
   }
   default:
     return state;
   }
 };
 
-const defaultIds = [0,1];
-
-const allIds = (state = defaultIds, action) => {
+const allIds = (state = [], action) => {
   switch (action.type) {
   case types.OFFER_CREATED: {
     return [

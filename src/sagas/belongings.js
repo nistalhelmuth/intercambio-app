@@ -1,12 +1,20 @@
 import {
   call,
   takeLatest,
+  takeEvery,
   put,
+  select,
 } from 'redux-saga/effects';
 
 import * as types from '../types/belongings';
 import * as belonginActions from '../actions/belongings';
-import { postBelongin, getBelongin, deleteBelongin } from '../api/belongings';
+import * as selectors from '../reducers';
+import {
+  postBelongin,
+  getBelongin,
+  deleteBelongin,
+  getBelonginPerOffer,
+} from '../api/belongings';
 
 function* belonginGenerator(action) {
   const {
@@ -70,6 +78,25 @@ function* belonginFetcher(action) {
   }
 }
 
+function* belongingsPerOfferFetcher(action) {
+  const {
+    payload: {
+      offerId,
+    },
+  } = action;
+  const token = yield select(selectors.getToken);
+  try {
+    const response = yield call(
+      getBelonginPerOffer,
+      offerId,
+      token,
+    );
+    yield put(belonginActions.reciveBelongingsPerOffer(offerId, response));
+  } catch (e) {
+    // Hacer Algo (QUE NO SEA IMPRIMIR EN CONSOLA);
+  }
+}
+
 function* watchBelonginsSaga() {
   yield takeLatest(
     types.BELONGING_CREATED,
@@ -82,6 +109,10 @@ function* watchBelonginsSaga() {
   yield takeLatest(
     types.BELONGING_DELETED,
     belonginFetcher,
+  );
+  yield takeEvery(
+    types.BELONGINGS_PER_OFFER_FETCHED,
+    belongingsPerOfferFetcher,
   );
 }
 

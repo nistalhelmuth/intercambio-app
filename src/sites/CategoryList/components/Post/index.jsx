@@ -11,7 +11,7 @@ const Post = ({
   postInfo,
 }) => (
   <Link
-    to={`/posts/${postInfo.posted_by}/${postInfo.id}`}
+    to={`/posts/${postInfo.postedBy}/${postInfo.id}`}
     style={{ textDecoration: 'none', color: 'black' }}
   >
     <div className="post-card">
