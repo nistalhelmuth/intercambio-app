@@ -6,7 +6,6 @@ export const createPost = (
   description,
   postedBy,
   offeredItem,
-  date,
   category,
 ) => ({
   types: types.POST_CREATED,
@@ -16,7 +15,6 @@ export const createPost = (
     description,
     postedBy,
     offeredItem,
-    date,
     category,
   },
 });

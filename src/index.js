@@ -16,6 +16,7 @@ import Login from './sites/Login';
 import User from './sites/User';
 import ItemView from './sites/ItemView';
 import NewUser from './sites/NewUser';
+import NewPost from './sites/NewPost';
 
 const store = configureStore();
 
@@ -38,6 +39,7 @@ ReactDOM.render(
         <Route exact path="/users/:userId" component={User} />
         <Route exact path="/posts/:userId/:postId" component={ItemView} />
         <Route exact path="/register" component={NewUser} />
+        <Route exact path="/newPost/:userId" component={NewPost} />
       </Switch>
     </BrowserRouter>
   </Provider>,

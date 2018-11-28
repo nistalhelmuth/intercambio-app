@@ -17,7 +17,7 @@ const Header = ({
         ? <Redirect to="/" />
         : ''
     }
-    <Link className="link-as-button" to="/newPost">Crear Post</Link>
+    <Link className="link-as-button" to={`/newPost/${user.id}`}>Crear Post</Link>
     <div className="profile">
       <img
         className="profile-icon"
