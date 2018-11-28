@@ -30,7 +30,11 @@ const submitted = (state = false, action) => {
   switch (action.type) {
   case postTypes.POST_CREATION_CONFIRMED: {
     return true;
-  } case types.SUBMITTED_STATUS_RESETED: {
+  }
+  case belongingTypes.BELONGING_CREATION_CONFIRMED: {
+    return true;
+  }
+  case types.SUBMITTED_STATUS_RESETED: {
     return false;
   }
   default:

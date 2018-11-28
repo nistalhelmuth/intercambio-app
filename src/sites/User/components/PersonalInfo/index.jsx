@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as selectors from '../../../../reducers';
 import * as actions from '../../../../actions/users';
+import * as interfaceActions from '../../../../actions/interface';
 
 import './styles.css';
 
 class PersonalInfo extends Component {
   componentWillMount() {
-    const { fetchUser } = this.props;
+    const { fetchUser, resetSubmittedStatus } = this.props;
     fetchUser();
+    resetSubmittedStatus();
   }
 
   render() {
@@ -58,6 +60,7 @@ PersonalInfo.propTypes = {
   age: PropTypes.number.isRequired,
   phone: PropTypes.string.isRequired,
   fetchUser: PropTypes.func.isRequired,
+  resetSubmittedStatus: PropTypes.func.isRequired,
 };
 
 export default connect(
@@ -74,6 +77,9 @@ export default connect(
   (dispatch, { id }) => ({
     fetchUser() {
       dispatch(actions.fetchUser(id));
+    },
+    resetSubmittedStatus() {
+      dispatch(interfaceActions.resetSubmittedStatus());
     },
   }),
 )(PersonalInfo);

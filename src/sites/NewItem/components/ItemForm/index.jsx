@@ -3,6 +3,7 @@ import uuid from 'uuid-v4';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { Redirect } from 'react-router-dom';
 import TextInput from '../../../SharedComponents/TextInput';
 import TextAreaInput from '../../../SharedComponents/TextAreaInput';
 import SelectInput from '../../../SharedComponents/SelectInput';
@@ -28,9 +29,16 @@ class DummyItemForm extends Component {
       handleSubmit,
       categories,
       categoryIds,
+      user,
+      submitted,
     } = this.props;
     return (
       <div className="item-form">
+        {
+          submitted
+            ? <Redirect to={`/users/${user.id}`} />
+            : ''
+        }
         <form className="form" onSubmit={handleSubmit}>
           <h3>
             {'Crea un nuevo objeto'}
@@ -86,6 +94,8 @@ DummyItemForm.propTypes = {
   fetchAllCategories: PropTypes.func.isRequired,
   categories: PropTypes.array,
   categoryIds: PropTypes.array,
+  submitted: PropTypes.bool.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 DummyItemForm.defaultProps = {
@@ -103,6 +113,7 @@ export default connect(
     image: selectors.getImage(state),
     categories: selectors.getCategories(state),
     categoryIds: selectors.getCategoryIds(state),
+    submitted: selectors.getSubmittedStatus(state),
   }),
   dispatch => ({
     onSubmit(formValues, disp, props) {
