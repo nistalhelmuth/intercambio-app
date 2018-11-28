@@ -14,6 +14,7 @@ import {
   fetchBelongings,
   deleteBelonging,
   getBelonginPerOffer,
+  postBelongingInOffer,
   updateBelonging,
 } from '../api/belongings';
 import { uploadImage } from '../api/images';
@@ -92,14 +93,15 @@ function* belongingRemover(action) {
 function* belongingFetcher(action) {
   const {
     payload: {
-      id,
+      userId,
     },
   } = action;
   const token = yield select(selectors.getToken);
+  console.log(userId);
   try {
     const response = yield call(
       fetchBelongings,
-      id,
+      userId,
       token,
     );
     yield put(belonginActions.reciveBelongings(response));
@@ -127,6 +129,36 @@ function* belongingsPerOfferFetcher(action) {
   }
 }
 
+function* generateObjectInOffer(offerId, belongings, token) {
+  yield belongings.map(belonging => call(
+    postBelongingInOffer,
+    offerId,
+    belonging,
+    token,
+  ));
+}
+
+function* belongingsPerOfferGenerator(action) {
+  const {
+    payload: {
+      offerId,
+      belongings,
+    },
+  } = action;
+  const token = yield select(selectors.getToken);
+  try {
+    yield call(
+      generateObjectInOffer,
+      offerId,
+      belongings,
+      token,
+    );
+    yield put(belonginActions.createBelongingsPerOfferConfirmed());
+  } catch (error) {
+    yield put(belonginActions.createBelongingsPerOfferFailed());
+  }
+}
+
 function* watchBelongingsSaga() {
   yield takeLatest(
     types.BELONGING_CREATED,
@@ -143,6 +175,10 @@ function* watchBelongingsSaga() {
   yield takeEvery(
     types.BELONGINGS_PER_OFFER_FETCHED,
     belongingsPerOfferFetcher,
+  );
+  yield takeLatest(
+    types.BELONGINGS_PER_OFFER_CREATED,
+    belongingsPerOfferGenerator,
   );
 }
 

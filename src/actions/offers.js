@@ -2,13 +2,15 @@ import * as types from '../types/offers';
 
 export const createOffer = (
   id,
-  offereObject,
+  offeredBy,
+  offeredObjects,
   offeredIn,
 ) => ({
   type: types.OFFER_CREATED,
   payload: {
     id,
-    offereObject,
+    offeredBy,
+    offeredObjects,
     offeredIn,
   },
 });
@@ -16,13 +18,11 @@ export const createOffer = (
 export const confirmOfferCreation = (
   oldId,
   newId,
-  date,
 ) => ({
   type: types.OFFER_CREATION_CONFIRMED,
   payload: {
     oldId,
     newId,
-    date,
   },
 });
 

@@ -32,10 +32,10 @@ export const confirmBelongingCreation = (
   },
 });
 
-export const fetchBelongings = id => ({
+export const fetchBelongings = userId => ({
   type: types.BELONGINGS_FETCHED,
   payload: {
-    id,
+    userId,
   },
 });
 
@@ -61,6 +61,22 @@ export const reciveBelongingsPerOffer = (offerId, belongings) => ({
   },
 });
 
+export const createBelongingsPerOffer = (offerId, belongings) => ({
+  type: types.BELONGINGS_PER_OFFER_CREATED,
+  payload: {
+    offerId,
+    belongings,
+  },
+});
+
+export const createBelongingsPerOfferConfirmed = () => ({
+  type: types.BELONGINGS_PER_OFFER_CREATED_CONFIRMED,
+});
+
+export const createBelongingsPerOfferFailed = () => ({
+  type: types.BELONGINGS_PER_OFFER_CREATED_FAILED,
+});
+
 export const deleteBelonging = id => ({
   type: types.BELONGING_DELETED,
   payload: {
@@ -77,5 +93,7 @@ export const confirmBelongingDeletion = id => ({
 
 export const belonginSelected = id => ({
   type: types.BELONGING_SELECTED,
-  payload: id,
+  payload: {
+    id,
+  },
 });

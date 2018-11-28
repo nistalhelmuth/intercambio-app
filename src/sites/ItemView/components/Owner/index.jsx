@@ -53,8 +53,8 @@ class Owner extends Component {
 
 Owner.propTypes = {
   id: PropTypes.number.isRequired,
-  first_name: PropTypes.string.isRequired,
-  last_name: PropTypes.string.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,

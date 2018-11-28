@@ -7,27 +7,31 @@ import {
 import { fetchOffers, postOffer, deleteOffer } from '../api/offers';
 import * as types from '../types/offers';
 import * as actions from '../actions/offers';
+import * as belongingsActions from '../actions/belongings';
 import * as selectors from '../reducers';
-
-function* generateOffers(payload, token) {
-  yield payload.objects.map(object => call(
-    postOffer,
-    object,
-    payload.userId,
-    payload.objectId,
-    token,
-  ));
-}
 
 function* offerGenerator(action) {
   const {
-    payload,
+    payload: {
+      id,
+      offeredBy,
+      offeredObjects,
+      offeredIn,
+    },
   } = action;
   const token = yield select(selectors.getToken);
+  
   try {
-    const response = yield call(generateOffers, payload, token);
-    yield put(actions.confirmOfferCreation(response));
+    const response = yield call(
+      postOffer,
+      offeredBy,
+      offeredIn,
+      token,
+    );
+    yield put(actions.confirmOfferCreation(id, response.id));
+    //yield put(belongingsActions.createBelongingsPerOffer(response.id, offeredObjects));
   } catch (error) {
+    console.log(error);
     yield put(actions.failOfferCreation());
   }
 }

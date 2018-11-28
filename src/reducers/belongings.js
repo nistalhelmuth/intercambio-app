@@ -29,7 +29,10 @@ const byId = (state = {}, action) => {
   case types.BELONGINGS_RECIVED: {
     const stateToBe = {};
     action.payload.belongings.forEach((belonging) => {
-      stateToBe[belonging.id] = belonging;
+      stateToBe[belonging.id] = {
+        ...belonging,
+        selected: false,
+      };
     });
     return stateToBe;
   }
@@ -54,7 +57,7 @@ const byId = (state = {}, action) => {
     return newState;
   }
   case types.BELONGING_SELECTED: {
-    const item = state[action.payload];
+    const item = state[action.payload.id];
     const newState = { ...state };
     const newItem = {
       ...item,
@@ -62,8 +65,9 @@ const byId = (state = {}, action) => {
     };
     return {
       ...newState,
-      [action.payload]: newItem,
+      [action.payload.id]: newItem,
     };
+    
   }
   default:
     return state;
@@ -92,11 +96,7 @@ const allIds = (state = [], action) => {
     return stateToBe;
   }
   case types.BELONGINGS_PER_OFFER_RECIVED: {
-    const stateToBe = [];
-    action.payload.belongings.forEach((belonging) => {
-      stateToBe.push(belonging.belonging.id);
-    });
-    return [...state, ...stateToBe];
+    return state;
   }
   case types.BELONGING_DELETION_CONFIRMED: {
     return state.filter(id => id !== action.payload.id);
@@ -106,9 +106,32 @@ const allIds = (state = [], action) => {
   }
 };
 
+const selected = (state = [], action) => {
+  switch (action.type) {
+  case types.BELONGING_SELECTED: {
+    const { id } = action.payload;
+    const index = state.indexOf(id);
+    console.log(index);
+    if (index > -1) {
+      return [
+        ...state.slice(0, index),
+        ...state.slice(index + 1, state.length),
+      ];
+    }
+    return [
+      ...state,
+      id,
+    ];
+  }
+  default:
+    return state;
+  }
+};
+
 export default combineReducers({
   byId,
   allIds,
+  selected,
 });
 
 export const getBelonging = (state, id) => state.byId[id];
@@ -116,3 +139,4 @@ export const getBelongings = state => (
   state.allIds.map(id => getBelonging(state, id))
 );
 export const getBelongingIds = state => state.allIds;
+export const getSelectedBelongings = state => state.selected;

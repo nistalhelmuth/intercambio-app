@@ -15,24 +15,24 @@ export const fetchOffers = (postId, token) => new Promise((resolve, reject) => {
 
 
 export const postOffer = (
-  object,
-  userId,
-  objectId,
+  offeredBy,
+  offeredIn,
   token,
 ) => new Promise((resolve, reject) => {
   fetch('http://127.0.0.1:8000/api/v1/offers/', {
     method: 'POST',
     headers: {
+      Accept: 'application/json',
       'Content-Type': 'application/json',
       Authorization: `JWT ${token}`,
     },
     body: JSON.stringify({
-      offered_object: object,
-      offered_by: userId,
-      offered_in: objectId,
-      token,
+      offeredBy,
+      offeredIn,
     }),
   }).then((resultado) => {
+    console.log(offeredBy);
+    console.log(offeredIn);
     if (resultado.ok) {
       resolve(resultado.json());
     } else {
