@@ -16,7 +16,7 @@ import {
   getUser,
   updateUser,
 } from '../api/users';
-import { uploadUserImage } from '../api/images';
+import { uploadImage } from '../api/images';
 
 function* userGenerator(action) {
   const {
@@ -44,12 +44,12 @@ function* userGenerator(action) {
       age,
       phone,
     );
-    yield put(actions.confirmUserCreation(id, response.id));
 
     if (img) {
       const imgUrl = yield call(
-        uploadUserImage,
+        uploadImage,
         response.id,
+        'users',
         img,
       );
 
@@ -67,6 +67,8 @@ function* userGenerator(action) {
         imgUrl,
       );
     }
+
+    yield put(actions.confirmUserCreation(id, response.id));
   } catch (e) {
     // Hacer Algo (QUE NO SEA IMPRIMIR EN CONSOLA);
   }

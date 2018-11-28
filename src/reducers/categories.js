@@ -71,6 +71,6 @@ export default combineReducers({
 
 export const getCategory = (state, id) => state.byId[id];
 export const getCategories = state => (
-  state.allIds.map(id => getCategory(id))
+  state.allIds.map(id => getCategory(state, id))
 );
 export const getCategoryIds = state => state.allIds;

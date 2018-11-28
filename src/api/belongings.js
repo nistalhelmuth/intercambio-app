@@ -1,33 +1,96 @@
-export const postBelongin = (
+export const postBelonging = (
   name,
   description,
   category,
-  usedState,
-  propietaryId,
-) => fetch('http://127.0.0.1:8000/api/v1/belongins/', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    name,
-    description,
-    category,
-    usedState,
-    propietaryId,
-  }),
-}).then(resultado => resultado)
-  .catch((/* error */) => {
-    // Hacer Algo (QUE NO SEA IMPRIMIR EN CONSOLA);
-  });
+  state,
+  belongsTo,
+  token,
+) => new Promise((resolve, reject) => {
+  fetch('http://127.0.0.1:8000/api/v1/belongings/', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `JWT ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      description,
+      category,
+      state,
+      belongsTo,
+    }),
+  }).then((resultado) => {
+    if (resultado.ok) {
+      resolve(resultado.json());
+    } else {
+      reject(resultado.statusText);
+    }
+  })
+    .catch((error) => {
+      reject(error);
+    });
+});
 
-export const deleteBelongin = id => fetch(`http://127.0.0.1:8000/api/v1/belongins/${id}/`, {
+export const fetchBelongings = (
+  belongsTo,
+  token,
+) => new Promise((resolve, reject) => {
+  fetch(`http://127.0.0.1:8000/api/v1/belongings/from_user/?user=${belongsTo}`, {
+    method: 'GET',
+    headers: {
+      Authorization: `JWT ${token}`,
+    },
+  }).then((resultado) => {
+    if (resultado.ok) {
+      resolve(resultado.json());
+    } else {
+      reject(resultado.statusText);
+    }
+  })
+    .catch((error) => {
+      reject(error);
+    });
+});
+
+export const updateBelonging = (
+  id,
+  name,
+  description,
+  category,
+  state,
+  belongsTo,
+  img,
+  token,
+) => new Promise((resolve, reject) => {
+  fetch(`http://127.0.0.1:8000/api/v1/belongings/${id}/`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `JWT ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      description,
+      category,
+      state,
+      belongsTo,
+      img,
+    }),
+  }).then((resultado) => {
+    if (resultado.ok) {
+      resolve(resultado.json());
+    } else {
+      reject(resultado.statusText);
+    }
+  })
+    .catch((error) => {
+      reject(error);
+    });
+});
+
+export const deleteBelonging = id => fetch(`http://127.0.0.1:8000/api/v1/belongings/${id}/`, {
   method: 'DELETE',
 }).then(resultado => resultado)
   .catch(/* error */);
-
-// esto no funciona
-export const getBelongin = id => fetch(`http://127.0.0.1:8000/api/v1/belongins/${id}/`, {
-  method: 'GET',
-}).then(resultado => resultado.json())
-  .catch(error => console.log(error));

@@ -2,24 +2,27 @@ import React from 'react';
 import uuid from 'uuid-v4';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import TextInput from '../../../SharedComponents/TextInput';
 import TextAreaInput from '../../../SharedComponents/TextAreaInput';
+import SelectInput from '../../../SharedComponents/SelectInput';
 import Upload from '../../../SharedComponents/Upload';
-import * as imageActions from '../../../../actions/image';
+import * as actions from '../../../../actions/belongings';
 import * as selectors from '../../../../reducers';
 
 import './styles.css';
 
 const required = value => (value ? undefined : 'Obligatorio');
+const stateValues = ['excelent', 'good', 'regular', 'bad', 'awful'];
+const stateDisplayValues = ['Excelente', 'Bueno', 'Normal', 'Malo', 'Terrible'];
 
 const DummyItemForm = ({
-  onSubmit,
-  formValues,
-  image,
+  handleSubmit,
+  categories,
+  categoryIds,
 }) => (
   <div className="item-form">
-    <form className="form" onSubmit={onSubmit(formValues, image)}>
+    <form className="form" onSubmit={handleSubmit}>
       <h3>
         {'Crea un nuevo objeto'}
       </h3>
@@ -43,25 +46,20 @@ const DummyItemForm = ({
       />
       <Field
         name="category"
-        type="text"
         label="Ingresa la categoría que pertenece"
-        component={TextInput}
-        placeholder="Mascotas, libros, electrónicos, etc."
+        component={SelectInput}
+        valueList={categoryIds}
+        displayList={categories.map(cat => (
+          cat.name
+        ))}
       />
-      <label>
-        {'Selecciona el estado'}
-      </label>
       <Field
         name="quality"
-        component="select"
-      >
-        <option>...</option>
-        <option value="excelent">Excelente</option>
-        <option value="good">Bueno</option>
-        <option value="regular">Normal</option>
-        <option value="bad">Malo</option>
-        <option value="awfull">Terrible</option>
-      </Field>
+        label="Selecciona el estado"
+        component={SelectInput}
+        valueList={stateValues}
+        displayList={stateDisplayValues}
+      />
       <button
         type="submit"
         className="create-button"
@@ -73,51 +71,47 @@ const DummyItemForm = ({
 );
 
 DummyItemForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  formValues: PropTypes.object.isRequired,
-  image: PropTypes.object.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  categories: PropTypes.array,
+  categoryIds: PropTypes.array,
 };
 
-const formSelector = formValueSelector('newItem');
+DummyItemForm.defaultProps = {
+  categories: {},
+  categoryIds: [],
+};
 
-const ItemForm = connect(
+const ItemForm = reduxForm({
+  form: 'newItem',
+})(DummyItemForm);
+
+export default connect(
   state => ({
-    formValues: {
-      user: selectors.getLoggedUser(state),
-      name: formSelector(state, 'name'),
-      description: formSelector(state, 'description'),
-      category: formSelector(state, 'category'),
-      quality: formSelector(state, 'quality'),
-    },
+    user: selectors.getLoggedUser(state),
     image: selectors.getImage(state),
+    categories: selectors.getCategories(state),
+    categoryIds: selectors.getCategoryIds(state),
   }),
   dispatch => ({
-    onSubmit(formValues, image) {
+    onSubmit(formValues, disp, props) {
       if (
         formValues.name
         && formValues.description
         && formValues.category
         && formValues.quality
       ) {
-        const belonginValues = {
-          id: uuid(),
-          name: formValues.name,  
-          description: formValues.description,
-          category: formValues.category,
-          quality: formValues.quality,
-          user: formValues.user,
-        };
-        dispatch(imageActions.sendBelonginImage(
-          belonginValues,
-          image,
+        dispatch(actions.createBelonging(
+          uuid(),
+          formValues.name,
+          formValues.description,
+          formValues.category,
+          formValues.quality,
+          props.user.id,
+          props.image,
         ));
       } else {
-        console.log("faltan valores");
+        console.log('faltan valores');
       }
     },
   }),
-)(DummyItemForm);
-
-export default reduxForm({
-  form: 'newItem',
-})(ItemForm);
+)(ItemForm);

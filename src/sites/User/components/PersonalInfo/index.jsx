@@ -12,10 +12,10 @@ class PersonalInfo extends Component {
     fetchUser();
   }
 
-  render () {
+  render() {
     const {
-      first_name,
-      last_name,
+      firstName,
+      lastName,
       username,
       email,
       age,
@@ -26,7 +26,7 @@ class PersonalInfo extends Component {
       <div className="personalInfo">
         <div className="content">
           <h1 className="title">
-            {`Cosas de ${first_name} ${last_name}`}
+            {`Cosas de ${firstName} ${lastName}`}
           </h1>
           <ul>
             <li>
@@ -50,8 +50,8 @@ class PersonalInfo extends Component {
 }
 
 PersonalInfo.propTypes = {
-  first_name: PropTypes.string.isRequired,
-  last_name: PropTypes.string.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,

@@ -20,7 +20,6 @@ function* postsFetcher(action) {
     );
     yield put(actions.recivePosts(response));
   } catch (error) {
-    console.log(error);
     yield put(actions.failPostsFetching());
   }
 }

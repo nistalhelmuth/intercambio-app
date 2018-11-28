@@ -80,10 +80,22 @@ const allIds = (state = [], action) => {
   }
 };
 
+const submitted = (state = false, action) => {
+  switch (action.type) {
+  case types.SUBMIT_STATUS_RESETTED:
+    return false;
+  case types.USER_CREATION_CONFIRMED:
+    return true;
+  default:
+    return state;
+  }
+};
+
 export default combineReducers({
   byId,
   allIds,
   selected,
+  submitted,
 });
 
 export const getSelectedUser = state => state.selected;
@@ -91,3 +103,4 @@ export const getUser = (state, id) => state.byId[id];
 export const getUsers = state => (
   state.allIds.map(id => getUser(state, id))
 );
+export const getUserSubmissionStatus = state => state.submitted;

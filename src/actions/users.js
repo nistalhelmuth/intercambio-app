@@ -89,3 +89,7 @@ export const reciveUser = userInfo => ({
 export const failUserFetching = () => ({
   type: types.USER_RECIVED_FAILED,
 });
+
+export const resetSubmitStatus = () => ({
+  type: types.SUBMIT_STATUS_RESETTED,
+});

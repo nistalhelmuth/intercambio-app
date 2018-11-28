@@ -15,8 +15,8 @@ export const postUser = (
     },
     body: JSON.stringify({
       username,
-      first_name: firstName,
-      last_name: lastName,
+      firstName,
+      lastName,
       email,
       password,
       age,

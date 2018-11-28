@@ -1,0 +1,38 @@
+.user-form {
+  align-items: center;
+  display: flex;
+  flex: 6;
+  flex-direction: column;
+  height: 100%;
+  margin: auto;
+  padding: 2rem 0rem;
+  width: 400px;
+}
+
+.user-form .form {
+  align-items: center;
+  background-color: rgba(34, 34, 34, .6);
+  border-radius: 2px;
+  box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.2), 0 8px 12px 2px rgba(0, 0, 0, 0.39);
+  color: white;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 1.2rem 1rem 1.2rem;
+}
+
+.user-form .form h3 {
+  margin: 0;
+}
+
+.user-form .form select {
+  text-align: center;
+  width: 50%;
+}
+
+.user-form .form .create-button {
+  flex: 1;
+  font-size: 0.75rem;
+  margin: 1rem 0;
+}

@@ -1,6 +1,6 @@
 import AWS from 'aws-sdk';
 
-export const uploadUserImage = (id, img) => {
+export const uploadImage = (id, albumName, img) => {
   AWS.config.update({
     region: 'us-east-1',
     credentials: new AWS.CognitoIdentityCredentials({
@@ -12,7 +12,7 @@ export const uploadUserImage = (id, img) => {
 
   return new Promise((resolve, reject) => {
     s3.upload({
-      Key: `users/${id}.jpg`,
+      Key: `${albumName}/${id}.jpg`,
       Body: img,
       ACL: 'public-read-write',
     }, (err, data) => {
