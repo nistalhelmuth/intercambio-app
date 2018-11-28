@@ -35,6 +35,10 @@ function* offerGenerator(action) {
   }
 }
 
+function* fetcherObjectsperOffer(offers) {
+  yield offers.map(offer => put(belongingsActions.fetchBelongingsPerOffer(offer.id)));
+}
+
 function* offersFetcher(action) {
   const { payload: { postId } } = action;
   const token = yield select(selectors.getToken);
@@ -45,6 +49,10 @@ function* offersFetcher(action) {
       token,
     );
     yield put(actions.confirmOffersFetch(response));
+    yield call(
+      fetcherObjectsperOffer,
+      response,
+    );
   } catch (error) {
     console.log(error);
     yield put(actions.failOfferFetching());

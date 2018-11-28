@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import * as types from '../types/belongings';
+import * as interafceTypes from '../types/interface';
 
 const byId = (state = {}, action) => {
   switch (action.type) {
@@ -67,7 +68,6 @@ const byId = (state = {}, action) => {
       ...newState,
       [action.payload.id]: newItem,
     };
-    
   }
   default:
     return state;
@@ -101,6 +101,8 @@ const allIds = (state = [], action) => {
   case types.BELONGING_DELETION_CONFIRMED: {
     return state.filter(id => id !== action.payload.id);
   }
+  case interafceTypes.SWITCH_BET_CREATOR:
+    return [];
   default:
     return state;
   }

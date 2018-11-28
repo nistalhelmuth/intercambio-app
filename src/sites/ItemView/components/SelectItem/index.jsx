@@ -14,11 +14,11 @@ const Item = ({
   <button type="button" className="button-item" onClick={selectBelongin}>
     {belonging.selected && <img src="/tools/checkmark.png" alt="check" className="check" />}
     <div className="button-content">
-      <img className="picture" src={belonging.img} alt="icon" />
+      <img className="picture" src={belonging.img || '/default.png'} alt="icon" />
       <p>
         {belonging.name}
       </p>
-      <Stars num={0} />
+      <Stars num={belonging.state} />
     </div>
   </button>
 );

@@ -33,7 +33,14 @@ export const getBelongings = state => belongingSelectors.getBelongings(state.bel
 export const getBelongingIds = state => belongingSelectors.getBelongingIds(state.belongings);
 export const getSelectedBelongings = state => belongingSelectors.getSelectedBelongings(state.belongings);
 export const getBeloingsByCategory = (state, categoryId) => getBelongings(state).map(belogin => (belogin.category === parseInt(categoryId, 10) ? belogin.id : undefined));
-export const getBelongingsPerOffer = (state, offerId) => getOffer(state, offerId).belongings.map(belonginId => getBelonging(state, belonginId));
+//export const getBelongingsPerOffer = (state, offerId) => getOffer(state, offerId).belongings.map(belonginId => getBelonging(state, belonginId));
+export const getBelongingsPerOffer = (state, offerId) => {
+  const belongingsList = getOffer(state, offerId).belongings;
+  if (belongingsList) {
+    return belongingsList.map(belongingId => getBelonging(state, belongingId));
+  }
+  return [];
+};
 
 export const getSelectedUser = state => userSelectors.getSelectedUser(state.users);
 export const getUser = (state, id) => userSelectors.getUser(state.users, id);

@@ -9,7 +9,7 @@ import './styles.css';
 class Bet extends Component {
   componentWillMount() {
     const { fetchBelongings } = this.props;
-    fetchBelongings();
+    //fetchBelongings();
   }
 
   render() {
@@ -36,7 +36,11 @@ class Bet extends Component {
         <div className="betItems">
           {
             belongings.map(belonging => (
-              <img src={belonging.img} alt="object" />
+              belonging ? (
+                <img src={belonging.img} alt="object" />
+              ) : (
+                <img src="/default.png" alt="default" />
+              )
             ))
           }
         </div>

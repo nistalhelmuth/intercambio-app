@@ -13,7 +13,7 @@ import * as selectors from '../../../../reducers';
 import './styles.css';
 
 const required = value => (value ? undefined : 'Obligatorio');
-const stateValues = ['excelent', 'good', 'regular', 'bad', 'awful'];
+const stateValues = [4, 3, 2, 1, 0];
 const stateDisplayValues = ['Excelente', 'Bueno', 'Normal', 'Malo', 'Terrible'];
 
 const DummyItemForm = ({
