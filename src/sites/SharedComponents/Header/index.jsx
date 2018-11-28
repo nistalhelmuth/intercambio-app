@@ -6,6 +6,19 @@ import * as selectors from '../../../reducers';
 import * as authActions from '../../../actions/auth';
 import './styles.css';
 
+const leftButton = (token, goToCategories, user) => {
+  if (token !== undefined) {
+    return (
+      goToCategories ? (
+        <Link className="link-as-button" to="/categories">Ver Categorias</Link>
+      ) : (
+        <Link className="link-as-button" to={`/newPost/${user.id}`}>Crear Post</Link>
+      )
+    );
+  }
+  return '';
+};
+
 const Header = ({
   user,
   closeSession,
@@ -19,13 +32,7 @@ const Header = ({
         ? <Redirect to="/" />
         : ''
     }
-    {
-      goToCategories ? (
-        <Link className="link-as-button" to="/categories">Ver Categorias</Link>
-      ) : (
-        <Link className="link-as-button" to={`/newPost/${user.id}`}>Crear Post</Link>
-      )
-    }
+    {leftButton(token, goToCategories, user)}
     {
       !disableProfileIcon && (
         <div className="profile">
@@ -50,7 +57,6 @@ const Header = ({
         </div>
       )
     }
-    
   </div>
 );
 
