@@ -52,7 +52,7 @@ const Header = ({
         <div className="profile">
           <img
             className="profile-icon"
-            src={user ? user.img : '/user-icon.png'}
+            src={user.img || '/user-icon.png'}
             alt="user-icon"
           />
           <div className="popover-container">

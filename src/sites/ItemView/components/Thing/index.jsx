@@ -3,7 +3,6 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 
 import * as selectors from '../../../../reducers';
-import Stars from '../../../SharedComponents/Stars';
 import * as actions from '../../../../actions/posts';
 
 import './styles.css';
@@ -18,7 +17,6 @@ class Thing extends Component {
     const {
       title,
       description,
-      usedState,
       img,
     } = this.props;
     return (
@@ -27,7 +25,6 @@ class Thing extends Component {
           {title}
         </h2>
         <img src={img} className="thing-picture" alt="thingPicture" />
-        <Stars num={usedState} />
         <p>
           {description}
         </p>
@@ -39,7 +36,6 @@ class Thing extends Component {
 Thing.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  usedState: PropTypes.number.isRequired,
   img: PropTypes.string.isRequired,
   getPost: PropTypes.func.isRequired,
 };

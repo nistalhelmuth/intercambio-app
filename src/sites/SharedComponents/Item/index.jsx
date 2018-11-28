@@ -26,7 +26,6 @@ const Item = ({
           <img
             src="/tools/deleteIcon.png"
             alt="delete"
-            
           />
         </button>
       )

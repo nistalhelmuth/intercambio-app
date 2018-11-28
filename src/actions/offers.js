@@ -64,10 +64,14 @@ export const deleteOffer = id => ({
 });
 
 export const confirmOfferDeletion = id => ({
-  type: types.OFFER_DELETED,
+  type: types.OFFER_DELETION_CONFIRMED,
   payload: {
     id,
   },
+});
+
+export const failOfferDeletion = () => ({
+  type: types.OFFER_DELETION_FAILED,
 });
 
 export const fetchOffers = postId => ({

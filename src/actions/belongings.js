@@ -77,6 +77,21 @@ export const createBelongingsPerOfferFailed = () => ({
   type: types.BELONGINGS_PER_OFFER_CREATED_FAILED,
 });
 
+export const deleteBelongingsPerOffer = offerId => ({
+  type: types.BELONGINGS_PER_OFFER_DELETED,
+  payload: {
+    offerId,
+  },
+});
+
+export const deleteBelongingsPerOfferConfirmed = () => ({
+  type: types.BELONGINGS_PER_OFFER_DELETED_CONFIRMED,
+});
+
+export const deleteBelongingsPerOfferFailed = () => ({
+  type: types.BELONGINGS_PER_OFFER_DELETED_FAILED,
+});
+
 export const deleteBelonging = id => ({
   type: types.BELONGING_DELETED,
   payload: {

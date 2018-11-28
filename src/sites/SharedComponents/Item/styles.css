@@ -8,7 +8,7 @@
   transition: all 0.3s;
 }
 
-.delete-icon{
+.card .delete-icon{
   height: 30px;
   width: 30px;
   position: absolute;
@@ -18,7 +18,7 @@
   box-shadow: none;
 }
 
-.delete-icon img{
+.card .delete-icon img{
   height: 30px;
   width: 30px;
 }
