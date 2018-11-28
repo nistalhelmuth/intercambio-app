@@ -25,7 +25,7 @@ class BetCreator extends Component {
     return (
       <div className="bet-creator">
         <h2>
-          {"Publica una oferta (selecciona tus objetos)"}
+          {'Publica una oferta (selecciona tus objetos)'}
         </h2>
         <div className="all-things">
           {
@@ -73,9 +73,9 @@ export default connect(
     createOffer(offeredObjects) {
       dispatch(offersActions.createOffer(
         uuid(),
-        parseInt(loggedUser, 10),
+        loggedUser,
         offeredObjects,
-        parseInt(postId, 10),
+        postId,
       ));
     },
     fetchBelongings() {
