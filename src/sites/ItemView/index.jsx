@@ -17,7 +17,7 @@ const ItemView = ({
   userId,
 }) => (
   <div className="item-view">
-    <Header />
+    <Header goToCategories />
     <div className="information">
       <div className="leftSide">
         <Thing id={postId} />

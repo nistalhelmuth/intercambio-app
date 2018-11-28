@@ -14,7 +14,7 @@ class ItemList extends Component {
   }
 
   render() {
-    const { ids } = this.props;
+    const { ids, self } = this.props;
     return (
       <div className="item-list">
         {
@@ -23,7 +23,7 @@ class ItemList extends Component {
               ? (<Item id={id} key={id} />) : <Fragment />
           ))
         }
-        <NewItem />
+        {self && <NewItem />}
       </div>
     );
   }
@@ -35,12 +35,10 @@ ItemList.propTypes = {
 };
 
 export default connect(
-  (state) => {
-    console.log(selectors.getBelongingIds(state).length);
-    return ({
-      ids: selectors.getBelongingIds(state),
-    });
-  },
+  (state, { id }) => ({
+    ids: selectors.getBelongingIds(state),
+    self: parseInt(id, 10) === selectors.getLoggedUser(state).id,
+  }),
   (dispatch, { id }) => ({
     fetchBelongings() {
       dispatch(actions.fetchBelongings(id));

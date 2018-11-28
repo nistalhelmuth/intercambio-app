@@ -8,7 +8,7 @@ const NewPost = ({
   match: { params },
 }) => (
   <div className="new-post">
-    <Header />
+    <Header goToCategories />
     <PostForm id={params.userId} />
   </div>
 );

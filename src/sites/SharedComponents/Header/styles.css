@@ -7,6 +7,10 @@
   justify-content: space-between;
 }
 
+.user .header {
+  box-shadow: none;
+}
+
 .header a {
   margin: 1rem;
 }

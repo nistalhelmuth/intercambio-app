@@ -10,6 +10,8 @@ const Header = ({
   user,
   closeSession,
   token,
+  goToCategories,
+  disableProfileIcon,
 }) => (
   <div className="header">
     {
@@ -17,27 +19,38 @@ const Header = ({
         ? <Redirect to="/" />
         : ''
     }
-    <Link className="link-as-button" to={`/newPost/${user.id}`}>Crear Post</Link>
-    <div className="profile">
-      <img
-        className="profile-icon"
-        src={user ? user.img : '/user-icon.png'}
-        alt="user-icon"
-      />
-      <div className="popover-container">
-        <div className="popover-tail-border">
-          <div className="popover-tail" />
+    {
+      goToCategories ? (
+        <Link className="link-as-button" to="/categories">Ver Categorias</Link>
+      ) : (
+        <Link className="link-as-button" to={`/newPost/${user.id}`}>Crear Post</Link>
+      )
+    }
+    {
+      !disableProfileIcon && (
+        <div className="profile">
+          <img
+            className="profile-icon"
+            src={user ? user.img : '/user-icon.png'}
+            alt="user-icon"
+          />
+          <div className="popover-container">
+            <div className="popover-tail-border">
+              <div className="popover-tail" />
+            </div>
+            <div className="popover-body">
+              {
+                token !== undefined
+                  ? <Link to={`/users/${user.id}`}>Ver Perfil</Link>
+                  : ''
+              }
+              <button className="button-as-link" type="button" onClick={closeSession}>Cerrar Sesión</button>
+            </div>
+          </div>
         </div>
-        <div className="popover-body">
-          {
-            token !== undefined
-              ? <Link to={`/users/${user.id}`}>Ver Perfil</Link>
-              : ''
-          }
-          <button className="button-as-link" type="button" onClick={closeSession}>Cerrar Sesión</button>
-        </div>
-      </div>
-    </div>
+      )
+    }
+    
   </div>
 );
 
@@ -45,6 +58,8 @@ Header.propTypes = {
   user: PropTypes.object.isRequired,
   closeSession: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
+  goToCategories: PropTypes.bool.isRequired,
+  disableProfileIcon: PropTypes.bool.isRequired,
 };
 
 export default connect(
