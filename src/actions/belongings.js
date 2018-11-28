@@ -46,6 +46,21 @@ export const reciveBelongings = belongings => ({
   },
 });
 
+export const fetchBelongingsPerOffer = offerId => ({
+  type: types.BELONGINGS_PER_OFFER_FETCHED,
+  payload: {
+    offerId,
+  },
+});
+
+export const reciveBelongingsPerOffer = (offerId, belongings) => ({
+  type: types.BELONGINGS_PER_OFFER_RECIVED,
+  payload: {
+    offerId,
+    belongings,
+  },
+});
+
 export const deleteBelonging = id => ({
   type: types.BELONGING_DELETED,
   payload: {

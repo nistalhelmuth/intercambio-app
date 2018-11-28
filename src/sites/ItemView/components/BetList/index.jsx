@@ -1,80 +1,67 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import * as selectors from '../../../../reducers';
-import * as actions from '../../../../actions/interface';
+import * as interfaceActions from '../../../../actions/interface';
+import * as offerActions from '../../../../actions/offers';
 import './styles.css';
 
 import Bet from '../Bet';
 
-const BetList = ({
-  offers,
-  showBetCreator,
-}) => (
-  <div className="betList">
-    {
-      offers.map(offer => (
-        (offer !== undefined
-          ? (
-            <Bet
-              userId={offer.userId}
-              itemIds={offer.offeredObjects}
-              key={offer.id}
-            />       
-          ) : (
-            <div />
+class BetList extends Component {
+  componentWillMount() {
+    const { fetchOffers } = this.props;
+    fetchOffers();
+  }
+
+  render() {
+    const {
+      offers,
+      showBetCreator,
+    } = this.props;
+    return (
+      <div className="betList">
+        {
+          offers.map(offer => (
+            (offer !== undefined
+              ? (
+                <Bet
+                  userInfo={offer.offeredBy}
+                  offerId={offer.id}
+                  key={offer.id}
+                />
+              ) : (
+                <div />
+              ))
           ))
-      ))
-    }
-    {
-      offers.map(offer => (
-        (offer !== undefined
-          ? (
-            <Bet
-              userId={offer.userId}
-              itemIds={offer.offeredObjects}
-              key={offer.id}
-            />       
-          ) : (
-            <div />
-          ))
-      ))
-    }
-    {
-      offers.map(offer => (
-        (offer !== undefined
-          ? (
-            <Bet
-              userId={offer.userId}
-              itemIds={offer.offeredObjects}
-              key={offer.id}
-            />       
-          ) : (
-            <div />
-          ))
-      ))
-    }
-    <button
-      type="button"
-      onClick={showBetCreator}
-    >
-      {'create'}
-    </button>
-  </div>
-);
+        }
+        <button
+          type="button"
+          onClick={showBetCreator}
+        >
+          {'create'}
+        </button>
+      </div>
+    );
+  }
+}
 
 BetList.propTypes = {
-  offers: PropTypes.arrayOf(Object).isRequired,
+  offers: PropTypes.arrayOf(Number).isRequired,
   showBetCreator: PropTypes.func.isRequired,
+  fetchOffers: PropTypes.func.isRequired,
 };
 
 export default connect(
-  (state, { itemID }) => ({
-    offers: selectors.getOffersByObject(state, itemID),
+  state => ({
+    offers: selectors.getOffers(state),
   }),
-  dispatch => ({
+  (dispatch, { postId }) => ({
     showBetCreator() {
-      dispatch(actions.switchBetCreator());
+      dispatch(interfaceActions.switchBetCreator());
+    },
+    fetchOffers() {
+      dispatch(offerActions.fetchOffers(postId));
     },
   }),
 )(BetList);

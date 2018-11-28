@@ -10,44 +10,35 @@ import BetCreator from './components/BetCreator';
 
 import './styles.css';
 
-class ItemView extends Component {
-  componentWillMount() {
-    //fetchoffers
-  }
-
-  render() {
-    const {
-      loggedUser,
-      betCreator,
-      itemId,
-      userId,
-    } = this.props;
-    return (
-      <div className="item-view">
-        <Header />
-        <div className="information">
-          <div className="leftSide">
-            <Thing id={itemId} />
-            <Owner id={userId} />
-          </div>
-          <div className="rightSide">
-            {
-              betCreator ? (
-                <BetCreator loggedUser={loggedUser.id} itemID={itemId} />
-              ) : (
-                <BetList itemID={itemId} />
-              )
-            }
-          </div>
-        </div>
+const ItemView = ({
+  loggedUser,
+  betCreator,
+  postId,
+  userId,
+}) => (
+  <div className="item-view">
+    <Header />
+    <div className="information">
+      <div className="leftSide">
+        <Thing id={postId} />
+        <Owner id={userId} />
       </div>
-    );
-  }
-}
+      <div className="rightSide">
+        {
+          betCreator ? (
+            <BetCreator loggedUser={loggedUser.id} postId={postId} />
+          ) : (
+            <BetList postId={postId} />
+          )
+        }
+      </div>
+    </div>
+  </div>
+);
 
 ItemView.propTypes = {
   loggedUser: PropTypes.object.isRequired,
-  itemId: PropTypes.string.isRequired,
+  postId: PropTypes.string.isRequired,
   userId: PropTypes.string.isRequired,
   betCreator: PropTypes.bool.isRequired,
 };
@@ -56,7 +47,7 @@ export default connect(
   (state, { match: { params } }) => ({
     loggedUser: selectors.getLoggedUser(state),
     betCreator: selectors.getBetCreator(state),
-    itemId: params.itemId,
+    postId: params.postId,
     userId: params.userId,
   }),
   undefined,

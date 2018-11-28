@@ -15,8 +15,8 @@ class Owner extends Component {
   render() {
     const {
       id,
-      first_name,
-      last_name,
+      firstName,
+      lastName,
       username,
       email,
       phone,
@@ -32,7 +32,7 @@ class Owner extends Component {
           <div className="content">
             <ul>
               <li>
-                {`${first_name} ${last_name}`}
+                {`${firstName} ${lastName}`}
               </li>
               <li>
                 {username}

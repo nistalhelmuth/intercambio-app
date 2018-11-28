@@ -26,6 +26,10 @@ export const confirmOfferCreation = (
   },
 });
 
+export const failOfferCreation = () => ({
+  type: types.OFFER_CREATION_FAILED,
+});
+
 export const updateOffer = (
   id,
   offereObject,
@@ -66,20 +70,20 @@ export const confirmOfferDeletion = id => ({
   },
 });
 
-export const fetchOffers = (
-  atributeName,
-  comparisonObject,
-) => ({
+export const fetchOffers = postId => ({
   type: types.OFFERS_FETCHED,
   payload: {
-    atributeName,
-    comparisonObject,
+    postId,
   },
 });
 
-export const reciveOffers = offers => ({
+export const confirmOffersFetch = offers => ({
   type: types.OFFERS_RECIVED,
   payload: {
     offers,
   },
+});
+
+export const failOfferFetching = () => ({
+  type: types.OFFERS_FETCHING_FAILED,
 });

@@ -1,17 +1,22 @@
 import {
   call,
   takeLatest,
+  takeEvery,
   put,
   select,
 } from 'redux-saga/effects';
 
 import * as types from '../types/belongings';
 import * as belonginActions from '../actions/belongings';
+import * as selectors from '../reducers';
 import {
-  postBelonging, fetchBelongings, deleteBelonging, updateBelonging,
+  postBelongin,
+  getBelongin,
+  deleteBelongin,
+  getBelonginPerOffer,
+  updateBelonging,
 } from '../api/belongings';
 import { uploadImage } from '../api/images';
-import * as selectors from '../reducers';
 
 function* belongingGenerator(action) {
   const {
@@ -115,6 +120,10 @@ function* watchBelongingsSaga() {
   yield takeLatest(
     types.BELONGING_DELETED,
     belongingRemover,
+  );
+  yield takeEvery(
+    types.BELONGINGS_PER_OFFER_FETCHED,
+    belongingsPerOfferFetcher,
   );
 }
 

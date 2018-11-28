@@ -33,6 +33,21 @@ const byId = (state = {}, action) => {
     });
     return stateToBe;
   }
+  case types.BELONGINGS_PER_OFFER_RECIVED: {
+    let stateToBe = {};
+    action.payload.belongings.forEach((belonging) => {
+      stateToBe = {
+        ...stateToBe,
+        [belonging.belonging.id]: {
+          ...belonging.belonging,
+        },
+      };
+    });
+    return {
+      ...state,
+      ...stateToBe,
+    };
+  }
   case types.BELONGING_DELETION_CONFIRMED: {
     const newState = { ...state };
     delete newState[action.payload.id];
@@ -70,11 +85,18 @@ const allIds = (state = [], action) => {
     ];
   }
   case types.BELONGINGS_RECIVED: {
-    const stateToBe = [];
+    const stateToBe = state;
     action.payload.belongings.forEach((belonging) => {
       stateToBe.push(belonging.id);
     });
     return stateToBe;
+  }
+  case types.BELONGINGS_PER_OFFER_RECIVED: {
+    const stateToBe = [];
+    action.payload.belongings.forEach((belonging) => {
+      stateToBe.push(belonging.belonging.id);
+    });
+    return [...state, ...stateToBe];
   }
   case types.BELONGING_DELETION_CONFIRMED: {
     return state.filter(id => id !== action.payload.id);
