@@ -22,7 +22,7 @@ export const postOffer = (
   fetch('http://127.0.0.1:8000/api/v1/offers/', {
     method: 'POST',
     headers: {
-      Accept: 'application/json',
+      
       'Content-Type': 'application/json',
       Authorization: `JWT ${token}`,
     },
@@ -31,8 +31,6 @@ export const postOffer = (
       offeredIn,
     }),
   }).then((resultado) => {
-    console.log(offeredBy);
-    console.log(offeredIn);
     if (resultado.ok) {
       resolve(resultado.json());
     } else {

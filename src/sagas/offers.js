@@ -20,7 +20,6 @@ function* offerGenerator(action) {
     },
   } = action;
   const token = yield select(selectors.getToken);
-  
   try {
     const response = yield call(
       postOffer,
@@ -31,7 +30,6 @@ function* offerGenerator(action) {
     yield put(actions.confirmOfferCreation(id, response.id));
     //yield put(belongingsActions.createBelongingsPerOffer(response.id, offeredObjects));
   } catch (error) {
-    console.log(error);
     yield put(actions.failOfferCreation());
   }
 }

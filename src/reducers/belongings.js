@@ -111,7 +111,6 @@ const selected = (state = [], action) => {
   case types.BELONGING_SELECTED: {
     const { id } = action.payload;
     const index = state.indexOf(id);
-    console.log(index);
     if (index > -1) {
       return [
         ...state.slice(0, index),
