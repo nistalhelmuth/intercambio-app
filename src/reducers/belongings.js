@@ -85,7 +85,7 @@ const allIds = (state = [], action) => {
     ];
   }
   case types.BELONGINGS_RECIVED: {
-    const stateToBe = state;
+    const stateToBe = [];
     action.payload.belongings.forEach((belonging) => {
       stateToBe.push(belonging.id);
     });

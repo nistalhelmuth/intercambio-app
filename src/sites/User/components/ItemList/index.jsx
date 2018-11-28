@@ -35,9 +35,12 @@ ItemList.propTypes = {
 };
 
 export default connect(
-  state => ({
-    ids: selectors.getBelongingIds(state),
-  }),
+  (state) => {
+    console.log(selectors.getBelongingIds(state).length);
+    return ({
+      ids: selectors.getBelongingIds(state),
+    });
+  },
   (dispatch, { id }) => ({
     fetchBelongings() {
       dispatch(actions.fetchBelongings(id));

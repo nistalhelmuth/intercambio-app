@@ -93,7 +93,7 @@ export const getUser = (
   userId,
   token,
 ) => new Promise((resolve, reject) => {
-  fetch(`http://127.0.0.1:8000/api/v1/users/${userId}`, {
+  fetch(`http://127.0.0.1:8000/api/v1/users/${userId}/`, {
     method: 'GET',
     headers: {
       Authorization: `JWT ${token}`,

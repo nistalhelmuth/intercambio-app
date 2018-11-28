@@ -34,12 +34,16 @@ Item.propTypes = {
   name: PropTypes.string.isRequired,
   propietaryId: PropTypes.number.isRequired,
   usedState: PropTypes.number.isRequired,
+  img: PropTypes.object,
+};
+
+Item.defaultProps = {
+  img: undefined,
 };
 
 export default connect(
   (state, { id }) => {
     console.log(id);
-    console.log(selectors.getBelonging(state, id));
     return ({
       ...selectors.getBelonging(state, id),
     });
