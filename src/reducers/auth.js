@@ -1,10 +1,16 @@
 import { combineReducers } from 'redux';
 import * as types from '../types/auth';
+import * as userTypes from '../types/users';
 
 const authInfo = (state = {}, action) => {
   switch (action.type) {
   case types.USER_AUTHENTICATION_CONFIRMED: {
     return action.payload.permission;
+  }
+  case userTypes.USER_UPDATE_CONFIRMED: {
+    const info = { ...state };
+    info.user = action.payload.user;
+    return info;
   }
   case types.SESSION_CLOSED: {
     return {};

@@ -39,6 +39,7 @@ ReactDOM.render(
         <Route exact path="/users/:userId" component={User} />
         <Route exact path="/posts/:userId/:postId" component={ItemView} />
         <Route exact path="/register" component={NewUser} />
+        <Route exact path="/updateUser/:userId" component={NewUser} />
         <Route exact path="/newPost/:userId" component={NewPost} />
       </Switch>
     </BrowserRouter>

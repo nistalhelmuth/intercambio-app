@@ -19,12 +19,26 @@ const leftButton = (token, goToCategories, user) => {
   return '';
 };
 
+const rightButton = (token, showEdit, user) => {
+  if (token !== undefined) {
+    return (
+      showEdit ? (
+        <Link className="link-as-button" to={`/updateUser/${user.id}`}>Editar Perfil</Link>
+      ) : (
+        ''
+      )
+    );
+  }
+  return '';
+};
+
 const Header = ({
   user,
   closeSession,
   token,
   goToCategories,
   disableProfileIcon,
+  showEdit,
 }) => (
   <div className="header">
     {
@@ -57,6 +71,7 @@ const Header = ({
         </div>
       )
     }
+    {rightButton(token, showEdit, user)}
   </div>
 );
 
@@ -65,7 +80,13 @@ Header.propTypes = {
   closeSession: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
   goToCategories: PropTypes.bool.isRequired,
-  disableProfileIcon: PropTypes.bool.isRequired,
+  disableProfileIcon: PropTypes.bool,
+  showEdit: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  disableProfileIcon: false,
+  showEdit: false,
 };
 
 export default connect(

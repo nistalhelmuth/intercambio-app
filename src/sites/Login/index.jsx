@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/auth';
+import * as userActions from '../../actions/users';
 import * as selectors from '../../reducers';
 
 import './styles.css';
@@ -15,6 +16,7 @@ const Login = ({
   token,
   logginFailed,
   history,
+  resetSelectedUser,
 }) => (
   <div className="login">
     <h1 className="login-title">The Bartering Library</h1>
@@ -59,6 +61,7 @@ const Login = ({
           )
       }
     </form>
+    {resetSelectedUser()}
   </div>
 );
 
@@ -68,6 +71,7 @@ Login.propTypes = {
   submitting: Proptypes.bool.isRequired,
   token: Proptypes.string,
   logginFailed: Proptypes.bool.isRequired,
+  resetSelectedUser: Proptypes.func.isRequired,
 };
 
 Login.defaultProps = {
@@ -87,6 +91,9 @@ export default connect(
     onSubmit(values) {
       const { username, password } = values;
       dispatch(actions.authenticateUser(username, password));
+    },
+    resetSelectedUser() {
+      dispatch(userActions.resetSelectedUser());
     },
   }),
 )(LoginForm);

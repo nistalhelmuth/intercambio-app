@@ -25,6 +25,35 @@ export const createUser = (
   },
 });
 
+export const updateUser = (
+  id,
+  username,
+  password,
+  firstName,
+  lastName,
+  email,
+  age,
+  phone,
+  rating,
+  img,
+  imgUrl,
+) => ({
+  type: types.USER_UPDATED,
+  payload: {
+    id,
+    username,
+    firstName,
+    lastName,
+    email,
+    password,
+    age,
+    phone,
+    rating,
+    img,
+    imgUrl,
+  },
+});
+
 export const confirmUserCreation = (
   oldId,
   newId,
@@ -33,6 +62,13 @@ export const confirmUserCreation = (
   payload: {
     oldId,
     newId,
+  },
+});
+
+export const confirmUserUpdate = user => ({
+  type: types.USER_UPDATE_CONFIRMED,
+  payload: {
+    user,
   },
 });
 
@@ -92,4 +128,8 @@ export const failUserFetching = () => ({
 
 export const resetSubmitStatus = () => ({
   type: types.SUBMIT_STATUS_RESETTED,
+});
+
+export const resetSelectedUser = () => ({
+  type: types.SELECTED_USER_RESETED,
 });

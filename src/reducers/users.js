@@ -8,6 +8,10 @@ const selected = (state = {}, action) => {
       ...action.payload,
     };
   }
+  case types.SELECTED_USER_RESETED: {
+    console.log('reset');
+    return {};
+  }
   default:
     return state;
   }
@@ -85,6 +89,8 @@ const submitted = (state = false, action) => {
   case types.SUBMIT_STATUS_RESETTED:
     return false;
   case types.USER_CREATION_CONFIRMED:
+    return true;
+  case types.USER_UPDATE_CONFIRMED:
     return true;
   default:
     return state;

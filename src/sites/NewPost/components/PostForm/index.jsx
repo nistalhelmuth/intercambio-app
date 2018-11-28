@@ -51,11 +51,13 @@ class DummyPostForm extends Component {
             name="description"
             component={TextAreaInput}
             label="Describe los motivos de tu publicación"
+            validate={required}
             placeholder="¿Por qué te quieres deshacer de este objeto?"
           />
           <Field
             name="offeredItem"
             label="Selecciona el objeto que quieres ofrecer"
+            validate={required}
             component={SelectInput}
             valueList={belongings.map(bel => (bel.id))}
             displayList={belongings.map(bel => (bel.name))}

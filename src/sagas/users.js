@@ -74,6 +74,54 @@ function* userGenerator(action) {
   }
 }
 
+function* userUpdater(action) {
+  const {
+    payload: {
+      id,
+      username,
+      firstName,
+      lastName,
+      email,
+      password,
+      age,
+      phone,
+      rating,
+      img,
+    },
+  } = action;
+
+  let { imgUrl } = action;
+
+  try {
+    if (img) {
+      imgUrl = yield call(
+        uploadImage,
+        id,
+        'users',
+        img,
+      );
+    }
+
+    const newUser = yield call(
+      updateUser,
+      id,
+      username,
+      firstName,
+      lastName,
+      email,
+      password,
+      age,
+      phone,
+      rating,
+      imgUrl,
+    );
+
+    yield put(actions.confirmUserUpdate(newUser));
+  } catch (e) {
+    // Hacer Algo (QUE NO SEA IMPRIMIR EN CONSOLA);
+  }
+}
+
 function* userRemover(action) {
   const {
     payload: {
@@ -113,7 +161,7 @@ function* usersFetcher(action) {
 function* userFetcher(action) {
   const { payload: { userId } } = action;
   const token = yield select(selectors.getToken);
-  console.log("user",userId);
+  console.log('user', userId);
   try {
     const response = yield call(
       getUser,
@@ -126,7 +174,6 @@ function* userFetcher(action) {
     yield put(actions.failUserFetching());
   }
 }
-
 
 function* watchUserSaga() {
   yield takeLatest(
@@ -144,6 +191,10 @@ function* watchUserSaga() {
   yield takeLatest(
     types.USER_FETCHED,
     userFetcher,
+  );
+  yield takeLatest(
+    types.USER_UPDATED,
+    userUpdater,
   );
 }
 
