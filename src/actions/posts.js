@@ -9,7 +9,7 @@ export const createPost = (
   offeredItem,
   category,
 ) => ({
-  types: types.POST_CREATED,
+  type: types.POST_CREATED,
   payload: {
     id,
     title,

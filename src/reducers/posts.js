@@ -99,7 +99,6 @@ export default combineReducers({
   selected,
 });
 
-
 export const getSelectedPost = state => state.selected;
 export const getPost = (state, id) => state.byId[id];
 export const getPosts = state => (

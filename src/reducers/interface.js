@@ -1,5 +1,7 @@
+import { combineReducers } from 'redux';
 import * as types from '../types/interface';
 import * as belongingTypes from '../types/belongings';
+import * as postTypes from '../types/posts';
 
 const defaultState = {
   betCreator: false,
@@ -24,6 +26,22 @@ const interfaceState = (state = defaultState, action) => {
   }
 };
 
-export default interfaceState;
+const submitted = (state = false, action) => {
+  switch (action.type) {
+  case postTypes.POST_CREATION_CONFIRMED: {
+    return true;
+  } case types.SUBMITTED_STATUS_RESETED: {
+    return false;
+  }
+  default:
+    return state;
+  }
+};
 
-export const getBetCreator = state => state.betCreator;
+export default combineReducers({
+  interfaceState,
+  submitted,
+});
+
+export const getBetCreator = state => state.interfaceState.betCreator;
+export const getSubmittedStatus = state => state.submitted;

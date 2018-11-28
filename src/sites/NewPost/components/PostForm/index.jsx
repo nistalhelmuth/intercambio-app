@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { Redirect } from 'react-router-dom';
 import uuid from 'uuid-v4';
 import TextInput from '../../../SharedComponents/TextInput';
 import TextAreaInput from '../../../SharedComponents/TextAreaInput';
@@ -25,9 +26,15 @@ class DummyPostForm extends Component {
       handleSubmit,
       belongings,
       image,
+      submitted,
     } = this.props;
     return (
       <div className="post-form">
+        {
+          submitted
+            ? <Redirect to="/categories/" />
+            : ''
+        }
         <form className="form" onSubmit={handleSubmit}>
           <h3>
             {'Publica algo!'}
@@ -71,6 +78,7 @@ DummyPostForm.propTypes = {
   fetchBelongings: PropTypes.func.isRequired,
   belongings: PropTypes.array,
   image: PropTypes.string,
+  submitted: PropTypes.bool.isRequired,
 };
 
 DummyPostForm.defaultProps = {
@@ -86,14 +94,18 @@ export default connect(
   (state) => {
     const id = formValueSelector('newPost')(state, 'offeredItem');
     let image = '/default.png';
+    let selectedBelonging = null;
     try {
-      image = selectors.getBelonging(state, id).img;
+      selectedBelonging = selectors.getBelonging(state, id);
+      image = selectedBelonging.img;
     } catch (e) {
       image = '/default.png';
     }
     return ({
       belongings: selectors.getBelongings(state),
       image,
+      selectedBelonging,
+      submitted: selectors.getSubmittedStatus(state),
     });
   },
   (dispatch, { id }) => ({
@@ -107,8 +119,8 @@ export default connect(
         formValues.description,
         props.image,
         id,
-        props.belongings[formValues.offeredItem].id,
-        props.belongings[formValues.offeredItem].category,
+        formValues.offeredItem,
+        props.selectedBelonging.category,
       ));
     },
   }),

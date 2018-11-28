@@ -64,7 +64,7 @@ function* postCreator(action) {
       category,
       token,
     );
-    yield put(actions.recivePost(id, response.id));
+    yield put(actions.confirmPostCreation(id, response.id));
   } catch (error) {
     console.log(error);
     yield put(actions.failPostFetching());
