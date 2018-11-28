@@ -22,13 +22,13 @@ class DummyPostForm extends Component {
 
   render() {
     const {
-      onSubmit,
+      handleSubmit,
       belongings,
       image,
     } = this.props;
     return (
       <div className="post-form">
-        <form className="form" onSumit={onSubmit}>
+        <form className="form" onSubmit={handleSubmit}>
           <h3>
             {'Publica algo!'}
           </h3>
@@ -67,7 +67,7 @@ class DummyPostForm extends Component {
 }
 
 DummyPostForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   fetchBelongings: PropTypes.func.isRequired,
   belongings: PropTypes.array,
   image: PropTypes.string,
