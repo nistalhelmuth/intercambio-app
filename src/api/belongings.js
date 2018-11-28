@@ -112,17 +112,19 @@ export const getBelonginPerOffer = (offerId, token) => new Promise((resolve, rej
 
 export const postBelongingInOffer = (
   belonging,
-  offerId,
+  offer,
   token,
 ) => new Promise((resolve, reject) => {
   fetch('http://127.0.0.1:8000/api/v1/belongings_per_offer/', {
-    method: 'GET',
+    method: 'POST',
     headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
       Authorization: `JWT ${token}`,
     },
     body: JSON.stringify({
       belonging,
-      offerId,
+      offer,
     }),
   }).then((resultado) => {
     if (resultado.ok) {

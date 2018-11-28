@@ -1,4 +1,5 @@
 import * as types from '../types/interface';
+import * as belongingTypes from '../types/belongings';
 
 const defaultState = {
   betCreator: false,
@@ -7,6 +8,12 @@ const defaultState = {
 const interfaceState = (state = defaultState, action) => {
   switch (action.type) {
   case types.SWITCH_BET_CREATOR: {
+    return {
+      ...state,
+      betCreator: !state.betCreator,
+    };
+  }
+  case belongingTypes.BELONGINGS_PER_OFFER_CREATED_CONFIRMED: {
     return {
       ...state,
       betCreator: !state.betCreator,

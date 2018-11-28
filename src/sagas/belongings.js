@@ -132,8 +132,8 @@ function* belongingsPerOfferFetcher(action) {
 function* generateObjectInOffer(offerId, belongings, token) {
   yield belongings.map(belonging => call(
     postBelongingInOffer,
-    offerId,
     belonging,
+    offerId,
     token,
   ));
 }

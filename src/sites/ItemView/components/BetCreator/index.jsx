@@ -71,6 +71,7 @@ export default connect(
       dispatch(interfaceActions.switchBetCreator());
     },
     createOffer(offeredObjects) {
+      console.log(loggedUser, postId);
       dispatch(offersActions.createOffer(
         uuid(),
         loggedUser,
