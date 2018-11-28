@@ -1,3 +1,24 @@
+.offer-card {
+  position: relative;
+}
+
+.offer-card .delete-icon{
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  padding: 0;
+  background-color: transparent;
+  border: 0px;
+  box-shadow: none;
+  top:0;
+  right: 0;
+}
+
+.offer-card .delete-icon img{
+  height: 30px;
+  width: 30px;
+}
+
 .bet {
   background-color: #eeeeee;
   margin-bottom: 1rem; 

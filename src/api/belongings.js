@@ -139,3 +139,15 @@ export const postBelongingInOffer = (
     }
   }).catch(error => reject(error));
 });
+
+export const deleteBelongingsInOffer = (
+  offerId,
+  token,
+) => fetch(`http://127.0.0.1:8000/api/v1/belongings_per_offer/from_offer/?offer=${offerId}`, {
+  method: 'DELETE',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+    Authorization: `JWT ${token}`,
+  },
+}).then(resultado => resultado).catch();

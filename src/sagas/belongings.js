@@ -16,6 +16,7 @@ import {
   getBelonginPerOffer,
   postBelongingInOffer,
   updateBelonging,
+  deleteBelongingsInOffer,
 } from '../api/belongings';
 import { uploadImage } from '../api/images';
 
@@ -159,6 +160,25 @@ function* belongingsPerOfferGenerator(action) {
   }
 }
 
+function* belongingsPerOfferRemover(action) {
+  const {
+    payload: {
+      offerId,
+    },
+  } = action;
+  const token = yield select(selectors.getToken);
+  try {
+    yield call(
+      deleteBelongingsInOffer,
+      offerId,
+      token,
+    );
+    yield put(belonginActions.deleteBelongingsPerOfferConfirmed());
+  } catch (error) {
+    yield put(belonginActions.deleteBelongingsPerOfferFailed());
+  }
+}
+
 function* watchBelongingsSaga() {
   yield takeLatest(
     types.BELONGING_CREATED,
@@ -179,6 +199,10 @@ function* watchBelongingsSaga() {
   yield takeLatest(
     types.BELONGINGS_PER_OFFER_CREATED,
     belongingsPerOfferGenerator,
+  );
+  yield takeLatest(
+    types.BELONGINGS_PER_OFFER_DELETED,
+    belongingsPerOfferRemover,
   );
 }
 

@@ -38,17 +38,12 @@ export const postOffer = (
   }).catch(error => reject(error));
 });
 
-export const deleteOffer = (offerId, token) => new Promise((resolve, reject) => {
-  fetch(`http://127.0.0.1:8000/api/v1/offers/${offerId}`, {
-    method: 'DELETE',
-    headers: {
-      Authorization: `JWT ${token}`,
-    },
-  }).then((resultado) => {
-    if (resultado.ok) {
-      resolve(resultado.json());
-    } else {
-      reject(resultado.statusText);
-    }
-  }).catch(error => reject(error));
-});
+export const deleteOffer = (
+  id,
+  token,
+) => fetch(`http://127.0.0.1:8000/api/v1/offers/${id}/`, {
+  method: 'DELETE',
+  headers: {
+    Authorization: `JWT ${token}`,
+  },
+}).then(resultado => resultado).catch();

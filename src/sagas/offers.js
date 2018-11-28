@@ -65,13 +65,17 @@ function* offerRemover(action) {
       id,
     },
   } = action;
+  const token = yield select(selectors.getToken);
   try {
-    const response = yield call(
+    yield call(
       deleteOffer,
       id,
+      token,
     );
-    yield put(actions.confirmOfferDeletion(response));
+    yield put(actions.confirmOfferDeletion(id));
+    //yield put(belongingsActions.deleteBelongingsPerOffer(id));
   } catch (e) {
+    yield put(actions.failOfferDeletion());
     // Hacer Algo (QUE NO SEA IMPRIMIR EN CONSOLA);
   }
 }
