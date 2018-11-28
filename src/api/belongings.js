@@ -90,10 +90,15 @@ export const updateBelonging = (
     });
 });
 
-export const deleteBelonging = id => fetch(`http://127.0.0.1:8000/api/v1/belongings/${id}/`, {
+export const deleteBelonging = (
+  id,
+  token,
+) => fetch(`http://127.0.0.1:8000/api/v1/belongings/${id}/`, {
   method: 'DELETE',
-}).then(resultado => resultado)
-  .catch(/* error */);
+  headers: {
+    Authorization: `JWT ${token}`,
+  },
+}).then(resultado => resultado).catch();
 
 export const getBelonginPerOffer = (offerId, token) => new Promise((resolve, reject) => {
   fetch(`http://127.0.0.1:8000/api/v1/belongings_per_offer/by_offer/?offer=${offerId}`, {

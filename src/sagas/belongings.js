@@ -79,14 +79,14 @@ function* belongingRemover(action) {
   } = action;
   const token = yield select(selectors.getToken);
   try {
-    const response = yield call(
+    yield call(
       deleteBelonging,
       id,
       token,
     );
-    yield put(belonginActions.confirmBelongingDeletion(id, response, id));
+    yield put(belonginActions.confirmBelongingDeletion(id));
   } catch (e) {
-    // yield put(belonginActions.de)
+    console.log(e);
   }
 }
 

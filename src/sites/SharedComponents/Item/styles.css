@@ -1,3 +1,28 @@
+.card {
+  position: relative;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  transition: all 0.3s;
+}
+
+.delete-icon{
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  padding: 0;
+  background-color: transparent;
+  border: 0px;
+  box-shadow: none;
+}
+
+.delete-icon img{
+  height: 30px;
+  width: 30px;
+}
+
 .item-card {
   align-items: center;
   background-color: #eeeeee;
@@ -14,13 +39,17 @@
   margin: 1rem 0rem;
 }
 
-.item-card img {
+.item-card .card-image {
   height: 200px;
   width: 200px;
+  cursor: default;
+}
+
+.item-card .card-image:hover {
+  cursor: default;
 }
 
 .item-card:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.45), 0 10px 10px rgba(0,0,0,0.42);
-  transform: scale(1.05);
-  transition: all 0.3s;
+  
 }

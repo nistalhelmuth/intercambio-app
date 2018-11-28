@@ -20,7 +20,7 @@ class ItemList extends Component {
         {
           ids.map(id => (
             id !== undefined
-              ? (<Item id={id} key={id} />) : <Fragment />
+              ? (<Item id={id} key={id} deletable={self} />) : <Fragment />
           ))
         }
         {self && <NewItem />}
@@ -32,6 +32,7 @@ class ItemList extends Component {
 ItemList.propTypes = {
   ids: PropTypes.arrayOf(Number).isRequired,
   fetchBelongings: PropTypes.func.isRequired,
+  self: PropTypes.bool.isRequired,
 };
 
 export default connect(

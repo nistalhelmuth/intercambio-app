@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import uuid from 'uuid-v4';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -8,6 +8,7 @@ import TextAreaInput from '../../../SharedComponents/TextAreaInput';
 import SelectInput from '../../../SharedComponents/SelectInput';
 import Upload from '../../../SharedComponents/Upload';
 import * as actions from '../../../../actions/belongings';
+import * as categoryActions from '../../../../actions/categories';
 import * as selectors from '../../../../reducers';
 
 import './styles.css';
@@ -16,62 +17,73 @@ const required = value => (value ? undefined : 'Obligatorio');
 const stateValues = [4, 3, 2, 1, 0];
 const stateDisplayValues = ['Excelente', 'Bueno', 'Normal', 'Malo', 'Terrible'];
 
-const DummyItemForm = ({
-  handleSubmit,
-  categories,
-  categoryIds,
-}) => (
-  <div className="item-form">
-    <form className="form" onSubmit={handleSubmit}>
-      <h3>
-        {'Crea un nuevo objeto'}
-      </h3>
-      <Field
-        name="archivos"
-        component={Upload}
-      />
-      <Field
-        name="name"
-        type="text"
-        label="Ingresa el nombre del objeto"
-        component={TextInput}
-        validate={required}
-        placeholder="Nombre"
-      />
-      <Field
-        name="description"
-        component={TextAreaInput}
-        label="Describe el objeto"
-        placeholder="¿Cuál es la historia del objeto?"
-      />
-      <Field
-        name="category"
-        label="Ingresa la categoría que pertenece"
-        component={SelectInput}
-        valueList={categoryIds}
-        displayList={categories.map(cat => (
-          cat.name
-        ))}
-      />
-      <Field
-        name="quality"
-        label="Selecciona el estado"
-        component={SelectInput}
-        valueList={stateValues}
-        displayList={stateDisplayValues}
-      />
-      <button
-        type="submit"
-        className="create-button"
-      >
-        {'Crear objeto'}
-      </button>
-    </form>
-  </div>
-);
+class DummyItemForm extends Component {
+  componentWillMount() {
+    const { fetchAllCategories } = this.props;
+    fetchAllCategories();
+  }
+
+  render() {
+    const {
+      handleSubmit,
+      categories,
+      categoryIds,
+    } = this.props;
+    return (
+      <div className="item-form">
+        <form className="form" onSubmit={handleSubmit}>
+          <h3>
+            {'Crea un nuevo objeto'}
+          </h3>
+          <Field
+            name="archivos"
+            component={Upload}
+          />
+          <Field
+            name="name"
+            type="text"
+            label="Ingresa el nombre del objeto"
+            component={TextInput}
+            validate={required}
+            placeholder="Nombre"
+          />
+          <Field
+            name="description"
+            component={TextAreaInput}
+            label="Describe el objeto"
+            placeholder="¿Cuál es la historia del objeto?"
+          />
+          <Field
+            name="category"
+            label="Ingresa la categoría que pertenece"
+            component={SelectInput}
+            valueList={categoryIds}
+            displayList={categories.map(cat => (
+              cat.name
+            ))}
+          />
+          <Field
+            name="quality"
+            label="Selecciona el estado"
+            component={SelectInput}
+            valueList={stateValues}
+            displayList={stateDisplayValues}
+          />
+          <button
+            type="submit"
+            className="create-button"
+          >
+            {'Crear objeto'}
+          </button>
+        </form>
+      </div>
+    );
+  }
+}
 
 DummyItemForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  fetchAllCategories: PropTypes.func.isRequired,
   categories: PropTypes.array,
   categoryIds: PropTypes.array,
 };
@@ -112,6 +124,9 @@ export default connect(
       } else {
         console.log('faltan valores');
       }
+    },
+    fetchAllCategories() {
+      dispatch(categoryActions.fetchCategories());
     },
   }),
 )(ItemForm);
