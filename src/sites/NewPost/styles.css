@@ -1,0 +1,6 @@
+.new-post {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-image: url("/backgrounds/bright_wood2.jpg");
+}

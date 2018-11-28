@@ -14,7 +14,7 @@ const SelectInput = ({
     <div className="select-input">
       <label htmlFor={`${labelId}-select`}>{label}</label>
       <select className="select-list" id={`${labelId}-select`} {...input}>
-        <option>...</option>
+        <option >...</option>
         {valueList.map(item => (
           <option key={item} value={item}>{displayList[valueList.indexOf(item)]}</option>
         ))}
